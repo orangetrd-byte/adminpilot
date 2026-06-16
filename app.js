@@ -801,10 +801,7 @@ els.fillVin.addEventListener("click", async () => {
   }
   els.vinInput.value = vin;
   try {
-    const vehicle = await decodeVin(vin);
-    if (vehicle) {
-      await loadRecallsForVehicle(vehicle);
-    }
+    await decodeVin(vin);
   } catch (error) {
     console.error(error);
     setStatus("VIN flow failed", "error");
