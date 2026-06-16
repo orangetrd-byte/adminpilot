@@ -11,30 +11,146 @@
   <body>
     <main class="shell">
       <header class="hero">
-        <div class="eyebrow">AdminPilot</div>
-        <h1>Private, local-first life admin.</h1>
-        <p>
-          Track vehicles, home tasks, and documents in one place. Everything
-          stays on device.
-        </p>
-        <div class="actions">
-          <button id="add-sample" type="button">Add sample asset</button>
-          <button id="clear-data" type="button" class="secondary">
-            Clear data
-          </button>
+        <div class="hero-copy">
+          <div class="eyebrow">AdminPilot</div>
+          <h1>Private asset tracking for the real world.</h1>
+          <p>
+            VIN lookup, recall alerts, home tasks, and documents in one local
+            dashboard. Your data stays on device.
+          </p>
+          <div class="actions">
+            <button id="add-sample" type="button">Add sample data</button>
+            <button id="clear-data" type="button" class="secondary">
+              Clear data
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-stats" aria-label="Summary stats">
+          <article class="stat-card">
+            <span class="stat-label">Assets</span>
+            <strong id="asset-count">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Vehicles</span>
+            <strong id="vehicle-count">0</strong>
+          </article>
+          <article class="stat-card">
+            <span class="stat-label">Open recalls</span>
+            <strong id="recall-count">0</strong>
+          </article>
         </div>
       </header>
+
+      <section class="grid">
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Add Asset</h2>
+            <span class="pill">LocalStorage</span>
+          </div>
+          <form id="asset-form" class="form">
+            <label>
+              <span>Name</span>
+              <input id="asset-name" name="name" placeholder="2019 Ford F-150" required />
+            </label>
+            <label>
+              <span>Type</span>
+              <select id="asset-type" name="type">
+                <option>Vehicle</option>
+                <option>Home</option>
+                <option>Document</option>
+                <option>Admin</option>
+              </select>
+            </label>
+            <label>
+              <span>VIN</span>
+              <input
+                id="asset-vin"
+                name="vin"
+                placeholder="1FTFW1E5XJFA00000"
+                maxlength="17"
+                autocomplete="off"
+              />
+            </label>
+            <label>
+              <span>Due / status</span>
+              <input id="asset-due" name="due" placeholder="Oil change due in 320 miles" required />
+            </label>
+            <label class="full">
+              <span>Notes</span>
+              <textarea
+                id="asset-note"
+                name="note"
+                rows="4"
+                placeholder="What happens if this gets ignored?"
+              ></textarea>
+            </label>
+            <div class="form-actions full">
+              <button type="submit">Save asset</button>
+              <button id="fill-vin" type="button" class="secondary">
+                Lookup VIN
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>VIN Lookup</h2>
+            <span id="vin-status" class="pill">Idle</span>
+          </div>
+          <div class="lookup">
+            <label>
+              <span>Vehicle identification number</span>
+              <input
+                id="vin-input"
+                name="vin-input"
+                placeholder="1FTFW1E5XJFA00000"
+                maxlength="17"
+                autocomplete="off"
+              />
+            </label>
+            <div class="lookup-actions">
+              <button id="decode-vin" type="button">Decode VIN</button>
+              <button id="load-recalls" type="button" class="secondary">
+                Load recalls
+              </button>
+            </div>
+          </div>
+          <div id="vehicle-card" class="info-card empty">
+            <strong>No VIN decoded yet.</strong>
+            <small>Decode a 17-character VIN to auto-fill vehicle details.</small>
+          </div>
+          <div id="recall-card" class="info-card empty">
+            <strong>No recall data loaded yet.</strong>
+            <small>Recall status appears after a successful VIN decode.</small>
+          </div>
+        </section>
+      </section>
 
       <section class="panel">
         <div class="panel-head">
           <h2>Assets</h2>
-          <span id="asset-count" class="count">0</span>
+          <span id="last-save" class="pill">Saved locally</span>
         </div>
         <div id="asset-list" class="asset-list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Backup</h2>
+          <span class="pill">JSON</span>
+        </div>
+        <div class="backup-row">
+          <button id="export-data" type="button">Export JSON</button>
+          <label class="file-upload">
+            <input id="import-file" type="file" accept="application/json" />
+            <span>Import JSON</span>
+          </label>
+        </div>
       </section>
     </main>
 
     <script src="./app.js"></script>
   </body>
 </html>
-
