@@ -169,6 +169,59 @@
         <div id="asset-list" class="asset-list"></div>
       </section>
 
+      <dialog id="asset-dialog" class="asset-dialog">
+        <form id="asset-dialog-form" method="dialog" class="dialog-form">
+          <div class="panel-head">
+            <h2 id="asset-dialog-title">Edit Asset</h2>
+            <button id="asset-dialog-close" type="button" class="secondary">Close</button>
+          </div>
+          <input type="hidden" id="asset-id" />
+          <div class="form">
+            <label>
+              <span>Name</span>
+              <input id="edit-asset-name" required />
+            </label>
+            <label>
+              <span>Type</span>
+              <select id="edit-asset-type">
+                <option>Vehicle</option>
+                <option>Home</option>
+                <option>Document</option>
+                <option>Admin</option>
+              </select>
+            </label>
+            <label>
+              <span>Status</span>
+              <select id="edit-asset-status">
+                <option value="on-track">On track</option>
+                <option value="due-soon">Due soon</option>
+                <option value="overdue">Overdue</option>
+              </select>
+            </label>
+            <label>
+              <span>VIN</span>
+              <input id="edit-asset-vin" maxlength="17" />
+            </label>
+            <label>
+              <span>Due / status</span>
+              <input id="edit-asset-due" required />
+            </label>
+            <label class="full">
+              <span>Notes</span>
+              <textarea id="edit-asset-note" rows="4"></textarea>
+            </label>
+            <label class="full">
+              <span>Consequence</span>
+              <textarea id="edit-asset-consequence" rows="3"></textarea>
+            </label>
+          </div>
+          <div class="form-actions">
+            <button id="asset-dialog-save" type="submit">Save changes</button>
+            <button id="asset-dialog-delete" type="button" class="secondary">Delete</button>
+          </div>
+        </form>
+      </dialog>
+
       <section class="panel">
         <div class="panel-head">
           <h2>Backup</h2>

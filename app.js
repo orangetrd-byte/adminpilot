@@ -73,6 +73,18 @@ const els = {
   loadRecalls: document.getElementById("load-recalls"),
   exportData: document.getElementById("export-data"),
   importFile: document.getElementById("import-file"),
+  assetDialog: document.getElementById("asset-dialog"),
+  assetDialogForm: document.getElementById("asset-dialog-form"),
+  assetDialogClose: document.getElementById("asset-dialog-close"),
+  assetDialogDelete: document.getElementById("asset-dialog-delete"),
+  assetDialogId: document.getElementById("asset-id"),
+  editAssetName: document.getElementById("edit-asset-name"),
+  editAssetType: document.getElementById("edit-asset-type"),
+  editAssetStatus: document.getElementById("edit-asset-status"),
+  editAssetVin: document.getElementById("edit-asset-vin"),
+  editAssetDue: document.getElementById("edit-asset-due"),
+  editAssetNote: document.getElementById("edit-asset-note"),
+  editAssetConsequence: document.getElementById("edit-asset-consequence"),
 };
 
 let state = loadState();
@@ -209,11 +221,40 @@ function renderAssets() {
             <span>${escapeHtml(asset.due || "No status")}</span>
             <span>${escapeHtml(asset.vin || "No VIN")}</span>
           </div>
+          ${renderAttachmentChips(asset.attachments)}
           ${asset.consequence ? `<p class="asset-consequence">${escapeHtml(asset.consequence)}</p>` : ""}
+          <div class="asset-actions">
+            <button type="button" class="secondary" data-edit-id="${escapeHtml(asset.id)}">Edit</button>
+            <button type="button" class="secondary danger" data-delete-id="${escapeHtml(asset.id)}">Delete</button>
+          </div>
         </article>
       `;
     })
     .join("");
+
+  document.querySelectorAll("[data-edit-id]").forEach((button) => {
+    button.addEventListener("click", () => openAssetDialog(button.dataset.editId));
+  });
+  document.querySelectorAll("[data-delete-id]").forEach((button) => {
+    button.addEventListener("click", () => deleteAsset(button.dataset.deleteId));
+  });
+}
+
+function renderAttachmentChips(attachments = []) {
+  if (!attachments.length) return "";
+  return `
+    <div class="attachment-list">
+      ${attachments
+        .map(
+          (attachment, index) => `
+            <a class="attachment-chip" href="${escapeHtml(attachment.dataUrl)}" download="${escapeHtml(attachment.name)}">
+              ${index + 1}. ${escapeHtml(attachment.name)}
+            </a>
+          `
+        )
+        .join("")}
+    </div>
+  `;
 }
 
 function renderTimeline() {
@@ -284,6 +325,58 @@ function fileToDataUrl(file) {
     reader.onerror = () => reject(reader.error);
     reader.readAsDataURL(file);
   });
+}
+
+function openAssetDialog(id) {
+  const asset = state.assets.find((item) => item.id === id);
+  if (!asset) return;
+
+  els.assetDialogId.value = asset.id;
+  els.editAssetName.value = asset.name || "";
+  els.editAssetType.value = asset.type || "Vehicle";
+  els.editAssetStatus.value = asset.status || "on-track";
+  els.editAssetVin.value = asset.vin || "";
+  els.editAssetDue.value = asset.due || "";
+  els.editAssetNote.value = asset.note || "";
+  els.editAssetConsequence.value = asset.consequence || "";
+  els.assetDialog.showModal();
+}
+
+function closeAssetDialog() {
+  if (els.assetDialog.open) {
+    els.assetDialog.close();
+  }
+}
+
+function saveEditedAsset(event) {
+  event.preventDefault();
+  const id = els.assetDialogId.value;
+  const index = state.assets.findIndex((item) => item.id === id);
+  if (index < 0) return;
+
+  state.assets[index] = {
+    ...state.assets[index],
+    name: els.editAssetName.value.trim(),
+    type: els.editAssetType.value,
+    status: els.editAssetStatus.value,
+    vin: normalizeVin(els.editAssetVin.value),
+    due: els.editAssetDue.value.trim(),
+    note: els.editAssetNote.value.trim(),
+    consequence: els.editAssetConsequence.value.trim(),
+  };
+  saveState(state);
+  render();
+  closeAssetDialog();
+}
+
+function deleteAsset(id) {
+  const asset = state.assets.find((item) => item.id === id);
+  if (!asset) return;
+  if (!confirm(`Delete ${asset.name}?`)) return;
+
+  state.assets = state.assets.filter((item) => item.id !== id);
+  saveState(state);
+  render();
 }
 
 async function decodeVin(vinInput) {
@@ -456,6 +549,14 @@ els.importFile.addEventListener("change", async () => {
   } finally {
     els.importFile.value = "";
   }
+});
+
+els.assetDialogForm.addEventListener("submit", saveEditedAsset);
+els.assetDialogClose.addEventListener("click", closeAssetDialog);
+els.assetDialogDelete.addEventListener("click", () => {
+  const id = els.assetDialogId.value;
+  closeAssetDialog();
+  deleteAsset(id);
 });
 
 els.decodeVin.addEventListener("click", async () => {
