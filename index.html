@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#111827" />
+    <title>AdminPilot</title>
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <div class="eyebrow">AdminPilot</div>
+        <h1>Private, local-first life admin.</h1>
+        <p>
+          Track vehicles, home tasks, and documents in one place. Everything
+          stays on device.
+        </p>
+        <div class="actions">
+          <button id="add-sample" type="button">Add sample asset</button>
+          <button id="clear-data" type="button" class="secondary">
+            Clear data
+          </button>
+        </div>
+      </header>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Assets</h2>
+          <span id="asset-count" class="count">0</span>
+        </div>
+        <div id="asset-list" class="asset-list"></div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+
