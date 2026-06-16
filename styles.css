@@ -243,6 +243,18 @@ p {
   color: var(--muted);
 }
 
+.inline-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.inline-check input {
+  width: auto;
+  margin: 0;
+}
+
 .form .full {
   grid-column: 1 / -1;
 }
@@ -423,6 +435,17 @@ button.danger {
   justify-content: space-between;
   gap: 12px;
   margin-top: 10px;
+}
+
+.consequence-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 10px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(255, 107, 74, 0.12);
+  color: #ffd0c7;
+  font-size: 0.78rem;
 }
 
 .status {

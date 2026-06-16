@@ -32,6 +32,10 @@
             <strong id="due-soon-count">0</strong>
           </article>
           <article class="stat-card">
+            <span class="stat-label">High consequence</span>
+            <strong id="high-consequence-count">0</strong>
+          </article>
+          <article class="stat-card">
             <span class="stat-label">Reminders</span>
             <strong id="reminder-count">0</strong>
           </article>
@@ -77,6 +81,10 @@
                 <option value="due-soon">Due soon</option>
                 <option value="overdue">Overdue</option>
               </select>
+            </label>
+            <label class="full inline-check">
+              <input id="asset-high-consequence" name="highConsequence" type="checkbox" />
+              <span>High consequence if ignored</span>
             </label>
             <label>
               <span>VIN</span>
@@ -220,6 +228,10 @@
                 <option value="due-soon">Due soon</option>
                 <option value="overdue">Overdue</option>
               </select>
+            </label>
+            <label class="full inline-check">
+              <input id="edit-asset-high-consequence" type="checkbox" />
+              <span>High consequence if ignored</span>
             </label>
             <label>
               <span>VIN</span>

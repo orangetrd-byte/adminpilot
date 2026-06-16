@@ -25,6 +25,7 @@ function createSampleAssets() {
       name: "2019 Ford F-150",
       type: "Vehicle",
       status: "due-soon",
+      highConsequence: true,
       vin: "1FTFW1E5XJFA00000",
       due: "Oil change due in 320 miles",
       reminderDate: isoDateOffset(3),
@@ -40,6 +41,7 @@ function createSampleAssets() {
       name: "Home warranty",
       type: "Document",
       status: "on-track",
+      highConsequence: true,
       vin: "",
       due: "Renewal in 42 days",
       reminderDate: isoDateOffset(14),
@@ -58,6 +60,7 @@ const els = {
   assetName: document.getElementById("asset-name"),
   assetType: document.getElementById("asset-type"),
   assetStatus: document.getElementById("asset-status"),
+  assetHighConsequence: document.getElementById("asset-high-consequence"),
   assetVin: document.getElementById("asset-vin"),
   assetDue: document.getElementById("asset-due"),
   assetReminder: document.getElementById("asset-reminder"),
@@ -68,6 +71,7 @@ const els = {
   assetList: document.getElementById("asset-list"),
   assetCount: document.getElementById("asset-count"),
   dueSoonCount: document.getElementById("due-soon-count"),
+  highConsequenceCount: document.getElementById("high-consequence-count"),
   reminderCount: document.getElementById("reminder-count"),
   vehicleCount: document.getElementById("vehicle-count"),
   recallCount: document.getElementById("recall-count"),
@@ -95,6 +99,7 @@ const els = {
   editAssetName: document.getElementById("edit-asset-name"),
   editAssetType: document.getElementById("edit-asset-type"),
   editAssetStatus: document.getElementById("edit-asset-status"),
+  editAssetHighConsequence: document.getElementById("edit-asset-high-consequence"),
   editAssetVin: document.getElementById("edit-asset-vin"),
   editAssetDue: document.getElementById("edit-asset-due"),
   editAssetReminder: document.getElementById("edit-asset-reminder"),
@@ -200,10 +205,12 @@ function render() {
   const vehicles = assets.filter((asset) => asset.type === "Vehicle").length;
   const recalls = state.recalls.length;
   const dueSoon = assets.filter((asset) => asset.status === "due-soon").length;
+  const highConsequence = assets.filter((asset) => asset.highConsequence).length;
   const reminders = getReminderItems();
 
   els.assetCount.textContent = String(assets.length);
   els.dueSoonCount.textContent = String(dueSoon);
+  els.highConsequenceCount.textContent = String(highConsequence);
   els.reminderCount.textContent = String(reminders.length);
   els.vehicleCount.textContent = String(vehicles);
   els.recallCount.textContent = String(recalls);
@@ -274,6 +281,7 @@ function renderTimeline() {
   const groups = {
     overdue: state.assets.filter((asset) => asset.status === "overdue"),
     dueSoon: state.assets.filter((asset) => asset.status === "due-soon"),
+    highConsequence: state.assets.filter((asset) => asset.highConsequence),
     onTrack: state.assets.filter((asset) => !asset.status || asset.status === "on-track"),
   };
 
@@ -306,6 +314,7 @@ function renderTimeline() {
   els.timeline.innerHTML = [
     renderGroup("Overdue", "error", groups.overdue),
     renderGroup("Due soon", "warning", groups.dueSoon),
+    renderGroup("High consequence", "error", groups.highConsequence),
     renderGroup("On track", "success", groups.onTrack),
   ].join("");
 }
@@ -471,6 +480,7 @@ function renderAssets() {
             <span class="status ${escapeHtml(asset.status || "on-track")}">${escapeHtml(formatStatus(asset.status))}</span>
             <span class="status-meta">${attachmentCount} attachment${attachmentCount === 1 ? "" : "s"}</span>
           </div>
+          ${asset.highConsequence ? "<div class='consequence-badge'>High consequence</div>" : ""}
           <div class="asset-meta">
             <span>${escapeHtml(asset.due || "No status")}</span>
             <span>${escapeHtml(asset.vin || "No VIN")}</span>
@@ -507,6 +517,7 @@ function openAssetDialog(id) {
   els.editAssetName.value = asset.name || "";
   els.editAssetType.value = asset.type || "Vehicle";
   els.editAssetStatus.value = asset.status || "on-track";
+  els.editAssetHighConsequence.checked = Boolean(asset.highConsequence);
   els.editAssetVin.value = asset.vin || "";
   els.editAssetDue.value = asset.due || "";
   els.editAssetReminder.value = asset.reminderDate || "";
@@ -533,6 +544,7 @@ function saveEditedAsset(event) {
     name: els.editAssetName.value.trim(),
     type: els.editAssetType.value,
     status: els.editAssetStatus.value,
+    highConsequence: els.editAssetHighConsequence.checked,
     vin: normalizeVin(els.editAssetVin.value),
     due: els.editAssetDue.value.trim(),
     reminderDate: els.editAssetReminder.value || "",
@@ -628,6 +640,7 @@ async function addAssetFromForm(event) {
   const name = els.assetName.value.trim();
   const type = els.assetType.value;
   const status = els.assetStatus.value;
+  const highConsequence = els.assetHighConsequence.checked;
   const vin = normalizeVin(els.assetVin.value);
   const due = els.assetDue.value.trim();
   const reminderDate = els.assetReminder.value || "";
@@ -656,6 +669,7 @@ async function addAssetFromForm(event) {
     name,
     type,
     status,
+    highConsequence,
     vin,
     due,
     reminderDate,
@@ -673,6 +687,7 @@ async function addAssetFromForm(event) {
   event.target.reset();
   els.assetType.value = "Vehicle";
   els.assetStatus.value = "on-track";
+  els.assetHighConsequence.checked = false;
   els.assetName.focus();
 }
 
@@ -708,6 +723,9 @@ function exportData() {
 async function importData(file) {
   const text = await file.text();
   const parsed = JSON.parse(text);
+  if (!parsed || typeof parsed !== "object") {
+    throw new Error("Invalid backup");
+  }
   state = {
     ...DEFAULT_STATE,
     ...parsed,
@@ -716,6 +734,7 @@ async function importData(file) {
   };
   saveState(state);
   render();
+  return true;
 }
 
 els.assetForm.addEventListener("submit", addAssetFromForm);
@@ -726,7 +745,10 @@ els.importFile.addEventListener("change", async () => {
   const file = els.importFile.files?.[0];
   if (!file) return;
   try {
-    await importData(file);
+    const imported = await importData(file);
+    if (!imported) {
+      throw new Error("Invalid backup");
+    }
     setStatus("Backup imported", "success");
   } catch {
     setStatus("Import failed", "error");
