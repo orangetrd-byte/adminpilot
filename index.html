@@ -28,6 +28,10 @@
 
         <div class="hero-stats" aria-label="Summary stats">
           <article class="stat-card">
+            <span class="stat-label">Due soon</span>
+            <strong id="due-soon-count">0</strong>
+          </article>
+          <article class="stat-card">
             <span class="stat-label">Assets</span>
             <strong id="asset-count">0</strong>
           </article>
@@ -63,6 +67,14 @@
               </select>
             </label>
             <label>
+              <span>Status</span>
+              <select id="asset-status" name="status">
+                <option value="on-track">On track</option>
+                <option value="due-soon">Due soon</option>
+                <option value="overdue">Overdue</option>
+              </select>
+            </label>
+            <label>
               <span>VIN</span>
               <input
                 id="asset-vin"
@@ -84,6 +96,19 @@
                 rows="4"
                 placeholder="What happens if this gets ignored?"
               ></textarea>
+            </label>
+            <label class="full">
+              <span>Consequence</span>
+              <textarea
+                id="asset-consequence"
+                name="consequence"
+                rows="3"
+                placeholder="What happens if this gets ignored?"
+              ></textarea>
+            </label>
+            <label class="full">
+              <span>Attachment</span>
+              <input id="asset-file" name="file" type="file" />
             </label>
             <div class="form-actions full">
               <button type="submit">Save asset</button>
@@ -126,6 +151,14 @@
             <small>Recall status appears after a successful VIN decode.</small>
           </div>
         </section>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Maintenance timeline</h2>
+          <span class="pill">Status groups</span>
+        </div>
+        <div class="timeline" id="timeline"></div>
       </section>
 
       <section class="panel">

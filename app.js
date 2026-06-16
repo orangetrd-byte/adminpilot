@@ -22,18 +22,24 @@ function createSampleAssets() {
       id: crypto.randomUUID(),
       name: "2019 Ford F-150",
       type: "Vehicle",
+      status: "due-soon",
       vin: "1FTFW1E5XJFA00000",
       due: "Oil change due in 320 miles",
       note: "Track service before road trip.",
+      consequence: "Risk of skipped maintenance and a noisy reminder later.",
+      attachments: [],
       createdAt,
     },
     {
       id: crypto.randomUUID(),
       name: "Home warranty",
       type: "Document",
+      status: "on-track",
       vin: "",
       due: "Renewal in 42 days",
       note: "Store policy number and contact details.",
+      consequence: "Could miss a renewal or claim deadline.",
+      attachments: [],
       createdAt,
     },
   ];
@@ -43,15 +49,20 @@ const els = {
   assetForm: document.getElementById("asset-form"),
   assetName: document.getElementById("asset-name"),
   assetType: document.getElementById("asset-type"),
+  assetStatus: document.getElementById("asset-status"),
   assetVin: document.getElementById("asset-vin"),
   assetDue: document.getElementById("asset-due"),
   assetNote: document.getElementById("asset-note"),
+  assetConsequence: document.getElementById("asset-consequence"),
+  assetFile: document.getElementById("asset-file"),
   assetList: document.getElementById("asset-list"),
   assetCount: document.getElementById("asset-count"),
+  dueSoonCount: document.getElementById("due-soon-count"),
   vehicleCount: document.getElementById("vehicle-count"),
   recallCount: document.getElementById("recall-count"),
   vehicleCard: document.getElementById("vehicle-card"),
   recallCard: document.getElementById("recall-card"),
+  timeline: document.getElementById("timeline"),
   vinInput: document.getElementById("vin-input"),
   vinStatus: document.getElementById("vin-status"),
   lastSave: document.getElementById("last-save"),
@@ -103,13 +114,16 @@ function render() {
   const assets = state.assets;
   const vehicles = assets.filter((asset) => asset.type === "Vehicle").length;
   const recalls = state.recalls.length;
+  const dueSoon = assets.filter((asset) => asset.status === "due-soon").length;
 
   els.assetCount.textContent = String(assets.length);
+  els.dueSoonCount.textContent = String(dueSoon);
   els.vehicleCount.textContent = String(vehicles);
   els.recallCount.textContent = String(recalls);
 
   renderVehicleCard();
   renderRecallCard();
+  renderTimeline();
   renderAssets();
 }
 
@@ -177,8 +191,9 @@ function renderAssets() {
   els.assetList.innerHTML = state.assets
     .map((asset) => {
       const badge = asset.type === "Vehicle" && asset.vin ? "VIN linked" : asset.type;
+      const attachmentCount = Array.isArray(asset.attachments) ? asset.attachments.length : 0;
       return `
-        <article class="asset">
+        <article class="asset ${asset.status || "on-track"}">
           <div class="asset-top">
             <div>
               <strong>${escapeHtml(asset.name)}</strong>
@@ -186,14 +201,59 @@ function renderAssets() {
             </div>
             <span class="pill">${escapeHtml(badge)}</span>
           </div>
+          <div class="asset-status-row">
+            <span class="status ${escapeHtml(asset.status || "on-track")}">${escapeHtml(formatStatus(asset.status))}</span>
+            <span class="status-meta">${attachmentCount} attachment${attachmentCount === 1 ? "" : "s"}</span>
+          </div>
           <div class="asset-meta">
             <span>${escapeHtml(asset.due || "No status")}</span>
             <span>${escapeHtml(asset.vin || "No VIN")}</span>
           </div>
+          ${asset.consequence ? `<p class="asset-consequence">${escapeHtml(asset.consequence)}</p>` : ""}
         </article>
       `;
     })
     .join("");
+}
+
+function renderTimeline() {
+  const groups = {
+    overdue: state.assets.filter((asset) => asset.status === "overdue"),
+    dueSoon: state.assets.filter((asset) => asset.status === "due-soon"),
+    onTrack: state.assets.filter((asset) => !asset.status || asset.status === "on-track"),
+  };
+
+  const renderGroup = (title, tone, items) => `
+    <section class="timeline-group">
+      <div class="timeline-head">
+        <strong>${title}</strong>
+        <span class="pill ${tone}">${items.length}</span>
+      </div>
+      <div class="timeline-items">
+        ${items.length
+          ? items
+              .map(
+                (item) => `
+                  <article class="timeline-item ${escapeHtml(item.status || "on-track")}">
+                    <span class="timeline-dot"></span>
+                    <div>
+                      <strong>${escapeHtml(item.name)}</strong>
+                      <small>${escapeHtml(item.due || "No due date")}</small>
+                    </div>
+                  </article>
+                `
+              )
+              .join("")
+          : "<div class='timeline-empty'>No items</div>"}
+      </div>
+    </section>
+  `;
+
+  els.timeline.innerHTML = [
+    renderGroup("Overdue", "error", groups.overdue),
+    renderGroup("Due soon", "warning", groups.dueSoon),
+    renderGroup("On track", "success", groups.onTrack),
+  ].join("");
 }
 
 function escapeHtml(value) {
@@ -209,6 +269,21 @@ function getDecodedField(results, fieldName) {
   const match = results.find((item) => item.Variable === fieldName);
   const value = match?.Value;
   return value && String(value).trim() ? String(value).trim() : "";
+}
+
+function formatStatus(status) {
+  if (status === "overdue") return "Overdue";
+  if (status === "due-soon") return "Due soon";
+  return "On track";
+}
+
+function fileToDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result || ""));
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
 }
 
 async function decodeVin(vinInput) {
@@ -276,25 +351,42 @@ async function loadRecallsForVehicle(vehicle) {
   setStatus(state.recalls.length ? "Recalls loaded" : "No recalls found", state.recalls.length ? "warning" : "success");
 }
 
-function addAssetFromForm(event) {
+async function addAssetFromForm(event) {
   event.preventDefault();
   const name = els.assetName.value.trim();
   const type = els.assetType.value;
+  const status = els.assetStatus.value;
   const vin = normalizeVin(els.assetVin.value);
   const due = els.assetDue.value.trim();
   const note = els.assetNote.value.trim();
+  const consequence = els.assetConsequence.value.trim();
+  const file = els.assetFile.files?.[0] || null;
 
   if (!name || !due) {
     return;
+  }
+
+  const attachments = [];
+  if (file) {
+    attachments.push({
+      id: crypto.randomUUID(),
+      name: file.name,
+      type: file.type || "application/octet-stream",
+      size: file.size,
+      dataUrl: await fileToDataUrl(file),
+    });
   }
 
   const asset = {
     id: crypto.randomUUID(),
     name,
     type,
+    status,
     vin,
     due,
     note,
+    consequence,
+    attachments,
     createdAt: new Date().toISOString(),
   };
 
@@ -303,6 +395,7 @@ function addAssetFromForm(event) {
   render();
   event.target.reset();
   els.assetType.value = "Vehicle";
+  els.assetStatus.value = "on-track";
   els.assetName.focus();
 }
 
