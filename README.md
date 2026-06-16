@@ -2,6 +2,10 @@
 
 Local-first asset and life admin dashboard prototype.
 
+## License
+
+MIT
+
 ## Start
 
 Run a local static server from this folder so the NHTSA requests work in the browser:
