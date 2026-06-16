@@ -620,11 +620,14 @@ async function loadRecallsForVehicle(vehicle) {
   url.searchParams.set("modelYear", vehicle.year);
 
   const response = await fetch(url);
-  if (!response.ok) {
-    throw new Error("Recall lookup failed");
+  const raw = await response.text();
+  let data;
+  try {
+    data = JSON.parse(raw);
+  } catch {
+    throw new Error(`Recall lookup failed (${response.status})`);
   }
 
-  const data = await response.json();
   const results = Array.isArray(data?.results) ? data.results : Array.isArray(data?.Results) ? data.Results : [];
   state.recalls = results.map((item) => ({
     component: item.Component || item.component || "Unknown component",
@@ -632,6 +635,10 @@ async function loadRecallsForVehicle(vehicle) {
   }));
   saveState(state);
   render();
+  if (!response.ok && results.length === 0) {
+    setStatus("No recalls found", "success");
+    return;
+  }
   setStatus(state.recalls.length ? "Recalls loaded" : "No recalls found", state.recalls.length ? "warning" : "success");
 }
 
