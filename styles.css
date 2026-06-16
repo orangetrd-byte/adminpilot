@@ -213,6 +213,18 @@ p {
   color: var(--error);
 }
 
+.pill.overdue {
+  color: var(--error);
+}
+
+.pill.due-soon {
+  color: var(--warning);
+}
+
+.pill.on-track {
+  color: var(--success);
+}
+
 .form {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -512,6 +524,31 @@ button.danger {
 .timeline-empty {
   color: var(--muted);
   font-size: 0.92rem;
+}
+
+.reminder-list {
+  display: grid;
+  gap: 12px;
+}
+
+.reminder-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(8, 16, 29, 0.42);
+}
+
+.reminder-item strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.reminder-item small {
+  color: var(--muted);
 }
 
 .file-upload {

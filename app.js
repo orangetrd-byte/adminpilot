@@ -1,10 +1,10 @@
 const STORAGE_KEY = "adminpilot.state.v1";
-const DEFAULT_STATE = {
-  assets: [],
-  lastDecodedVehicle: null,
-  recalls: [],
-  lastLookup: "",
-};
+
+function isoDateOffset(days) {
+  const date = new Date();
+  date.setDate(date.getDate() + days);
+  return date.toISOString().slice(0, 10);
+}
 
 function cloneDefaultState() {
   return {
@@ -14,6 +14,8 @@ function cloneDefaultState() {
     lastLookup: "",
   };
 }
+
+const DEFAULT_STATE = cloneDefaultState();
 
 function createSampleAssets() {
   const createdAt = new Date().toISOString();
@@ -25,6 +27,8 @@ function createSampleAssets() {
       status: "due-soon",
       vin: "1FTFW1E5XJFA00000",
       due: "Oil change due in 320 miles",
+      reminderDate: isoDateOffset(3),
+      repeatEveryDays: 90,
       note: "Track service before road trip.",
       consequence: "Risk of skipped maintenance and a noisy reminder later.",
       attachments: [],
@@ -37,6 +41,8 @@ function createSampleAssets() {
       status: "on-track",
       vin: "",
       due: "Renewal in 42 days",
+      reminderDate: isoDateOffset(14),
+      repeatEveryDays: 365,
       note: "Store policy number and contact details.",
       consequence: "Could miss a renewal or claim deadline.",
       attachments: [],
@@ -52,17 +58,23 @@ const els = {
   assetStatus: document.getElementById("asset-status"),
   assetVin: document.getElementById("asset-vin"),
   assetDue: document.getElementById("asset-due"),
+  assetReminder: document.getElementById("asset-reminder"),
+  assetRepeat: document.getElementById("asset-repeat"),
   assetNote: document.getElementById("asset-note"),
   assetConsequence: document.getElementById("asset-consequence"),
   assetFile: document.getElementById("asset-file"),
   assetList: document.getElementById("asset-list"),
   assetCount: document.getElementById("asset-count"),
   dueSoonCount: document.getElementById("due-soon-count"),
+  reminderCount: document.getElementById("reminder-count"),
   vehicleCount: document.getElementById("vehicle-count"),
   recallCount: document.getElementById("recall-count"),
   vehicleCard: document.getElementById("vehicle-card"),
   recallCard: document.getElementById("recall-card"),
   timeline: document.getElementById("timeline"),
+  reminderList: document.getElementById("reminder-list"),
+  notifyEnable: document.getElementById("notify-enable"),
+  notifyStatus: document.getElementById("notify-status"),
   vinInput: document.getElementById("vin-input"),
   vinStatus: document.getElementById("vin-status"),
   lastSave: document.getElementById("last-save"),
@@ -83,6 +95,8 @@ const els = {
   editAssetStatus: document.getElementById("edit-asset-status"),
   editAssetVin: document.getElementById("edit-asset-vin"),
   editAssetDue: document.getElementById("edit-asset-due"),
+  editAssetReminder: document.getElementById("edit-asset-reminder"),
+  editAssetRepeat: document.getElementById("edit-asset-repeat"),
   editAssetNote: document.getElementById("edit-asset-note"),
   editAssetConsequence: document.getElementById("edit-asset-consequence"),
 };
@@ -117,9 +131,60 @@ function prettyValue(value) {
   return value && String(value).trim() ? String(value).trim() : "Unknown";
 }
 
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 function setStatus(text, tone = "") {
   els.vinStatus.textContent = text;
   els.vinStatus.dataset.tone = tone;
+}
+
+function todayKey() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function dayDiff(from, to) {
+  const start = new Date(`${from}T00:00:00`);
+  const end = new Date(`${to}T00:00:00`);
+  return Math.round((end - start) / 86400000);
+}
+
+function formatStatus(status) {
+  if (status === "overdue") return "Overdue";
+  if (status === "due-soon") return "Due soon";
+  return "On track";
+}
+
+function formatDateLabel(value) {
+  if (!value) return "No reminder date";
+  const date = new Date(`${value}T00:00:00`);
+  if (Number.isNaN(date.getTime())) return "No reminder date";
+  return date.toLocaleDateString(undefined, {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+function getDecodedField(results, fieldName) {
+  const match = results.find((item) => item.Variable === fieldName);
+  const value = match?.Value;
+  return value && String(value).trim() ? String(value).trim() : "";
+}
+
+function fileToDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result || ""));
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
 }
 
 function render() {
@@ -127,16 +192,20 @@ function render() {
   const vehicles = assets.filter((asset) => asset.type === "Vehicle").length;
   const recalls = state.recalls.length;
   const dueSoon = assets.filter((asset) => asset.status === "due-soon").length;
+  const reminders = getReminderItems();
 
   els.assetCount.textContent = String(assets.length);
   els.dueSoonCount.textContent = String(dueSoon);
+  els.reminderCount.textContent = String(reminders.length);
   els.vehicleCount.textContent = String(vehicles);
   els.recallCount.textContent = String(recalls);
 
   renderVehicleCard();
   renderRecallCard();
   renderTimeline();
+  renderReminderCenter(reminders);
   renderAssets();
+  pingDueReminders(reminders);
 }
 
 function renderVehicleCard() {
@@ -193,70 +262,6 @@ function renderRecallCard() {
   `;
 }
 
-function renderAssets() {
-  if (!state.assets.length) {
-    els.assetList.innerHTML =
-      "<div class='asset empty'><strong>No assets yet</strong><small>Add a vehicle, home item, or document to get started.</small></div>";
-    return;
-  }
-
-  els.assetList.innerHTML = state.assets
-    .map((asset) => {
-      const badge = asset.type === "Vehicle" && asset.vin ? "VIN linked" : asset.type;
-      const attachmentCount = Array.isArray(asset.attachments) ? asset.attachments.length : 0;
-      return `
-        <article class="asset ${asset.status || "on-track"}">
-          <div class="asset-top">
-            <div>
-              <strong>${escapeHtml(asset.name)}</strong>
-              <small>${escapeHtml(asset.note || "No notes added.")}</small>
-            </div>
-            <span class="pill">${escapeHtml(badge)}</span>
-          </div>
-          <div class="asset-status-row">
-            <span class="status ${escapeHtml(asset.status || "on-track")}">${escapeHtml(formatStatus(asset.status))}</span>
-            <span class="status-meta">${attachmentCount} attachment${attachmentCount === 1 ? "" : "s"}</span>
-          </div>
-          <div class="asset-meta">
-            <span>${escapeHtml(asset.due || "No status")}</span>
-            <span>${escapeHtml(asset.vin || "No VIN")}</span>
-          </div>
-          ${renderAttachmentChips(asset.attachments)}
-          ${asset.consequence ? `<p class="asset-consequence">${escapeHtml(asset.consequence)}</p>` : ""}
-          <div class="asset-actions">
-            <button type="button" class="secondary" data-edit-id="${escapeHtml(asset.id)}">Edit</button>
-            <button type="button" class="secondary danger" data-delete-id="${escapeHtml(asset.id)}">Delete</button>
-          </div>
-        </article>
-      `;
-    })
-    .join("");
-
-  document.querySelectorAll("[data-edit-id]").forEach((button) => {
-    button.addEventListener("click", () => openAssetDialog(button.dataset.editId));
-  });
-  document.querySelectorAll("[data-delete-id]").forEach((button) => {
-    button.addEventListener("click", () => deleteAsset(button.dataset.deleteId));
-  });
-}
-
-function renderAttachmentChips(attachments = []) {
-  if (!attachments.length) return "";
-  return `
-    <div class="attachment-list">
-      ${attachments
-        .map(
-          (attachment, index) => `
-            <a class="attachment-chip" href="${escapeHtml(attachment.dataUrl)}" download="${escapeHtml(attachment.name)}">
-              ${index + 1}. ${escapeHtml(attachment.name)}
-            </a>
-          `
-        )
-        .join("")}
-    </div>
-  `;
-}
-
 function renderTimeline() {
   const groups = {
     overdue: state.assets.filter((asset) => asset.status === "overdue"),
@@ -297,33 +302,155 @@ function renderTimeline() {
   ].join("");
 }
 
-function escapeHtml(value) {
-  return String(value)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+function getReminderItems() {
+  const today = todayKey();
+  return state.assets
+    .filter((asset) => asset.reminderDate)
+    .map((asset) => {
+      const daysAway = dayDiff(today, asset.reminderDate);
+      const overdue = daysAway < 0;
+      const dueSoon = daysAway >= 0 && daysAway <= 7;
+      return {
+        id: asset.id,
+        name: asset.name,
+        status: overdue ? "overdue" : dueSoon ? "due-soon" : "on-track",
+        label: overdue ? "Overdue" : dueSoon ? "Soon" : "Upcoming",
+        summary: `${formatDateLabel(asset.reminderDate)} · repeat ${Number(asset.repeatEveryDays) || 0} days`,
+        dueDate: asset.reminderDate,
+        lastReminderPing: asset.lastReminderPing || "",
+      };
+    })
+    .sort((a, b) => a.dueDate.localeCompare(b.dueDate));
 }
 
-function getDecodedField(results, fieldName) {
-  const match = results.find((item) => item.Variable === fieldName);
-  const value = match?.Value;
-  return value && String(value).trim() ? String(value).trim() : "";
+function renderReminderCenter(reminders) {
+  if (!reminders.length) {
+    els.reminderList.innerHTML =
+      "<div class='timeline-empty'>No active reminders yet. Add a reminder date to start a queue.</div>";
+    return;
+  }
+
+  els.reminderList.innerHTML = reminders
+    .map(
+      (item) => `
+        <article class="reminder-item ${escapeHtml(item.status)}">
+          <div>
+            <strong>${escapeHtml(item.name)}</strong>
+            <small>${escapeHtml(item.summary)}</small>
+          </div>
+          <span class="pill ${escapeHtml(item.status)}">${escapeHtml(item.label)}</span>
+        </article>
+      `
+    )
+    .join("");
 }
 
-function formatStatus(status) {
-  if (status === "overdue") return "Overdue";
-  if (status === "due-soon") return "Due soon";
-  return "On track";
+function pingDueReminders(reminders) {
+  if (!("Notification" in window)) {
+    els.notifyStatus.textContent = "Browser only";
+    return;
+  }
+
+  if (Notification.permission !== "granted") {
+    els.notifyStatus.textContent = "Browser only";
+    return;
+  }
+
+  const today = todayKey();
+  let changed = false;
+  for (const reminder of reminders) {
+    if (reminder.status === "on-track") continue;
+    const asset = state.assets.find((item) => item.id === reminder.id);
+    if (!asset || asset.lastReminderPing === today) continue;
+
+    new Notification("AdminPilot reminder", {
+      body: `${asset.name}: ${asset.due}`,
+    });
+    asset.lastReminderPing = today;
+    changed = true;
+  }
+
+  els.notifyStatus.textContent = "Enabled";
+  if (changed) {
+    saveState(state);
+  }
 }
 
-function fileToDataUrl(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(String(reader.result || ""));
-    reader.onerror = () => reject(reader.error);
-    reader.readAsDataURL(file);
+async function enableNotifications() {
+  if (!("Notification" in window)) {
+    els.notifyStatus.textContent = "Unsupported";
+    return;
+  }
+
+  const permission = await Notification.requestPermission();
+  els.notifyStatus.textContent = permission === "granted" ? "Enabled" : "Blocked";
+}
+
+function renderAttachmentChips(attachments = []) {
+  if (!attachments.length) return "";
+  return `
+    <div class="attachment-list">
+      ${attachments
+        .map(
+          (attachment, index) => `
+            <a class="attachment-chip" href="${escapeHtml(attachment.dataUrl)}" download="${escapeHtml(attachment.name)}">
+              ${index + 1}. ${escapeHtml(attachment.name)}
+            </a>
+          `
+        )
+        .join("")}
+    </div>
+  `;
+}
+
+function renderAssets() {
+  if (!state.assets.length) {
+    els.assetList.innerHTML =
+      "<div class='asset empty'><strong>No assets yet</strong><small>Add a vehicle, home item, or document to get started.</small></div>";
+    return;
+  }
+
+  els.assetList.innerHTML = state.assets
+    .map((asset) => {
+      const badge = asset.type === "Vehicle" && asset.vin ? "VIN linked" : asset.type;
+      const attachmentCount = Array.isArray(asset.attachments) ? asset.attachments.length : 0;
+      return `
+        <article class="asset ${asset.status || "on-track"}">
+          <div class="asset-top">
+            <div>
+              <strong>${escapeHtml(asset.name)}</strong>
+              <small>${escapeHtml(asset.note || "No notes added.")}</small>
+            </div>
+            <span class="pill">${escapeHtml(badge)}</span>
+          </div>
+          <div class="asset-status-row">
+            <span class="status ${escapeHtml(asset.status || "on-track")}">${escapeHtml(formatStatus(asset.status))}</span>
+            <span class="status-meta">${attachmentCount} attachment${attachmentCount === 1 ? "" : "s"}</span>
+          </div>
+          <div class="asset-meta">
+            <span>${escapeHtml(asset.due || "No status")}</span>
+            <span>${escapeHtml(asset.vin || "No VIN")}</span>
+          </div>
+          <div class="asset-meta">
+            <span>Reminder: ${escapeHtml(formatDateLabel(asset.reminderDate))}</span>
+            <span>Repeat: ${escapeHtml(String(asset.repeatEveryDays || 0))} days</span>
+          </div>
+          ${renderAttachmentChips(asset.attachments)}
+          ${asset.consequence ? `<p class="asset-consequence">${escapeHtml(asset.consequence)}</p>` : ""}
+          <div class="asset-actions">
+            <button type="button" class="secondary" data-edit-id="${escapeHtml(asset.id)}">Edit</button>
+            <button type="button" class="secondary danger" data-delete-id="${escapeHtml(asset.id)}">Delete</button>
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+
+  document.querySelectorAll("[data-edit-id]").forEach((button) => {
+    button.addEventListener("click", () => openAssetDialog(button.dataset.editId));
+  });
+  document.querySelectorAll("[data-delete-id]").forEach((button) => {
+    button.addEventListener("click", () => deleteAsset(button.dataset.deleteId));
   });
 }
 
@@ -337,6 +464,8 @@ function openAssetDialog(id) {
   els.editAssetStatus.value = asset.status || "on-track";
   els.editAssetVin.value = asset.vin || "";
   els.editAssetDue.value = asset.due || "";
+  els.editAssetReminder.value = asset.reminderDate || "";
+  els.editAssetRepeat.value = asset.repeatEveryDays || "";
   els.editAssetNote.value = asset.note || "";
   els.editAssetConsequence.value = asset.consequence || "";
   els.assetDialog.showModal();
@@ -361,6 +490,8 @@ function saveEditedAsset(event) {
     status: els.editAssetStatus.value,
     vin: normalizeVin(els.editAssetVin.value),
     due: els.editAssetDue.value.trim(),
+    reminderDate: els.editAssetReminder.value || "",
+    repeatEveryDays: Number(els.editAssetRepeat.value) || 0,
     note: els.editAssetNote.value.trim(),
     consequence: els.editAssetConsequence.value.trim(),
   };
@@ -451,6 +582,8 @@ async function addAssetFromForm(event) {
   const status = els.assetStatus.value;
   const vin = normalizeVin(els.assetVin.value);
   const due = els.assetDue.value.trim();
+  const reminderDate = els.assetReminder.value || "";
+  const repeatEveryDays = Number(els.assetRepeat.value) || 0;
   const note = els.assetNote.value.trim();
   const consequence = els.assetConsequence.value.trim();
   const file = els.assetFile.files?.[0] || null;
@@ -477,6 +610,8 @@ async function addAssetFromForm(event) {
     status,
     vin,
     due,
+    reminderDate,
+    repeatEveryDays,
     note,
     consequence,
     attachments,
@@ -559,6 +694,8 @@ els.assetDialogDelete.addEventListener("click", () => {
   deleteAsset(id);
 });
 
+els.notifyEnable.addEventListener("click", enableNotifications);
+
 els.decodeVin.addEventListener("click", async () => {
   try {
     const vehicle = await decodeVin(els.vinInput.value);
@@ -567,6 +704,7 @@ els.decodeVin.addEventListener("click", async () => {
       els.assetName.value = `${prettyValue(vehicle.year)} ${prettyValue(vehicle.make)} ${prettyValue(vehicle.model)}`.trim();
       els.assetDue.value = "Recall check complete";
       els.assetNote.value = "Vehicle details decoded from NHTSA.";
+      els.assetReminder.value = isoDateOffset(7);
     }
   } catch (error) {
     console.error(error);
@@ -616,6 +754,10 @@ if ("serviceWorker" in navigator) {
     });
   });
 }
+
+setInterval(() => {
+  render();
+}, 60000);
 
 render();
 setStatus("Idle");

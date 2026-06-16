@@ -32,6 +32,10 @@
             <strong id="due-soon-count">0</strong>
           </article>
           <article class="stat-card">
+            <span class="stat-label">Reminders</span>
+            <strong id="reminder-count">0</strong>
+          </article>
+          <article class="stat-card">
             <span class="stat-label">Assets</span>
             <strong id="asset-count">0</strong>
           </article>
@@ -87,6 +91,14 @@
             <label>
               <span>Due / status</span>
               <input id="asset-due" name="due" placeholder="Oil change due in 320 miles" required />
+            </label>
+            <label>
+              <span>Reminder date</span>
+              <input id="asset-reminder" name="reminder" type="date" />
+            </label>
+            <label>
+              <span>Repeat every (days)</span>
+              <input id="asset-repeat" name="repeat" type="number" min="0" step="1" placeholder="0" />
             </label>
             <label class="full">
               <span>Notes</span>
@@ -163,6 +175,17 @@
 
       <section class="panel">
         <div class="panel-head">
+          <h2>Reminder center</h2>
+          <div class="backup-row">
+            <button id="notify-enable" type="button">Enable reminders</button>
+            <span id="notify-status" class="pill">Browser only</span>
+          </div>
+        </div>
+        <div id="reminder-list" class="reminder-list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
           <h2>Assets</h2>
           <span id="last-save" class="pill">Saved locally</span>
         </div>
@@ -205,6 +228,14 @@
             <label>
               <span>Due / status</span>
               <input id="edit-asset-due" required />
+            </label>
+            <label>
+              <span>Reminder date</span>
+              <input id="edit-asset-reminder" type="date" />
+            </label>
+            <label>
+              <span>Repeat every (days)</span>
+              <input id="edit-asset-repeat" type="number" min="0" step="1" />
             </label>
             <label class="full">
               <span>Notes</span>
