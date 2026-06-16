@@ -69,12 +69,10 @@ const els = {
   assetConsequence: document.getElementById("asset-consequence"),
   assetFile: document.getElementById("asset-file"),
   assetList: document.getElementById("asset-list"),
-  assetCount: document.getElementById("asset-count"),
+  overdueCount: document.getElementById("overdue-count"),
   dueSoonCount: document.getElementById("due-soon-count"),
   highConsequenceCount: document.getElementById("high-consequence-count"),
-  reminderCount: document.getElementById("reminder-count"),
-  vehicleCount: document.getElementById("vehicle-count"),
-  recallCount: document.getElementById("recall-count"),
+  onTrackCount: document.getElementById("on-track-count"),
   vehicleCard: document.getElementById("vehicle-card"),
   recallCard: document.getElementById("recall-card"),
   timeline: document.getElementById("timeline"),
@@ -202,18 +200,16 @@ function fileToDataUrl(file) {
 
 function render() {
   const assets = state.assets;
-  const vehicles = assets.filter((asset) => asset.type === "Vehicle").length;
-  const recalls = state.recalls.length;
+  const overdue = assets.filter((asset) => asset.status === "overdue").length;
   const dueSoon = assets.filter((asset) => asset.status === "due-soon").length;
   const highConsequence = assets.filter((asset) => asset.highConsequence).length;
+  const onTrack = assets.filter((asset) => !asset.status || asset.status === "on-track").length;
   const reminders = getReminderItems();
 
-  els.assetCount.textContent = String(assets.length);
+  els.overdueCount.textContent = String(overdue);
   els.dueSoonCount.textContent = String(dueSoon);
   els.highConsequenceCount.textContent = String(highConsequence);
-  els.reminderCount.textContent = String(reminders.length);
-  els.vehicleCount.textContent = String(vehicles);
-  els.recallCount.textContent = String(recalls);
+  els.onTrackCount.textContent = String(onTrack);
 
   renderVehicleCard();
   renderRecallCard();
@@ -705,6 +701,10 @@ function addSampleData() {
 }
 
 function clearData() {
+  if (confirm("Export a backup before clearing?")) {
+    exportData();
+  }
+
   if (!confirm("Clear all AdminPilot local data?")) {
     return;
   }
