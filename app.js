@@ -629,16 +629,16 @@ async function loadRecallsForVehicle(vehicle) {
   }
 
   const results = Array.isArray(data?.results) ? data.results : Array.isArray(data?.Results) ? data.Results : [];
+  if (!response.ok) {
+    throw new Error(`Recall lookup failed (${response.status})`);
+  }
+
   state.recalls = results.map((item) => ({
     component: item.Component || item.component || "Unknown component",
     summary: item.Summary || item.summary || item.Notes || "No summary available.",
   }));
   saveState(state);
   render();
-  if (!response.ok && results.length === 0) {
-    setStatus("No recalls found", "success");
-    return;
-  }
   setStatus(state.recalls.length ? "Recalls loaded" : "No recalls found", state.recalls.length ? "warning" : "success");
 }
 
