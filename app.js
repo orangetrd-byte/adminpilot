@@ -32,6 +32,7 @@ function createSampleAssets() {
       note: "Track service before road trip.",
       consequence: "Risk of skipped maintenance and a noisy reminder later.",
       attachments: [],
+      reminderHistory: [],
       createdAt,
     },
     {
@@ -46,6 +47,7 @@ function createSampleAssets() {
       note: "Store policy number and contact details.",
       consequence: "Could miss a renewal or claim deadline.",
       attachments: [],
+      reminderHistory: [],
       createdAt,
     },
   ];
@@ -170,6 +172,12 @@ function formatDateLabel(value) {
     day: "numeric",
     year: "numeric",
   });
+}
+
+function addDays(value, days) {
+  const date = new Date(`${value}T00:00:00`);
+  date.setDate(date.getDate() + days);
+  return date.toISOString().slice(0, 10);
 }
 
 function getDecodedField(results, fieldName) {
@@ -318,6 +326,7 @@ function getReminderItems() {
         summary: `${formatDateLabel(asset.reminderDate)} · repeat ${Number(asset.repeatEveryDays) || 0} days`,
         dueDate: asset.reminderDate,
         lastReminderPing: asset.lastReminderPing || "",
+        repeatEveryDays: Number(asset.repeatEveryDays) || 0,
       };
     })
     .sort((a, b) => a.dueDate.localeCompare(b.dueDate));
@@ -367,6 +376,16 @@ function pingDueReminders(reminders) {
       body: `${asset.name}: ${asset.due}`,
     });
     asset.lastReminderPing = today;
+    asset.reminderHistory = Array.isArray(asset.reminderHistory) ? asset.reminderHistory : [];
+    asset.reminderHistory.unshift({
+      at: new Date().toISOString(),
+      title: asset.name,
+      body: asset.due,
+    });
+    if (Number(asset.repeatEveryDays) > 0) {
+      asset.reminderDate = addDays(asset.reminderDate, Number(asset.repeatEveryDays));
+      asset.status = "due-soon";
+    }
     changed = true;
   }
 
@@ -400,6 +419,31 @@ function renderAttachmentChips(attachments = []) {
         )
         .join("")}
     </div>
+  `;
+}
+
+function renderReminderHistory(asset) {
+  const history = Array.isArray(asset.reminderHistory) ? asset.reminderHistory : [];
+  if (!history.length) return "";
+
+  return `
+    <details class="history">
+      <summary>Reminder history (${history.length})</summary>
+      <div class="history-list">
+        ${history
+          .slice(0, 5)
+          .map(
+            (entry) => `
+              <div class="history-item">
+                <strong>${escapeHtml(entry.title || "Reminder")}</strong>
+                <small>${escapeHtml(new Date(entry.at).toLocaleString())}</small>
+                <p>${escapeHtml(entry.body || "")}</p>
+              </div>
+            `
+          )
+          .join("")}
+      </div>
+    </details>
   `;
 }
 
@@ -437,6 +481,7 @@ function renderAssets() {
           </div>
           ${renderAttachmentChips(asset.attachments)}
           ${asset.consequence ? `<p class="asset-consequence">${escapeHtml(asset.consequence)}</p>` : ""}
+          ${renderReminderHistory(asset)}
           <div class="asset-actions">
             <button type="button" class="secondary" data-edit-id="${escapeHtml(asset.id)}">Edit</button>
             <button type="button" class="secondary danger" data-delete-id="${escapeHtml(asset.id)}">Delete</button>
@@ -494,6 +539,9 @@ function saveEditedAsset(event) {
     repeatEveryDays: Number(els.editAssetRepeat.value) || 0,
     note: els.editAssetNote.value.trim(),
     consequence: els.editAssetConsequence.value.trim(),
+    reminderHistory: Array.isArray(state.assets[index].reminderHistory)
+      ? state.assets[index].reminderHistory
+      : [],
   };
   saveState(state);
   render();
@@ -615,6 +663,7 @@ async function addAssetFromForm(event) {
     note,
     consequence,
     attachments,
+    reminderHistory: [],
     createdAt: new Date().toISOString(),
   };
 

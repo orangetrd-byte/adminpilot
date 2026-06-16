@@ -551,6 +551,43 @@ button.danger {
   color: var(--muted);
 }
 
+.history {
+  margin-top: 12px;
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+}
+
+.history summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.history-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.history-item {
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--line);
+}
+
+.history-item strong {
+  display: block;
+}
+
+.history-item small,
+.history-item p {
+  display: block;
+  color: var(--muted);
+  margin: 4px 0 0;
+  line-height: 1.45;
+}
+
 .file-upload {
   position: relative;
   display: inline-flex;
