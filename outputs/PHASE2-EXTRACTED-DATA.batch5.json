@@ -1,0 +1,438 @@
+{
+  "phase": 2,
+  "batch": 5,
+  "status": "partial",
+  "scope": "Missing records required to complete Phase 2 ranks 1-26",
+  "validation_notes": [
+    "Honda vehicles use the Maintenance Minder rather than fixed normal-use mileage for most services.",
+    "Mopar records use owner-manual maintenance-monitor rules and require engine-specific validation before production.",
+    "Subaru records use the recurring US warranty-and-maintenance schedule; severe-use CVT and differential services remain conditional.",
+    "Hyundai and Kia intervals vary by engine and severe-use definition. The production dataset should split turbo and non-turbo variants where flagged.",
+    "The Mazda CX-5 uses a flexible oil monitor with a maximum interval; turbo spark-plug timing differs from the naturally aspirated engine.",
+    "Lower-confidence records are explicitly flagged for Claude rather than silently treated as final."
+  ],
+  "vehicles": [
+    {
+      "id": "honda_crv_2021",
+      "year": 2021,
+      "make": "Honda",
+      "model": "CR-V",
+      "trim": "Universal Maintenance Minder schedule; gasoline and hybrid differ",
+      "engine": "1.5L turbo gasoline or 2.0L hybrid",
+      "transmission": "CVT or hybrid e-CVT",
+      "driveType": "FWD or AWD",
+      "source": "2021 Honda CR-V Owner's Manual / Honda Maintenance Minder",
+      "source_url": "https://mygarage.honda.com/s/manuals-search",
+      "maintenance": [
+        {"service":"Engine oil replacement","interval":{"miles":null,"months":12,"logic":"Maintenance Minder A; change at least annually if no message appears"},"severity":"critical","notes":"Oil life percentage determines normal timing."},
+        {"service":"Engine oil and filter replacement plus inspections","interval":{"miles":null,"months":12,"logic":"Maintenance Minder B; condition-based"},"severity":"critical","notes":"B service also includes front/rear brake inspection and parking-brake adjustment plus steering, suspension, fluid, exhaust, fuel-line, and hose checks."},
+        {"service":"Tire rotation","interval":{"miles":null,"months":null,"logic":"Maintenance Minder sub-item 1"},"severity":"high","notes":"Perform when sub-item 1 appears."},
+        {"service":"Engine air filter, cabin filter, and drive-belt inspection","interval":{"miles":null,"months":null,"logic":"Maintenance Minder sub-item 2"},"severity":"medium","notes":"Dusty conditions can require earlier filter service."},
+        {"service":"Transmission fluid replacement","interval":{"miles":null,"months":null,"logic":"Maintenance Minder sub-item 3"},"severity":"high","notes":"Fluid specification and procedure differ between gasoline CVT and hybrid drive unit."},
+        {"service":"Spark plugs and valve-clearance inspection","interval":{"miles":null,"months":null,"logic":"Maintenance Minder sub-item 4"},"severity":"high","notes":"Perform when sub-item 4 appears."},
+        {"service":"Engine coolant replacement","interval":{"miles":null,"months":null,"logic":"Maintenance Minder sub-item 5"},"severity":"high","notes":"Hybrid cooling systems require variant-specific review."},
+        {"service":"Rear differential fluid replacement","interval":{"miles":null,"months":null,"logic":"Maintenance Minder sub-item 6; AWD only"},"severity":"high","notes":"AWD models only."},
+        {"service":"Brake fluid replacement","interval":{"miles":null,"months":36,"logic":"Maintenance Minder sub-item 7 or every 3 years if not prompted"},"severity":"high","notes":"Time limit applies independently of mileage."}
+      ],
+      "validation_flags": [
+        "Split gasoline and hybrid records.",
+        "Honda does not publish fixed mileage for most normal-use Minder services; do not invent mileage.",
+        "Verify whether the 2021 regional manual exposes sub-item 7 in all US configurations."
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "ram_1500_2021",
+      "year": 2021,
+      "make": "Ram",
+      "model": "1500",
+      "trim": "Universal schedule; gasoline, eTorque, EcoDiesel, and driveline applicability varies",
+      "engine": "3.6L V6, 5.7L V8, or 3.0L diesel",
+      "transmission": "8-speed automatic",
+      "driveType": "2WD or 4WD",
+      "source": "2021 Ram 1500 Owner's Manual / Mopar vehicle information",
+      "source_url": "https://www.mopar.com/en-us/my-vehicle/vehicle-information.html",
+      "maintenance": [
+        {"service":"Engine oil and filter replacement","interval":{"miles":10000,"months":12,"logic":"oil-change indicator; do not exceed 10,000 miles, 12 months, or applicable engine-hour limit"},"severity":"critical","notes":"Diesel limits differ and require the EcoDiesel supplement."},
+        {"service":"Tire rotation and brake inspection","interval":{"miles":10000,"months":12,"logic":"with each oil-change interval or sooner for uneven wear"},"severity":"high","notes":"Inspection frequency follows use and oil-monitor timing."},
+        {"service":"Cabin air filter replacement","interval":{"miles":20000,"months":24,"logic":"fixed interval"},"severity":"medium","notes":"Dusty operation can shorten interval."},
+        {"service":"Engine air filter replacement","interval":{"miles":30000,"months":36,"logic":"fixed interval under normal gasoline use"},"severity":"medium","notes":"Inspect/replace more often under dust."},
+        {"service":"Spark plug replacement","interval":{"miles":100000,"months":120,"logic":"gasoline-engine interval; engine-specific verification required"},"severity":"high","notes":"Does not apply to diesel."},
+        {"service":"Engine coolant replacement","interval":{"miles":150000,"months":120,"logic":"whichever comes first"},"severity":"high","notes":"Coolant type and diesel circuit applicability require validation."},
+        {"service":"Transfer case and axle fluid inspection/replacement","interval":{"miles":60000,"months":null,"logic":"conditional severe-use/off-road/towing service"},"severity":"high","notes":"Normal schedule is primarily inspection/condition based; axle type matters."},
+        {"service":"Automatic transmission fluid service","interval":{"miles":null,"months":null,"logic":"no universal fixed normal-use interval in owner schedule"},"severity":"high","notes":"Do not add a dealer-recommended flush interval without an official engine/transmission schedule."}
+      ],
+      "validation_flags": [
+        "Official PDF was portal-restricted in this extraction environment.",
+        "Split gasoline/eTorque and EcoDiesel records.",
+        "Confirm cabin-filter and spark-plug intervals against the exact 2021 DT manual."
+      ],
+      "confidence": "low"
+    },
+    {
+      "id": "ford_escape_2020",
+      "year": 2020,
+      "make": "Ford",
+      "model": "Escape",
+      "trim": "Universal schedule; gasoline and hybrid applicability varies",
+      "engine": "1.5L turbo, 2.0L turbo, hybrid, or plug-in hybrid",
+      "transmission": "Automatic, hybrid eCVT, or plug-in hybrid eCVT",
+      "driveType": "FWD or AWD",
+      "source": "2020 Ford Escape Owner's Manual",
+      "source_url": "https://www.ford.com/support/owner-manuals-details/",
+      "maintenance": [
+        {"service":"Engine oil and filter replacement","interval":{"miles":10000,"months":12,"logic":"Intelligent Oil-Life Monitor; maximum normal-use interval"},"severity":"critical","notes":"Severe and extreme use shorten the interval."},
+        {"service":"Tire rotation and multipoint inspection","interval":{"miles":10000,"months":12,"logic":"at each oil-change interval"},"severity":"high","notes":"Follow the information-display oil interval."},
+        {"service":"Cabin air filter replacement","interval":{"miles":20000,"months":null,"logic":"fixed interval"},"severity":"medium","notes":"Replace sooner under dust or reduced airflow."},
+        {"service":"Engine air filter replacement","interval":{"miles":30000,"months":null,"logic":"fixed interval"},"severity":"medium","notes":"Gasoline engines; hybrid applicability requires checking."},
+        {"service":"Spark plug replacement","interval":{"miles":100000,"months":null,"logic":"normal-use gasoline interval"},"severity":"high","notes":"Turbo severe-use operation may require earlier service."},
+        {"service":"Automatic transmission fluid replacement","interval":{"miles":150000,"months":null,"logic":"normal-use interval for applicable conventional automatic"},"severity":"high","notes":"Hybrid transaxle uses a different fluid/service definition."},
+        {"service":"Brake fluid replacement","interval":{"miles":null,"months":36,"logic":"time-based"},"severity":"high","notes":"Replace every three years."},
+        {"service":"Engine coolant replacement","interval":{"miles":200000,"months":120,"logic":"initial replacement; every 100,000 miles or 60 months afterward"},"severity":"high","notes":"Hybrid cooling circuits require separate validation."}
+      ],
+      "validation_flags": [
+        "Split conventional gasoline, hybrid, and plug-in hybrid records.",
+        "Verify transmission and cooling-system intervals for hybrid variants.",
+        "Official Ford portal is dynamic; direct PDF path still needs preservation."
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "jeep_wrangler_2020",
+      "year": 2020,
+      "make": "Jeep",
+      "model": "Wrangler",
+      "trim": "Universal schedule; engine and driveline applicability varies",
+      "engine": "2.0L turbo, 3.6L V6, or diesel depending on configuration",
+      "transmission": "Manual or automatic",
+      "driveType": "4WD",
+      "source": "2020 Jeep Wrangler Owner's Manual",
+      "source_url": "https://www.mopar.com/en-us/my-vehicle/vehicle-information.html",
+      "maintenance": [
+        {"service":"Engine oil and filter replacement","interval":{"miles":10000,"months":12,"logic":"oil-change indicator; maximum gasoline interval"},"severity":"critical","notes":"Diesel schedule differs."},
+        {"service":"Tire rotation and brake inspection","interval":{"miles":10000,"months":12,"logic":"with oil-change interval or sooner for off-road/uneven wear"},"severity":"high","notes":"Off-road use requires more frequent inspection."},
+        {"service":"Cabin air filter replacement","interval":{"miles":20000,"months":24,"logic":"fixed interval"},"severity":"medium","notes":"Dust can shorten interval."},
+        {"service":"Engine air filter replacement","interval":{"miles":30000,"months":36,"logic":"normal-use interval"},"severity":"medium","notes":"Inspect after dusty or off-road operation."},
+        {"service":"Spark plug replacement","interval":{"miles":100000,"months":120,"logic":"gasoline-engine interval"},"severity":"high","notes":"Engine-specific verification required."},
+        {"service":"Engine coolant replacement","interval":{"miles":150000,"months":120,"logic":"whichever comes first"},"severity":"high","notes":"Use specified OAT coolant."},
+        {"service":"Manual transmission fluid inspection/service","interval":{"miles":60000,"months":null,"logic":"conditional severe-use/off-road/towing interval"},"severity":"high","notes":"Transmission type and duty cycle matter."},
+        {"service":"Transfer case and axle fluid service","interval":{"miles":60000,"months":null,"logic":"conditional severe-use/off-road/towing interval"},"severity":"high","notes":"Inspect after water crossings and intensive off-road use."}
+      ],
+      "validation_flags": [
+        "Portal restriction prevented direct official PDF extraction; aggregator copy may be used only as a flagged fallback.",
+        "Split gasoline, diesel, manual, and automatic records.",
+        "Off-road and water-crossing service cannot be represented by mileage alone."
+      ],
+      "confidence": "low"
+    },
+    {
+      "id": "honda_accord_2019",
+      "year": 2019,
+      "make": "Honda",
+      "model": "Accord",
+      "trim": "Universal Maintenance Minder schedule; gasoline and hybrid differ",
+      "engine": "1.5L turbo, 2.0L turbo, or hybrid",
+      "transmission": "CVT, 10-speed automatic, manual, or hybrid e-CVT",
+      "driveType": "FWD",
+      "source": "2019 Honda Accord Owner's Manual / Honda Maintenance Minder",
+      "source_url": "https://mygarage.honda.com/s/manuals-search",
+      "maintenance": [
+        {"service":"Engine oil replacement","interval":{"miles":null,"months":12,"logic":"Maintenance Minder A; at least annually if no message"},"severity":"critical","notes":"Oil life percentage determines timing."},
+        {"service":"Engine oil/filter and comprehensive inspections","interval":{"miles":null,"months":12,"logic":"Maintenance Minder B; condition-based"},"severity":"critical","notes":"Includes brakes, steering, suspension, fluids, exhaust, fuel lines, and hoses."},
+        {"service":"Tire rotation","interval":{"miles":null,"months":null,"logic":"Maintenance Minder sub-item 1"},"severity":"high","notes":"Perform when displayed."},
+        {"service":"Engine/cabin filters and drive-belt inspection","interval":{"miles":null,"months":null,"logic":"Maintenance Minder sub-item 2"},"severity":"medium","notes":"Dusty operation can require earlier service."},
+        {"service":"Transmission fluid replacement","interval":{"miles":null,"months":null,"logic":"Maintenance Minder sub-item 3"},"severity":"high","notes":"Fluid differs across CVT, automatic, manual, and hybrid variants."},
+        {"service":"Spark plugs and valve-clearance inspection","interval":{"miles":null,"months":null,"logic":"Maintenance Minder sub-item 4"},"severity":"high","notes":"Perform when displayed."},
+        {"service":"Engine coolant replacement","interval":{"miles":null,"months":null,"logic":"Maintenance Minder sub-item 5"},"severity":"high","notes":"Hybrid cooling circuits require separate validation."},
+        {"service":"Brake fluid replacement","interval":{"miles":null,"months":36,"logic":"Maintenance Minder sub-item 7 or every 3 years"},"severity":"high","notes":"Time based when no reminder appears."}
+      ],
+      "validation_flags": [
+        "Split transmission and hybrid variants.",
+        "Honda Minder service should remain condition-based.",
+        "Verify sub-item numbering against the exact 2019 US manual."
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "hyundai_tucson_2021",
+      "year": 2021,
+      "make": "Hyundai",
+      "model": "Tucson",
+      "trim": "Universal schedule; engine applicability varies",
+      "engine": "2.0L or 2.4L gasoline",
+      "transmission": "Automatic",
+      "driveType": "FWD or AWD",
+      "source": "2021 Hyundai Tucson Owner's Manual",
+      "source_url": "https://owners.hyundaiusa.com/us/en/resources/manuals-warranties",
+      "maintenance": [
+        {"service":"Engine oil and filter replacement","interval":{"miles":7500,"months":12,"logic":"whichever comes first under normal use"},"severity":"critical","notes":"Reduce to approximately 3,750 miles or 6 months under severe use."},
+        {"service":"Tire rotation","interval":{"miles":7500,"months":12,"logic":"whichever comes first"},"severity":"high","notes":"Inspect pressure and wear at the same time."},
+        {"service":"Cabin air filter replacement","interval":{"miles":15000,"months":12,"logic":"whichever comes first"},"severity":"medium","notes":"Dust and pollution can shorten interval."},
+        {"service":"Engine air filter replacement","interval":{"miles":30000,"months":36,"logic":"fixed normal-use interval with intermediate inspection"},"severity":"medium","notes":"Replace earlier under dusty use."},
+        {"service":"Spark plug replacement","interval":{"miles":97500,"months":null,"logic":"normal-use gasoline interval"},"severity":"high","notes":"Verify exact engine-specific schedule."},
+        {"service":"Automatic transmission fluid replacement","interval":{"miles":60000,"months":null,"logic":"severe-use interval; no normal-use replacement listed"},"severity":"high","notes":"AWD and towing use may trigger severe schedule."},
+        {"service":"Engine coolant replacement","interval":{"miles":120000,"months":120,"logic":"initial replacement; every 30,000 miles or 24 months afterward"},"severity":"high","notes":"Verify first interval against exact engine table."},
+        {"service":"Brake fluid inspection","interval":{"miles":15000,"months":12,"logic":"recurring inspection"},"severity":"high","notes":"Replace based on condition and manufacturer schedule."}
+      ],
+      "validation_flags": [
+        "Verify 2.0L versus 2.4L spark-plug timing.",
+        "Transmission-fluid replacement is severe-use only.",
+        "Official portal is dynamic and exact PDF URL should be captured."
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "nissan_rogue_2021",
+      "year": 2021,
+      "make": "Nissan",
+      "model": "Rogue",
+      "trim": "PR25DD 2.5L schedule; KR15DDT table also appears in later manual revisions",
+      "engine": "2.5L four-cylinder",
+      "transmission": "CVT",
+      "driveType": "FWD or AWD",
+      "source": "2021 Nissan Rogue Owner's Manual",
+      "source_url": "https://www.nissanusa.com/content/dam/Nissan/us/manuals-and-guides/rogue/2021/2021-nissan-rogue-owner-manual.pdf",
+      "maintenance": [
+        {"service":"Tire rotation","interval":{"miles":5000,"months":6,"logic":"whichever comes first"},"severity":"high","notes":"Standard schedule."},
+        {"service":"Engine oil and filter replacement","interval":{"miles":10000,"months":12,"logic":"whichever comes first, or sooner when oil replacement indicator appears"},"severity":"critical","notes":"Change within two weeks or 500 miles after indicator appears."},
+        {"service":"Brake, CVT, AWD, driveline, and fluid inspections","interval":{"miles":10000,"months":12,"logic":"recurring inspection"},"severity":"high","notes":"AWD items apply only when equipped."},
+        {"service":"In-cabin microfilter replacement","interval":{"miles":15000,"months":18,"logic":"whichever comes first"},"severity":"medium","notes":"Repeats at 15,000-mile/18-month increments."},
+        {"service":"Brake fluid replacement","interval":{"miles":20000,"months":24,"logic":"whichever comes first"},"severity":"high","notes":"The manual repeats this service at 20,000-mile/24-month intervals."},
+        {"service":"Engine air filter replacement","interval":{"miles":30000,"months":36,"logic":"whichever comes first"},"severity":"medium","notes":"Replace more often under dust."},
+        {"service":"CVT fluid replacement","interval":{"miles":60000,"months":72,"logic":"severe-use interval only"},"severity":"high","notes":"Normal schedule calls for recurring inspection."},
+        {"service":"Engine coolant and spark plug replacement","interval":{"miles":105000,"months":84,"logic":"initial long interval; exact table row requires final confirmation"},"severity":"high","notes":"Claude should confirm the exact spark-plug and coolant rows in the PR25DD table."}
+      ],
+      "validation_flags": [
+        "Manual contains separate PR25DD and KR15DDT schedule sections; 2021 US production is primarily PR25DD.",
+        "Confirm exact coolant and spark-plug mileage from the table before production.",
+        "CVT replacement at 60,000 miles is severe-use only."
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "subaru_outback_2020",
+      "year": 2020,
+      "make": "Subaru",
+      "model": "Outback",
+      "trim": "Universal US schedule; turbo applicability varies",
+      "engine": "2.5L or 2.4L turbo boxer",
+      "transmission": "CVT",
+      "driveType": "AWD",
+      "source": "2020 Subaru Warranty and Maintenance Booklet / Vehicle Resources",
+      "source_url": "https://www.subaru.com/owners/vehicle-resources.html",
+      "maintenance": [
+        {"service":"Engine oil and filter replacement","interval":{"miles":6000,"months":6,"logic":"whichever comes first"},"severity":"critical","notes":"Short trips, dust, towing, and extreme conditions can shorten interval."},
+        {"service":"Tire rotation and inspection","interval":{"miles":6000,"months":6,"logic":"whichever comes first"},"severity":"high","notes":"AWD tire circumference matching is important."},
+        {"service":"Cabin air filter replacement","interval":{"miles":12000,"months":12,"logic":"whichever comes first"},"severity":"medium","notes":"Earlier replacement under dust."},
+        {"service":"Brake fluid replacement","interval":{"miles":30000,"months":30,"logic":"whichever comes first"},"severity":"high","notes":"Inspect braking system at intermediate services."},
+        {"service":"Engine air filter replacement","interval":{"miles":30000,"months":30,"logic":"whichever comes first"},"severity":"medium","notes":"Inspect earlier under dusty conditions."},
+        {"service":"CVT, differential, wheel-bearing, steering, suspension, and fuel-system inspection","interval":{"miles":30000,"months":30,"logic":"recurring inspection"},"severity":"high","notes":"CVT fluid replacement is condition/severe-use based."},
+        {"service":"Spark plug replacement","interval":{"miles":60000,"months":60,"logic":"whichever comes first"},"severity":"high","notes":"Engine-specific plug type applies."},
+        {"service":"Engine coolant replacement","interval":{"miles":137500,"months":132,"logic":"initial interval; every 75,000 miles or 60 months afterward"},"severity":"high","notes":"Use Subaru Super Coolant."}
+      ],
+      "validation_flags": [
+        "Confirm turbo versus non-turbo supplementary items.",
+        "Do not invent a normal fixed CVT-fluid replacement interval.",
+        "Official booklet deep link still needs capture."
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "subaru_crosstrek_2020",
+      "year": 2020,
+      "make": "Subaru",
+      "model": "Crosstrek",
+      "trim": "Universal US schedule; gasoline and hybrid differ",
+      "engine": "2.0L boxer or plug-in hybrid",
+      "transmission": "CVT",
+      "driveType": "AWD",
+      "source": "2020 Subaru Warranty and Maintenance Booklet / Vehicle Resources",
+      "source_url": "https://www.subaru.com/owners/vehicle-resources.html",
+      "maintenance": [
+        {"service":"Engine oil and filter replacement","interval":{"miles":6000,"months":6,"logic":"whichever comes first"},"severity":"critical","notes":"Severe conditions can shorten interval."},
+        {"service":"Tire rotation and inspection","interval":{"miles":6000,"months":6,"logic":"whichever comes first"},"severity":"high","notes":"Maintain matched AWD tire circumference."},
+        {"service":"Cabin air filter replacement","interval":{"miles":12000,"months":12,"logic":"whichever comes first"},"severity":"medium","notes":"Earlier under dust."},
+        {"service":"Brake fluid replacement","interval":{"miles":30000,"months":30,"logic":"whichever comes first"},"severity":"high","notes":"Hybrid braking requires variant review."},
+        {"service":"Engine air filter replacement","interval":{"miles":30000,"months":30,"logic":"whichever comes first"},"severity":"medium","notes":"Inspect earlier under dust."},
+        {"service":"CVT and differential-fluid inspection","interval":{"miles":30000,"months":30,"logic":"recurring inspection"},"severity":"high","notes":"Replacement remains severe-use/condition based."},
+        {"service":"Spark plug replacement","interval":{"miles":60000,"months":60,"logic":"whichever comes first"},"severity":"high","notes":"Gasoline engine."},
+        {"service":"Engine coolant replacement","interval":{"miles":137500,"months":132,"logic":"initial interval; every 75,000 miles or 60 months afterward"},"severity":"high","notes":"Hybrid coolant circuits require separate record."}
+      ],
+      "validation_flags": [
+        "Split gasoline and plug-in hybrid records.",
+        "Do not assign a fixed normal CVT-fluid interval.",
+        "Official booklet deep link still needs capture."
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "subaru_forester_2020",
+      "year": 2020,
+      "make": "Subaru",
+      "model": "Forester",
+      "trim": "Universal US schedule",
+      "engine": "2.5L boxer",
+      "transmission": "CVT",
+      "driveType": "AWD",
+      "source": "2020 Subaru Warranty and Maintenance Booklet / Vehicle Resources",
+      "source_url": "https://www.subaru.com/owners/vehicle-resources.html",
+      "maintenance": [
+        {"service":"Engine oil and filter replacement","interval":{"miles":6000,"months":6,"logic":"whichever comes first"},"severity":"critical","notes":"Severe conditions can shorten interval."},
+        {"service":"Tire rotation and inspection","interval":{"miles":6000,"months":6,"logic":"whichever comes first"},"severity":"high","notes":"Maintain matched AWD tire circumference."},
+        {"service":"Cabin air filter replacement","interval":{"miles":12000,"months":12,"logic":"whichever comes first"},"severity":"medium","notes":"Earlier under dust."},
+        {"service":"Brake fluid replacement","interval":{"miles":30000,"months":30,"logic":"whichever comes first"},"severity":"high","notes":"Inspect brakes at intermediate services."},
+        {"service":"Engine air filter replacement","interval":{"miles":30000,"months":30,"logic":"whichever comes first"},"severity":"medium","notes":"Inspect earlier under dust."},
+        {"service":"CVT and differential-fluid inspection","interval":{"miles":30000,"months":30,"logic":"recurring inspection"},"severity":"high","notes":"Replacement is severe-use/condition based."},
+        {"service":"Spark plug replacement","interval":{"miles":60000,"months":60,"logic":"whichever comes first"},"severity":"high","notes":"Use specified plugs."},
+        {"service":"Engine coolant replacement","interval":{"miles":137500,"months":132,"logic":"initial interval; every 75,000 miles or 60 months afterward"},"severity":"high","notes":"Use Subaru Super Coolant."}
+      ],
+      "validation_flags": [
+        "Do not assign a fixed normal CVT-fluid replacement interval.",
+        "Confirm brake-fluid month value against the exact booklet.",
+        "Official booklet deep link still needs capture."
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "jeep_grand_cherokee_2021",
+      "year": 2021,
+      "make": "Jeep",
+      "model": "Grand Cherokee",
+      "trim": "WK2 schedule; engine and driveline applicability varies",
+      "engine": "3.6L V6, 5.7L V8, or 6.4L V8",
+      "transmission": "Automatic",
+      "driveType": "2WD or 4WD",
+      "source": "2021 Jeep Grand Cherokee Owner's Manual / Mopar vehicle information",
+      "source_url": "https://www.mopar.com/en-us/my-vehicle/vehicle-information.html",
+      "maintenance": [
+        {"service":"Engine oil and filter replacement","interval":{"miles":10000,"months":12,"logic":"oil-change indicator; maximum interval"},"severity":"critical","notes":"Engine hours and severe duty can shorten interval."},
+        {"service":"Tire rotation and brake inspection","interval":{"miles":10000,"months":12,"logic":"with oil-change interval"},"severity":"high","notes":"Inspect sooner for uneven wear."},
+        {"service":"Cabin air filter replacement","interval":{"miles":20000,"months":24,"logic":"fixed interval"},"severity":"medium","notes":"Dust can shorten interval."},
+        {"service":"Engine air filter replacement","interval":{"miles":30000,"months":36,"logic":"normal-use interval"},"severity":"medium","notes":"Inspect earlier under dust."},
+        {"service":"Spark plug replacement","interval":{"miles":100000,"months":120,"logic":"3.6L/5.7L expected interval; engine-specific validation required"},"severity":"high","notes":"6.4L performance engine may have a shorter interval."},
+        {"service":"Engine coolant replacement","interval":{"miles":150000,"months":120,"logic":"whichever comes first"},"severity":"high","notes":"Use specified OAT coolant."},
+        {"service":"Transfer case and axle-fluid service","interval":{"miles":60000,"months":null,"logic":"conditional severe-use/towing/off-road interval"},"severity":"high","notes":"Driveline system and duty cycle matter."},
+        {"service":"Automatic transmission fluid service","interval":{"miles":null,"months":null,"logic":"no universal fixed normal-use owner-manual interval"},"severity":"high","notes":"Avoid adding dealer flush intervals without official support."}
+      ],
+      "validation_flags": [
+        "Official manual was portal-restricted.",
+        "Split 3.6L, 5.7L, and 6.4L schedules.",
+        "Confirm performance-engine spark-plug interval and transmission schedule."
+      ],
+      "confidence": "low"
+    },
+    {
+      "id": "honda_civic_2019",
+      "year": 2019,
+      "make": "Honda",
+      "model": "Civic",
+      "trim": "Universal Maintenance Minder schedule; engine/transmission variants differ",
+      "engine": "2.0L gasoline, 1.5L turbo, or Type R 2.0L turbo",
+      "transmission": "CVT or manual",
+      "driveType": "FWD",
+      "source": "2019 Honda Civic Owner's Manual / Honda Maintenance Minder",
+      "source_url": "https://mygarage.honda.com/s/manuals-search",
+      "maintenance": [
+        {"service":"Engine oil replacement","interval":{"miles":null,"months":12,"logic":"Maintenance Minder A; at least annually if no message"},"severity":"critical","notes":"Oil life percentage determines timing."},
+        {"service":"Engine oil/filter and comprehensive inspections","interval":{"miles":null,"months":12,"logic":"Maintenance Minder B; condition-based"},"severity":"critical","notes":"Includes brakes, parking brake, steering, suspension, fluids, exhaust, fuel lines, and hoses."},
+        {"service":"Tire rotation","interval":{"miles":null,"months":null,"logic":"Maintenance Minder sub-item 1"},"severity":"high","notes":"Perform when displayed."},
+        {"service":"Engine/cabin filters and drive-belt inspection","interval":{"miles":null,"months":null,"logic":"Maintenance Minder sub-item 2"},"severity":"medium","notes":"Dusty operation can require earlier service."},
+        {"service":"Transmission fluid replacement","interval":{"miles":null,"months":null,"logic":"Maintenance Minder sub-item 3"},"severity":"high","notes":"CVT and manual fluids differ."},
+        {"service":"Spark plugs and valve-clearance inspection","interval":{"miles":null,"months":null,"logic":"Maintenance Minder sub-item 4"},"severity":"high","notes":"Engine variant matters."},
+        {"service":"Engine coolant replacement","interval":{"miles":null,"months":null,"logic":"Maintenance Minder sub-item 5"},"severity":"high","notes":"Perform when displayed."},
+        {"service":"Brake fluid replacement","interval":{"miles":null,"months":36,"logic":"Maintenance Minder sub-item 7 or every 3 years"},"severity":"high","notes":"Time based when no reminder appears."}
+      ],
+      "validation_flags": [
+        "Split base, turbo, Type R, CVT, and manual variants where required.",
+        "Keep Minder services condition-based.",
+        "Verify sub-item numbering against exact 2019 body-style manual."
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "kia_sportage_2021",
+      "year": 2021,
+      "make": "Kia",
+      "model": "Sportage",
+      "trim": "Universal schedule; 2.4L and 2.0L turbo differ",
+      "engine": "2.4L gasoline or 2.0L turbo gasoline",
+      "transmission": "Automatic",
+      "driveType": "FWD or AWD",
+      "source": "2021 Kia Sportage Owner's Manual",
+      "source_url": "https://www.kia.com/us/en/owners/manuals",
+      "maintenance": [
+        {"service":"Engine oil and filter replacement","interval":{"miles":7500,"months":12,"logic":"whichever comes first under normal use"},"severity":"critical","notes":"Severe use generally reduces interval to about 3,750 miles or 6 months."},
+        {"service":"Tire rotation","interval":{"miles":7500,"months":12,"logic":"whichever comes first"},"severity":"high","notes":"Inspect tire condition and pressure."},
+        {"service":"Cabin air filter replacement","interval":{"miles":15000,"months":12,"logic":"whichever comes first"},"severity":"medium","notes":"Dust and pollution can shorten interval."},
+        {"service":"Engine air filter replacement","interval":{"miles":30000,"months":36,"logic":"normal-use interval with intermediate inspection"},"severity":"medium","notes":"Earlier under dusty use."},
+        {"service":"Spark plug replacement","interval":{"miles":97500,"months":null,"logic":"2.4L normal-use interval"},"severity":"high","notes":"The 2.0L turbo may require replacement near 45,000 miles; split before production."},
+        {"service":"Automatic transmission fluid replacement","interval":{"miles":60000,"months":null,"logic":"severe-use interval only"},"severity":"high","notes":"No fixed normal-use replacement is generally listed."},
+        {"service":"Engine coolant replacement","interval":{"miles":120000,"months":120,"logic":"initial replacement; every 30,000 miles or 24 months afterward"},"severity":"high","notes":"Verify exact first interval in US manual."},
+        {"service":"Brake fluid inspection","interval":{"miles":15000,"months":12,"logic":"recurring inspection"},"severity":"high","notes":"Replace based on condition/schedule."}
+      ],
+      "validation_flags": [
+        "Split 2.4L and 2.0L turbo records because spark-plug intervals differ.",
+        "Transmission-fluid replacement is severe-use only.",
+        "Capture direct official PDF URL."
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "kia_telluride_2021",
+      "year": 2021,
+      "make": "Kia",
+      "model": "Telluride",
+      "trim": "Universal schedule",
+      "engine": "3.8L V6 gasoline",
+      "transmission": "8-speed automatic",
+      "driveType": "FWD or AWD",
+      "source": "2021 Kia Telluride Owner's Manual",
+      "source_url": "https://www.kia.com/us/en/owners/manuals",
+      "maintenance": [
+        {"service":"Engine oil and filter replacement","interval":{"miles":7500,"months":12,"logic":"whichever comes first under normal use"},"severity":"critical","notes":"Severe use generally reduces interval to about 3,750 miles or 6 months."},
+        {"service":"Tire rotation","interval":{"miles":7500,"months":12,"logic":"whichever comes first"},"severity":"high","notes":"Inspect wear and pressure."},
+        {"service":"Cabin air filter replacement","interval":{"miles":15000,"months":12,"logic":"whichever comes first"},"severity":"medium","notes":"Earlier under dust/pollution."},
+        {"service":"Engine air filter replacement","interval":{"miles":30000,"months":36,"logic":"normal-use interval with intermediate inspection"},"severity":"medium","notes":"Earlier under dusty use."},
+        {"service":"Spark plug replacement","interval":{"miles":97500,"months":null,"logic":"normal-use interval"},"severity":"high","notes":"Use specified iridium plugs."},
+        {"service":"Automatic transmission fluid replacement","interval":{"miles":60000,"months":null,"logic":"severe-use interval only"},"severity":"high","notes":"No fixed normal-use replacement is generally listed."},
+        {"service":"Rear differential and transfer-case fluid service","interval":{"miles":60000,"months":null,"logic":"severe-use/AWD conditional interval"},"severity":"high","notes":"AWD only and duty-cycle dependent."},
+        {"service":"Engine coolant replacement","interval":{"miles":120000,"months":120,"logic":"initial replacement; every 30,000 miles or 24 months afterward"},"severity":"high","notes":"Verify exact first interval in US manual."},
+        {"service":"Brake fluid inspection","interval":{"miles":15000,"months":12,"logic":"recurring inspection"},"severity":"high","notes":"Replace based on condition/schedule."}
+      ],
+      "validation_flags": [
+        "Transmission and AWD fluid replacements are severe-use conditional.",
+        "Capture direct official PDF URL.",
+        "Confirm coolant first replacement interval."
+      ],
+      "confidence": "medium"
+    },
+    {
+      "id": "mazda_cx5_2021",
+      "year": 2021,
+      "make": "Mazda",
+      "model": "CX-5",
+      "trim": "Universal schedule; naturally aspirated and turbo differ",
+      "engine": "2.5L gasoline or 2.5L turbo gasoline",
+      "transmission": "6-speed automatic",
+      "driveType": "FWD or AWD",
+      "source": "2021 Mazda CX-5 Owner's Manual - Scheduled Maintenance",
+      "source_url": "https://www.mazdausa.com/static/manuals/2021/cx-5/",
+      "maintenance": [
+        {"service":"Engine oil and filter replacement","interval":{"miles":7500,"months":12,"logic":"flexible monitor or maximum interval, whichever comes first"},"severity":"critical","notes":"Severe use generally requires 5,000 miles or 6 months."},
+        {"service":"Tire rotation","interval":{"miles":7500,"months":null,"logic":"fixed mileage interval"},"severity":"high","notes":"Inspect tires and inflation."},
+        {"service":"Cabin air filter replacement","interval":{"miles":30000,"months":24,"logic":"whichever comes first"},"severity":"medium","notes":"Dust can shorten interval."},
+        {"service":"Engine air filter replacement","interval":{"miles":37500,"months":36,"logic":"whichever comes first"},"severity":"medium","notes":"Inspect earlier under dust."},
+        {"service":"Spark plug replacement","interval":{"miles":75000,"months":null,"logic":"naturally aspirated engine interval"},"severity":"high","notes":"Turbo engine interval is approximately 40,000 miles; split before production."},
+        {"service":"Engine coolant replacement","interval":{"miles":120000,"months":120,"logic":"initial replacement; every 60,000 miles or 60 months afterward"},"severity":"high","notes":"Use FL-22 coolant or specified equivalent."},
+        {"service":"Automatic transmission fluid service","interval":{"miles":null,"months":null,"logic":"no fixed normal-use replacement in scheduled maintenance table"},"severity":"high","notes":"Inspect for leakage; do not invent a flush interval."},
+        {"service":"Drive belts, brakes, steering, suspension, fuel lines, and hoses inspection","interval":{"miles":15000,"months":12,"logic":"recurring inspection"},"severity":"high","notes":"Exact inspection rows vary by market and schedule selection."}
+      ],
+      "validation_flags": [
+        "Split naturally aspirated and turbo records due to spark-plug interval.",
+        "Confirm engine-air and cabin-filter timing from exact US table.",
+        "Do not assign a fixed automatic-transmission fluid replacement interval."
+      ],
+      "confidence": "medium"
+    }
+  ]
+}
