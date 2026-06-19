@@ -1,6 +1,6 @@
 # AdminPilot Maintenance Dataset Tracker
 
-Last updated: June 18, 2026
+Last updated: June 19, 2026
 
 ## Pipeline Status
 
@@ -8,8 +8,8 @@ Last updated: June 18, 2026
 |---|---|---|---|---|
 | Phase 1 - Vehicle research and manual sources | Hermes | COMPLETE | 50/50 vehicles listed | June 18, 2026 |
 | Phase 2 - Maintenance schedule extraction | GPT / Codex | COMPLETE | Vehicles completed: 50/50 | June 18, 2026 |
-| Phase 3 - Schema validation and production tagging | Claude | IN PROGRESS | 50/50 schema-tagged, 14/50 production-ready as single records | June 18, 2026 (schema pass) |
-| Phase 2.5 - Variant-split extraction | Hermes / GPT | NOT STARTED | 0/36 flagged vehicles split | - |
+| Phase 3 - Schema validation and production tagging | Claude | IN PROGRESS | 50/50 schema-tagged, 17/50 production-ready as single records | June 18, 2026 (schema pass) |
+| Phase 2.5 - Variant-split extraction | Hermes / GPT | IN PROGRESS | Partial variant supplement committed; 83 split records covering 33 flagged vehicles | June 19, 2026 |
 
 ## Phase 3 Progress (schema validation + tagging)
 
@@ -20,7 +20,7 @@ Vehicles schema-tagged: 50/50
 - `applicability.use_profile` (normal / severe_only) tagged per item
 - `production_ready` flag set per vehicle
 
-Result: **14/50 production-ready as single records.** 36/50 flagged as needing
+Result: **17/50 production-ready as single records.** 33/50 flagged as needing
 a variant split (hybrid/gas, FWD/AWD, engine, transmission, or generation)
 before they can ship — see Phase 2.5 below.
 
@@ -31,7 +31,7 @@ Deliverables:
 
 ## Phase 2.5 Progress (variant-split extraction)
 
-Vehicles flagged for split: 36/50
+Vehicles flagged for split: 33/50
 
 Schema decision (Claude, Phase 3): each variant becomes its own full,
 independent record in the flat `vehicles` array — e.g.
@@ -39,13 +39,16 @@ independent record in the flat `vehicles` array — e.g.
 `variants` array. The original un-split id is retired once split. Full
 naming convention and per-vehicle split reasons are in the handoff doc.
 
-Deliverable:
+Deliverables:
 
-- `PHASE2.5-VARIANT-SPLIT-HANDOFF.md` (ready, sent to Hermes/GPT)
+- `PHASE2.5-VARIANT-SPLITS.json`
+- `append_splits_v1.py`
+- `fix_retired_ids.py`
 
-Status: extraction not yet started. Once delivered, Claude re-runs the
-Phase 3 schema pass against the new records and merges them into
-`PHASE3-PRODUCTION-DATA.json`, retiring the 36 un-split originals.
+Status: partial supplement committed. Claude should re-run the
+Phase 3 schema pass against these split records, validate the 33 flagged
+vehicles, and merge the final result into `PHASE3-PRODUCTION-DATA.json`,
+retiring the 33 un-split originals.
 
 
 
@@ -84,10 +87,10 @@ Final deliverable:
 
 - Some official manual portals require model selectors, accounts, or login sessions.
 - Several manufacturers use condition-based oil-life monitors instead of fixed mileage intervals.
-- Hybrid, EV, diesel, transmission, and drivetrain variants require separate production records — confirmed by Phase 3, 36/50 vehicles affected.
+- Hybrid, EV, diesel, transmission, and drivetrain variants require separate production records — confirmed by Phase 3, 33/50 vehicles affected.
 - Severe-use maintenance must remain conditional and must not be presented as the normal schedule.
 - Phase 1 originally omitted ranks 26-32. Hermes restored them on June 18, 2026, and the corrected list now contains all 50 ranks.
-- Phase 3 schema pass complete; 14/50 vehicles are production-ready as-is, 36/50 are blocked on Phase 2.5 variant-split extraction.
+- Phase 3 schema pass complete; 17/50 vehicles are production-ready as-is, 33/50 are blocked on Phase 2.5 variant-split extraction.
 
 ## Phase 2 Completion Sign-Off
 

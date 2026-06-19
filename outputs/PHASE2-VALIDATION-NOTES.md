@@ -2,28 +2,17 @@
 
 ## Current progress
 
-- Completed vehicle records: 16
-- Completed batches: 4
+- Completed vehicle records: 50
+- Completed batches: 9
 - JSON files parse successfully.
 - Sources used so far are official manufacturer owner manuals or official warranty and maintenance guides.
 
-## Phase 1 blocking defect
+## Phase 1 status
 
-`PHASE1-VEHICLE-RESEARCH.md` claims a total of 50 vehicles, but its ranked table contains only 43 vehicle rows.
+`PHASE1-VEHICLE-RESEARCH.md` now resolves to a full 50-vehicle list.
 
-The missing ranks are:
-
-- 26
-- 27
-- 28
-- 29
-- 30
-- 31
-- 32
-
-Phase 2 must not invent those seven vehicles. Hermes or Claude must restore the missing ranked rows, including representative year and official manual source, before a truthful 50-vehicle final dataset can be completed.
-
-The Phase 1 narrative mentions some likely omitted models, including Volkswagen Tiguan, Hyundai Santa Fe, and Nissan Altima, but narrative references are not sufficient to reconstruct the official rank list.
+The earlier missing-rank issue has been corrected in the repo. Do not
+reintroduce a partial ranked list.
 
 ## Completed records
 
@@ -74,4 +63,11 @@ The Phase 1 narrative mentions some likely omitted models, including Volkswagen 
 - GM full-size trucks and SUVs: add separate Duramax records if diesel support is required.
 - Mercedes-Benz GLC: ASSYST PLUS is variable and display-driven; do not invent fixed intervals.
 - 2019 Toyota Camry: confirm the cabin-air-filter pattern shown in the guide.
+
+## Phase 2.5 status
+
+The variant-split supplement exists in `outputs/PHASE2.5-VARIANT-SPLITS.json`.
+It covers 33 split vehicles and expands them into 83 variant records.
+Use that file as the current Phase 2.5 handoff, not the older "not started"
+status text.
 
