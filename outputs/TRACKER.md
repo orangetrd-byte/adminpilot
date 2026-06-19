@@ -114,3 +114,8 @@ Owner: Hermes (research) -> GPT (extraction)
 
 Notes: local checkout now contains the split supplement and the restored Phase 2 batch files; any manufacturer family sold under multiple badges should stay grouped together when it is the same underlying vehicle/platform unless a later pass proves the maintenance schedules truly diverge. GM examples include Silverado/Sierra and Tahoe/Yukon; Toyota and Honda have similar badge-sharing families. Final merge into `PHASE3-PRODUCTION-DATA.json` remains the next Claude-owned validation step.
 
+Relationship rule reference:
+- Rebadges: treat as one family record by default when the vehicles are effectively the same product under different badges.
+- Corporate twins: keep grouped by default and split only when maintenance schedules materially differ.
+- Same-platform families: use for extraction reuse and clustering, not identity merging.
+
