@@ -112,5 +112,5 @@ Handed off by: Claude
 
 Owner: Hermes (research) -> GPT (extraction)
 
-Notes: local checkout now contains the split supplement and the restored Phase 2 batch files; GM families that share the same underlying architecture should stay unified unless a later pass proves the maintenance schedules truly diverge. Tahoe/Suburban and Yukon/Yukon XL are currently kept unified on that basis. Final merge into `PHASE3-PRODUCTION-DATA.json` remains the next Claude-owned validation step.
+Notes: local checkout now contains the split supplement and the restored Phase 2 batch files; any manufacturer family sold under multiple badges should stay grouped together when it is the same underlying vehicle/platform unless a later pass proves the maintenance schedules truly diverge. GM examples include Silverado/Sierra and Tahoe/Yukon; Toyota and Honda have similar badge-sharing families. Final merge into `PHASE3-PRODUCTION-DATA.json` remains the next Claude-owned validation step.
 
