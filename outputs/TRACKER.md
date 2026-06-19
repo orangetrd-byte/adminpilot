@@ -112,5 +112,5 @@ Handed off by: Claude
 
 Owner: Hermes (research) -> GPT (extraction)
 
-Notes: local checkout now contains the split supplement and the restored Phase 2 batch files; Tahoe/Suburban and Yukon/Yukon XL are intentionally kept unified by configuration until the gas/diesel split is fully verified. Final merge into `PHASE3-PRODUCTION-DATA.json` remains the next Claude-owned validation step.
+Notes: local checkout now contains the split supplement and the restored Phase 2 batch files; GM families that share the same underlying architecture should stay unified unless a later pass proves the maintenance schedules truly diverge. Tahoe/Suburban and Yukon/Yukon XL are currently kept unified on that basis. Final merge into `PHASE3-PRODUCTION-DATA.json` remains the next Claude-owned validation step.
 
