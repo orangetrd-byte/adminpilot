@@ -9,7 +9,7 @@ Last updated: June 19, 2026
 | Phase 1 - Vehicle research and manual sources | Hermes | COMPLETE | 50/50 vehicles listed | June 18, 2026 |
 | Phase 2 - Maintenance schedule extraction | GPT / Codex | COMPLETE | Vehicles completed: 50/50 | June 18, 2026 |
 | Phase 3 - Schema validation and production tagging | Claude | IN PROGRESS | 50/50 schema-tagged, 17/50 production-ready as single records | June 18, 2026 (schema pass) |
-| Phase 2.5 - Variant-split extraction | Hermes / GPT | IN PROGRESS | Partial variant supplement committed; 83 split records covering 33 flagged vehicles | June 19, 2026 |
+| Phase 2.5 - Variant-split extraction | Hermes / GPT | IN PROGRESS | Partial variant supplement committed; 89 split records covering 34 retired ids | June 19, 2026 |
 
 ## Phase 3 Progress (schema validation + tagging)
 
@@ -46,9 +46,9 @@ Deliverables:
 - `fix_retired_ids.py`
 
 Status: partial supplement committed. Claude should re-run the
-Phase 3 schema pass against these split records, validate the 33 flagged
-vehicles, and merge the final result into `PHASE3-PRODUCTION-DATA.json`,
-retiring the 33 un-split originals.
+Phase 3 schema pass against these split records, validate the split
+bookkeeping, and merge the final result into `PHASE3-PRODUCTION-DATA.json`,
+retiring the un-split originals that still need replacement records.
 
 
 
@@ -112,5 +112,5 @@ Handed off by: Claude
 
 Owner: Hermes (research) -> GPT (extraction)
 
-Notes: local checkout now contains the split supplement and the restored Phase 2 batch files; final merge into `PHASE3-PRODUCTION-DATA.json` remains the next Claude-owned validation step.
+Notes: local checkout now contains the split supplement and the restored Phase 2 batch files; Tahoe/Suburban and Yukon/Yukon XL are intentionally kept unified by configuration until the gas/diesel split is fully verified. Final merge into `PHASE3-PRODUCTION-DATA.json` remains the next Claude-owned validation step.
 
