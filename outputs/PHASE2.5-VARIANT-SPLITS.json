@@ -7840,12 +7840,12 @@
     }
   ],
   "validation_summary": {
-    "total_variants_delivered": 6,
-    "retired_originals": 2,
+    "total_variants_delivered": 83,
+    "retired_originals": 33,
     "source_method": "re_extraction",
     "notes": [
-      "Toyota Tacoma 2021 split into 2.7L/3.5L and manual/auto variants from the same official manual.",
-      "Toyota 4Runner 2020 split into 2WD and 4WD variants from the same official manual.",
+      "This file contains 83 variant records covering 33 split vehicles from the original 50-vehicle pool.",
+      "The 17 non-split vehicles remain single records outside this supplement.",
       "Exact manufacturer-specific mileages for spark plugs and driveline fluids remain pending verification against re-extracted manual tables."
     ]
   },
