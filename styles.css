@@ -129,14 +129,20 @@ p {
 
 .hero-stats {
   display: grid;
-  gap: 12px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border-radius: 18px;
+  overflow: hidden;
 }
 
 .stat-card {
-  padding: 18px;
-  border-radius: 16px;
+  padding: 18px 16px;
+  min-height: 92px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.03));
-  border: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .stat-label {
@@ -148,6 +154,24 @@ p {
 
 .stat-card strong {
   font-size: 1.9rem;
+}
+
+.stat-card[data-tone="error"] strong {
+  color: var(--error);
+}
+
+.stat-card[data-tone="warning"] strong {
+  color: var(--warning);
+}
+
+.stat-card[data-tone="success"] strong {
+  color: var(--success);
+}
+
+.stat-card[data-tone="error"] .stat-label,
+.stat-card[data-tone="warning"] .stat-label,
+.stat-card[data-tone="success"] .stat-label {
+  color: #d9e2f4;
 }
 
 .grid {
@@ -243,7 +267,8 @@ p {
   color: var(--muted);
 }
 
-.inline-check {
+.form label.inline-check,
+.lookup label.inline-check {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -407,6 +432,7 @@ button.danger {
 .asset {
   position: relative;
   overflow: hidden;
+  padding-left: 18px;
 }
 
 .asset::before {
@@ -632,6 +658,10 @@ button.danger {
   .grid {
     grid-template-columns: 1fr;
   }
+
+  .hero-stats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 640px) {
@@ -645,6 +675,10 @@ button.danger {
   }
 
   .form {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-stats {
     grid-template-columns: 1fr;
   }
 }
