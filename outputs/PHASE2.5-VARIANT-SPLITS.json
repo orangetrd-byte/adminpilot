@@ -822,7 +822,7 @@
         "Split from toyota_rav4_2021. Hybrid record is separate. Confirm AWD driveline fluid service."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 8,
@@ -929,7 +929,7 @@
         "Inverter coolant and battery cooling are critical for hybrid."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 9,
@@ -1035,7 +1035,7 @@
         "Split from toyota_highlander_2021. Hybrid record is separate."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 10,
@@ -1142,7 +1142,7 @@
         "Inverter coolant and battery cooling are critical for hybrid."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 11,
@@ -1247,7 +1247,7 @@
         "Split from toyota_corolla_2020. Separate CVT and manual records also required if their service differs."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 12,
@@ -1352,7 +1352,7 @@
         "Split from toyota_corolla_2020. Separate CVT and manual records also required if their service differs."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 13,
@@ -1458,7 +1458,7 @@
         "Split from toyota_corolla_2020. Separate CVT and manual records also required if their service differs."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 14,
@@ -1564,7 +1564,7 @@
         "Split from toyota_camry_2019. V6 and hybrid records are separate."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 15,
@@ -1670,7 +1670,7 @@
         "Split from toyota_camry_2019. Gasoline I4 and hybrid records are separate."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 16,
@@ -1777,7 +1777,7 @@
         "Inverter coolant and battery cooling are critical for hybrid."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 17,
@@ -1934,7 +1934,7 @@
         "Diesel variant handled separately."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 18,
@@ -1991,7 +1991,7 @@
         "Diesel supplement required for exact mileages."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 19,
@@ -2097,7 +2097,7 @@
         "Split from chevrolet_silverado_1500_2021. 2.7L turbo spark plug interval is 60,000 miles; other gasoline engines use 97,500."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 20,
@@ -2203,7 +2203,7 @@
         "Split from chevrolet_silverado_1500_2021. Includes gasoline engines other than 2.7L turbo."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 21,
@@ -2259,7 +2259,7 @@
         "Split from chevrolet_silverado_1500_2021. Diesel supplement required for exact mileages."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 22,
@@ -2365,7 +2365,7 @@
         "Split from gmc_sierra_1500_2021. 2.7L turbo spark plug interval is 60,000 miles; other gasoline engines use 97,500."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 23,
@@ -2471,7 +2471,7 @@
         "Split from gmc_sierra_1500_2021. Includes gasoline engines other than 2.7L turbo."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 24,
@@ -2527,7 +2527,7 @@
         "Split from gmc_sierra_1500_2021. Diesel supplement required for exact mileages."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 25,
@@ -2603,7 +2603,7 @@
         "Split from chevrolet_malibu_2021. Separate 2.0L automatic record required."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 26,
@@ -2689,7 +2689,7 @@
         "Split from chevrolet_malibu_2021. Separate 1.5L CVT record required."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 27,
@@ -2785,7 +2785,7 @@
         "Split from chevrolet_tahoe_suburban_2021. Diesel variant (3.0L Duramax) must be separate if supported."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 28,
@@ -2881,7 +2881,7 @@
         "Split from gmc_yukon_yukon_xl_2021. Diesel variant (3.0L Duramax) must be separate if supported."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 29,
@@ -2976,7 +2976,7 @@
         "Split from nissan_altima_2021. Separate AWD and 2.0L VC-Turbo records required."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 30,
@@ -3071,7 +3071,7 @@
         "Split from nissan_altima_2021. Separate FWD and 2.0L VC-Turbo records required."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 31,
@@ -3166,7 +3166,7 @@
         "Split from nissan_altima_2021. Separate 2.5L FWD/AWD records required. oil or spark-plug schedules differ."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 32,
@@ -3252,7 +3252,7 @@
         "Split from honda_cr_v_2021. Hybrid record is separate."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 33,
@@ -3339,7 +3339,7 @@
         "Inverter coolant and battery cooling are critical for hybrid."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 34,
@@ -3435,7 +3435,7 @@
         "Split from honda_accord_2019. Separate 2.0L/10-speed and manual records also required."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 35,
@@ -3531,7 +3531,7 @@
         "Split from honda_accord_2019. Separate 1.5L/CVT and manual records also required."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 36,
@@ -3627,7 +3627,7 @@
         "Split from honda_accord_2019. Separate 1.5L/CVT and 2.0T automatic records also required."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 37,
@@ -3723,7 +3723,7 @@
         "Split from honda_civic_2019. Separate 1.5T turbo, CVT, and manual records required."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 38,
@@ -3819,7 +3819,7 @@
         "Split from honda_civic_2019. Separate 2.0L, CVT, and manual records required."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 39,
@@ -3906,7 +3906,7 @@
         "Inverter coolant and battery cooling are critical for hybrid."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 40,
@@ -4002,7 +4002,7 @@
         "Split from subaru_outback_2020. Separate 2.4L turbo record required if production requires engine-specific schedules."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 41,
@@ -4098,7 +4098,7 @@
         "Split from subaru_outback_2020. Separate 2.5L record required."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 42,
@@ -4194,7 +4194,7 @@
         "Split from subaru_crosstrek_2020. Separate manual and hybrid records required."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 43,
@@ -4281,7 +4281,7 @@
         "Inverter coolant and battery cooling are critical for hybrid."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 44,
@@ -4388,7 +4388,7 @@
         "Keep engine and inverter coolant as separate services."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 45,
@@ -4413,7 +4413,7 @@
         "Split from ford_escape_2020. Hybrid and PHEV records are separate."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 46,
@@ -4499,7 +4499,7 @@
         "Split from ford_escape_2020. Gasoline and PHEV records are separate."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 47,
@@ -4595,7 +4595,7 @@
         "Split from ford_escape_2020. Gasoline and hybrid records are separate."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 48,
@@ -4692,7 +4692,7 @@
         "Separate EcoDiesel and eTorque records will be added if their schedules differ."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 49,
@@ -4789,7 +4789,7 @@
         "Created because diesel maintenance items differ from gasoline."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 50,
@@ -4886,7 +4886,7 @@
         "Created because eTorque adds hybrid-specific service expectations."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 51,
@@ -4972,7 +4972,7 @@
         "Split from jeep_wrangler_2020 (20l_auto)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 52,
@@ -5058,7 +5058,7 @@
         "Split from jeep_wrangler_2020 (36l_auto)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 53,
@@ -5154,7 +5154,7 @@
         "Split from jeep_wrangler_2020 (36l_manual)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 54,
@@ -5260,7 +5260,7 @@
         "Split from jeep_wrangler_2020 (36l_diesel)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 55,
@@ -5346,7 +5346,7 @@
         "Split from jeep_grand_cherokee_2021 (grand_cherokee_2021_wk2_v6)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 56,
@@ -5432,7 +5432,7 @@
         "Split from jeep_grand_cherokee_2021 (grand_cherokee_2021_wk2_v8)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 57,
@@ -5518,7 +5518,7 @@
         "Split from jeep_grand_cherokee_2021 (grand_cherokee_2021_wk2_srt)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 58,
@@ -5614,7 +5614,7 @@
         "Split from jeep_grand_cherokee_2021 (grand_cherokee_2021_wk2_trackhawk)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 59,
@@ -5710,7 +5710,7 @@
         "Split from jeep_grand_cherokee_2021 (grand_cherokee_2021_wk2_diesel)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 60,
@@ -5796,7 +5796,7 @@
         "Split from jeep_grand_cherokee_2021 (grand_cherokee_2021_l_v6)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 61,
@@ -5892,7 +5892,7 @@
         "Split from jeep_grand_cherokee_2021 (grand_cherokee_2021_l_4xe)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 62,
@@ -5978,7 +5978,7 @@
         "Split from kia_sportage_2021."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 63,
@@ -6064,7 +6064,7 @@
         "Split from kia_sportage_2021."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 64,
@@ -6150,7 +6150,7 @@
         "Split from kia_seltos_2021."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 65,
@@ -6247,7 +6247,7 @@
         "DCT-fluid severe-use rules should be validated separately."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 66,
@@ -6333,7 +6333,7 @@
         "Split from kia_forte_2020."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 67,
@@ -6420,7 +6420,7 @@
         "GT powertrain may use different clutch/fluid intervals."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 68,
@@ -6506,7 +6506,7 @@
         "Split from dodge_durango_2021 (v6)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 69,
@@ -6592,7 +6592,7 @@
         "Split from dodge_durango_2021 (57l)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 70,
@@ -6678,7 +6678,7 @@
         "Split from dodge_durango_2021 (srt64l)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 71,
@@ -6764,7 +6764,7 @@
         "Split from dodge_durango_2021 (hellcat)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 72,
@@ -6850,7 +6850,7 @@
         "Split from chrysler_pacifica_voyager_2021 (pacifica_gas)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 73,
@@ -6946,7 +6946,7 @@
         "Split from chrysler_pacifica_voyager_2021 (pacifica_hybrid)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 74,
@@ -7032,7 +7032,7 @@
         "Split from chrysler_pacifica_voyager_2021 (voyager)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 75,
@@ -7118,7 +7118,7 @@
         "Split from hyundai_kona_2021 (gas_20)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 76,
@@ -7204,7 +7204,7 @@
         "Split from hyundai_kona_2021 (gas_16t)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 77,
@@ -7300,7 +7300,7 @@
         "Split from hyundai_kona_2021 (electric)."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 78,
@@ -7386,7 +7386,7 @@
         "Split from bmw_x5_2020."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 79,
@@ -7472,7 +7472,7 @@
         "Split from bmw_x5_2020."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 80,
@@ -7558,7 +7558,7 @@
         "Split from bmw_x5_2020."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 81,
@@ -7654,7 +7654,7 @@
         "Split from bmw_x5_2020."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 82,
@@ -7740,7 +7740,7 @@
         "Split from bmw_x5_2020."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     },
     {
       "rank": 83,
@@ -7836,7 +7836,7 @@
         "Split from bmw_x5_2020."
       ],
       "production_ready": false,
-      "source_confidence": "need_new_source"
+      "source_confidence": "needs_table_verification"
     }
   ],
   "validation_summary": {
@@ -7852,5 +7852,6 @@
   },
   "vehicles_completed": 83
 }
+
 
 

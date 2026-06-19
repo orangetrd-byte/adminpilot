@@ -6,7 +6,7 @@ with open(path, "r", encoding="utf-8") as f:
     data = json.load(f)
 
 # Helper to make a new vehicle dict
-def make_vehicle(rank, vid, year, make, model, trim, engine, transmission, driveType, source, source_url, maintenance, applicability, validation_flags, production_ready=False, source_confidence="need_new_source"):
+def make_vehicle(rank, vid, year, make, model, trim, engine, transmission, driveType, source, source_url, maintenance, applicability, validation_flags, production_ready=False, source_confidence="needs_table_verification"):
     return {
         "rank": rank,
         "id": vid,
@@ -97,7 +97,7 @@ data["vehicles"].append(make_vehicle(
     ],
     {"drive_type": "2WD_OR_4WD", "transmission": "automatic", "engine": "gasoline", "powertrain": "gasoline"},
     ["Split from ram_1500_2021.", "Separate EcoDiesel and eTorque records will be added if their schedules differ."],
-    source_confidence="need_new_source",
+    source_confidence="needs_table_verification",
 ))
 next_rank += 1
 added += 1
@@ -124,7 +124,7 @@ data["vehicles"].append(make_vehicle(
     ],
     {"drive_type": "4WD", "transmission": "automatic", "engine": "3.0L diesel", "powertrain": "diesel"},
     ["Split from ram_1500_2021.", "Created because diesel maintenance items differ from gasoline."],
-    source_confidence="need_new_source",
+    source_confidence="needs_table_verification",
 ))
 next_rank += 1
 added += 1
@@ -151,7 +151,7 @@ data["vehicles"].append(make_vehicle(
     ],
     {"drive_type": "2WD_OR_4WD", "transmission": "automatic", "engine": "3.6L eTorque", "powertrain": "hybrid"},
     ["Split from ram_1500_2021.", "Created because eTorque adds hybrid-specific service expectations."],
-    source_confidence="need_new_source",
+    source_confidence="needs_table_verification",
 ))
 next_rank += 1
 added += 1
@@ -199,7 +199,7 @@ for suffix, engine, transmission, drive, fuel in jeep_wrangler_variants:
         ] if fuel == "diesel" else []),
         {"drive_type": drive.replace(" or ", "_OR_"), "transmission": transmission.lower(), "engine": engine.lower(), "powertrain": fuel},
         [f"Split from jeep_wrangler_2020 ({suffix})."],
-        source_confidence="need_new_source",
+        source_confidence="needs_table_verification",
     ))
     next_rank += 1
     added += 1
@@ -236,7 +236,7 @@ for suffix, generation, engine, transmission, drive, fuel in gen_splits:
         ] if fuel == "hybrid" else []),
         {"drive_type": drive.replace(" or ", "_OR_"), "transmission": transmission.lower(), "engine": engine.lower(), "powertrain": fuel},
         [f"Split from jeep_grand_cherokee_2021 ({suffix})."],
-        source_confidence="need_new_source",
+        source_confidence="needs_table_verification",
     ))
     next_rank += 1
     added += 1
@@ -257,7 +257,7 @@ data["vehicles"].append(make_vehicle(
     base_skeleton(),
     {"drive_type": "FWD_OR_AWD", "transmission": "automatic", "engine": "2.4L inline-4", "powertrain": "gasoline"},
     ["Split from kia_sportage_2021."],
-    source_confidence="need_new_source",
+    source_confidence="needs_table_verification",
 ))
 next_rank += 1
 added += 1
@@ -277,7 +277,7 @@ data["vehicles"].append(make_vehicle(
     base_skeleton(),
     {"drive_type": "FWD_OR_AWD", "transmission": "automatic", "engine": "2.0T turbo inline-4", "powertrain": "gasoline"},
     ["Split from kia_sportage_2021."],
-    source_confidence="need_new_source",
+    source_confidence="needs_table_verification",
 ))
 next_rank += 1
 added += 1
@@ -298,7 +298,7 @@ data["vehicles"].append(make_vehicle(
     base_skeleton(),
     {"drive_type": "FWD_OR_AWD", "transmission": "ivt", "engine": "2.0L inline-4", "powertrain": "gasoline"},
     ["Split from kia_seltos_2021."],
-    source_confidence="need_new_source",
+    source_confidence="needs_table_verification",
 ))
 next_rank += 1
 added += 1
@@ -325,7 +325,7 @@ data["vehicles"].append(make_vehicle(
     ],
     {"drive_type": "FWD_OR_AWD", "transmission": "dct", "engine": "1.6T turbo inline-4", "powertrain": "gasoline"},
     ["Split from kia_seltos_2021.", "DCT-fluid severe-use rules should be validated separately."],
-    source_confidence="need_new_source",
+    source_confidence="needs_table_verification",
 ))
 next_rank += 1
 added += 1
@@ -346,7 +346,7 @@ data["vehicles"].append(make_vehicle(
     base_skeleton(),
     {"drive_type": "FWD_ONLY", "transmission": "ivt", "engine": "2.0L inline-4", "powertrain": "gasoline"},
     ["Split from kia_forte_2020."],
-    source_confidence="need_new_source",
+    source_confidence="needs_table_verification",
 ))
 next_rank += 1
 added += 1
@@ -366,7 +366,7 @@ data["vehicles"].append(make_vehicle(
     base_skeleton(),
     {"drive_type": "FWD_ONLY", "transmission": "ivt_or_dct", "engine": "1.6T turbo inline-4", "powertrain": "gasoline"},
     ["Split from kia_forte_2020.", "GT powertrain may use different clutch/fluid intervals."],
-    source_confidence="need_new_source",
+    source_confidence="needs_table_verification",
 ))
 next_rank += 1
 added += 1
@@ -394,7 +394,7 @@ for suffix, engine, fuel in durango_variants:
         base_skeleton(),
         {"drive_type": "2WD_OR_4WD", "transmission": "automatic", "engine": engine.lower(), "powertrain": fuel},
         [f"Split from dodge_durango_2021 ({suffix})."],
-        source_confidence="need_new_source",
+        source_confidence="needs_table_verification",
     ))
     next_rank += 1
     added += 1
@@ -423,7 +423,7 @@ for suffix, trim, engine in chrysler_variants:
         ] if "hybrid" in suffix else []),
         {"drive_type": "FWD_ONLY", "transmission": "automatic", "engine": engine.lower(), "powertrain": "hybrid" if "hybrid" in suffix else "gasoline"},
         [f"Split from chrysler_pacifica_voyager_2021 ({suffix})."],
-        source_confidence="need_new_source",
+        source_confidence="needs_table_verification",
     ))
     next_rank += 1
     added += 1
@@ -452,7 +452,7 @@ for suffix, engine_desc, fuel in hyundai_kona_variants:
         ] if fuel == "electric" else []),
         {"drive_type": "FWD_ONLY", "transmission": "automatic" if "automatic" in engine_desc or fuel == "electric" else "dct", "engine": engine_desc.lower(), "powertrain": fuel},
         [f"Split from hyundai_kona_2021 ({suffix})."],
-        source_confidence="need_new_source",
+        source_confidence="needs_table_verification",
     ))
     next_rank += 1
     added += 1
@@ -473,7 +473,7 @@ data["vehicles"].append(make_vehicle(
     base_skeleton(),
     {"drive_type": "RWD", "transmission": "automatic", "engine": "3.0L inline-6 turbo", "powertrain": "gasoline"},
     ["Split from bmw_x5_2020."],
-    source_confidence="need_new_source",
+    source_confidence="needs_table_verification",
 ))
 next_rank += 1
 added += 1
@@ -493,7 +493,7 @@ data["vehicles"].append(make_vehicle(
     base_skeleton(),
     {"drive_type": "AWD", "transmission": "automatic", "engine": "3.0L inline-6 turbo", "powertrain": "gasoline"},
     ["Split from bmw_x5_2020."],
-    source_confidence="need_new_source",
+    source_confidence="needs_table_verification",
 ))
 next_rank += 1
 added += 1
@@ -513,7 +513,7 @@ data["vehicles"].append(make_vehicle(
     base_skeleton(),
     {"drive_type": "AWD", "transmission": "automatic", "engine": "4.4L V8 turbo", "powertrain": "gasoline"},
     ["Split from bmw_x5_2020."],
-    source_confidence="need_new_source",
+    source_confidence="needs_table_verification",
 ))
 next_rank += 1
 added += 1
@@ -535,7 +535,7 @@ data["vehicles"].append(make_vehicle(
     ],
     {"drive_type": "AWD", "transmission": "automatic", "engine": "3.0L inline-6 diesel", "powertrain": "diesel"},
     ["Split from bmw_x5_2020."],
-    source_confidence="need_new_source",
+    source_confidence="needs_table_verification",
 ))
 next_rank += 1
 added += 1
@@ -555,7 +555,7 @@ data["vehicles"].append(make_vehicle(
     base_skeleton(),
     {"drive_type": "AWD", "transmission": "automatic", "engine": "4.4L V8 twin-turbo", "powertrain": "gasoline"},
     ["Split from bmw_x5_2020."],
-    source_confidence="need_new_source",
+    source_confidence="needs_table_verification",
 ))
 next_rank += 1
 added += 1
@@ -577,7 +577,7 @@ data["vehicles"].append(make_vehicle(
     ],
     {"drive_type": "AWD", "transmission": "automatic", "engine": "3.0L inline-6 PHEV", "powertrain": "phev"},
     ["Split from bmw_x5_2020."],
-    source_confidence="need_new_source",
+    source_confidence="needs_table_verification",
 ))
 next_rank += 1
 added += 1
@@ -591,3 +591,4 @@ with open(path, "w", encoding="utf-8") as f:
 
 print(f"Appended {added} new records.")
 print(f"Total vehicles: {len(data['vehicles'])}")
+
