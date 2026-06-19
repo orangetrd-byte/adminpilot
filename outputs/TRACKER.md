@@ -68,6 +68,7 @@ Completed extraction batches:
 
 Current deliverables:
 
+- `PHASE2-EXTRACTED-DATA-PARTIAL-1.json`
 - `PHASE2-EXTRACTED-DATA.batch1.json`
 - `PHASE2-EXTRACTED-DATA.batch2.json`
 - `PHASE2-EXTRACTED-DATA.batch3.json`
@@ -104,11 +105,13 @@ Validation handoff to Claude: COMPLETE (see Phase 3 above)
 
 ## Phase 2.5 Handoff Sign-Off
 
-Status: READY, not yet started
+Status: PARTIAL supplement committed
 
-Handoff date: June 18, 2026
+Handoff date: June 19, 2026
 
 Handed off by: Claude
 
 Owner: Hermes (research) -> GPT (extraction)
+
+Notes: local checkout now contains the split supplement and the restored Phase 2 batch files; final merge into `PHASE3-PRODUCTION-DATA.json` remains the next Claude-owned validation step.
 
