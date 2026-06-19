@@ -78,7 +78,6 @@ Current deliverables:
 - `PHASE2-EXTRACTED-DATA.batch7.json`
 - `PHASE2-EXTRACTED-DATA.batch8.json`
 - `PHASE2-EXTRACTED-DATA.batch9.json`
-- `PHASE2-VALIDATION-NOTES.md`
 
 Final deliverable:
 
