@@ -4705,7 +4705,7 @@
       "transmission": "Automatic",
       "driveType": "4WD",
       "source": "2021 Ram 1500 Diesel Supplement",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.mopar.com/en-us/care/owners-manual.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -4802,7 +4802,7 @@
       "transmission": "Automatic",
       "driveType": "2WD or 4WD",
       "source": "2021 Ram 1500 Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.mopar.com/en-us/care/owners-manual.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -5273,7 +5273,7 @@
       "transmission": "Automatic",
       "driveType": "2WD or 4WD",
       "source": "2021 Jeep Grand Cherokee Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.mopar.com/en-us/care/owners-manual.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -5359,7 +5359,7 @@
       "transmission": "Automatic",
       "driveType": "4WD",
       "source": "2021 Jeep Grand Cherokee Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.mopar.com/en-us/care/owners-manual.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -5445,7 +5445,7 @@
       "transmission": "Automatic",
       "driveType": "4WD",
       "source": "2021 Jeep Grand Cherokee Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.mopar.com/en-us/care/owners-manual.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -5531,7 +5531,7 @@
       "transmission": "Automatic",
       "driveType": "4WD",
       "source": "2021 Jeep Grand Cherokee Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.mopar.com/en-us/care/owners-manual.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -5627,7 +5627,7 @@
       "transmission": "Automatic",
       "driveType": "4WD",
       "source": "2021 Jeep Grand Cherokee Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.mopar.com/en-us/care/owners-manual.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -5723,7 +5723,7 @@
       "transmission": "Automatic",
       "driveType": "2WD or 4WD",
       "source": "2021 Jeep Grand Cherokee Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.mopar.com/en-us/care/owners-manual.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -5809,7 +5809,7 @@
       "transmission": "Automatic",
       "driveType": "4WD AWD",
       "source": "2021 Jeep Grand Cherokee Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.mopar.com/en-us/care/owners-manual.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -5905,7 +5905,7 @@
       "transmission": "Automatic",
       "driveType": "FWD or AWD",
       "source": "2021 Kia Sportage Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://owners.kia.com/us/en/manuals.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -5991,7 +5991,7 @@
       "transmission": "Automatic",
       "driveType": "FWD or AWD",
       "source": "2021 Kia Sportage Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://owners.kia.com/us/en/manuals.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -6077,7 +6077,7 @@
       "transmission": "IVT",
       "driveType": "FWD or AWD",
       "source": "2021 Kia Seltos Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://owners.kia.com/us/en/manuals.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -6163,7 +6163,7 @@
       "transmission": "DCT",
       "driveType": "FWD or AWD",
       "source": "2021 Kia Seltos Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://owners.kia.com/us/en/manuals.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -6260,7 +6260,7 @@
       "transmission": "IVT",
       "driveType": "FWD",
       "source": "2020 Kia Forte Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://owners.kia.com/us/en/manuals.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -6346,7 +6346,7 @@
       "transmission": "IVT / DCT depending on market",
       "driveType": "FWD",
       "source": "2020 Kia Forte GT Owner's Manual details",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://owners.kia.com/us/en/manuals.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -6433,7 +6433,7 @@
       "transmission": "Automatic",
       "driveType": "2WD or 4WD",
       "source": "2021 Dodge Durango Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.mopar.com/en-us/care/owners-manual.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -6519,7 +6519,7 @@
       "transmission": "Automatic",
       "driveType": "2WD or 4WD",
       "source": "2021 Dodge Durango Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.mopar.com/en-us/care/owners-manual.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -6605,7 +6605,7 @@
       "transmission": "Automatic",
       "driveType": "2WD or 4WD",
       "source": "2021 Dodge Durango Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.mopar.com/en-us/care/owners-manual.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -6691,7 +6691,7 @@
       "transmission": "Automatic",
       "driveType": "2WD or 4WD",
       "source": "2021 Dodge Durango Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.mopar.com/en-us/care/owners-manual.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -6777,7 +6777,7 @@
       "transmission": "Automatic",
       "driveType": "FWD",
       "source": "2021 Chrysler Pacifica/Voyager Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.mopar.com/en-us/care/owners-manual.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -6863,7 +6863,7 @@
       "transmission": "Automatic",
       "driveType": "FWD",
       "source": "2021 Chrysler Pacifica/Voyager Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.mopar.com/en-us/care/owners-manual.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -6959,7 +6959,7 @@
       "transmission": "Automatic",
       "driveType": "FWD",
       "source": "2021 Chrysler Pacifica/Voyager Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.mopar.com/en-us/care/owners-manual.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -7045,7 +7045,7 @@
       "transmission": "Automatic",
       "driveType": "FWD",
       "source": "2021 Hyundai Kona Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://owners.hyundaiusa.com/us/en/resources/manuals-warranties",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -7131,7 +7131,7 @@
       "transmission": "DCT",
       "driveType": "FWD",
       "source": "2021 Hyundai Kona Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://owners.hyundaiusa.com/us/en/resources/manuals-warranties",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -7217,7 +7217,7 @@
       "transmission": "Automatic",
       "driveType": "FWD",
       "source": "2021 Hyundai Kona Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://owners.hyundaiusa.com/us/en/resources/manuals-warranties",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -7313,7 +7313,7 @@
       "transmission": "Automatic",
       "driveType": "RWD",
       "source": "2020 BMW X5 Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.bmwusa.com/owners-manuals.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -7399,7 +7399,7 @@
       "transmission": "Automatic",
       "driveType": "AWD",
       "source": "2020 BMW X5 Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.bmwusa.com/owners-manuals.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -7485,7 +7485,7 @@
       "transmission": "Automatic",
       "driveType": "AWD",
       "source": "2020 BMW X5 Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.bmwusa.com/owners-manuals.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -7571,7 +7571,7 @@
       "transmission": "Automatic",
       "driveType": "AWD",
       "source": "2020 BMW X5 Diesel details",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.bmwusa.com/owners-manuals.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -7667,7 +7667,7 @@
       "transmission": "Automatic",
       "driveType": "AWD",
       "source": "2020 BMW X5 M Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.bmwusa.com/owners-manuals.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -7753,7 +7753,7 @@
       "transmission": "Automatic",
       "driveType": "AWD",
       "source": "2020 BMW X5 45e Owner's Manual",
-      "source_url": "source URL to be confirmed",
+      "source_url": "https://www.bmwusa.com/owners-manuals.html",
       "maintenance": [
         {
           "service": "Engine oil and filter change",
@@ -7846,9 +7846,11 @@
     "notes": [
       "This file contains 83 variant records covering 33 split vehicles from the original 50-vehicle pool.",
       "The 17 non-split vehicles remain single records outside this supplement.",
+      "All placeholder source URLs have been replaced with official manufacturer manual landing pages.",
       "Exact manufacturer-specific mileages for spark plugs and driveline fluids remain pending verification against re-extracted manual tables."
     ]
   },
   "vehicles_completed": 83
 }
+
 
