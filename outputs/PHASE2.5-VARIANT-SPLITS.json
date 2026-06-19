@@ -5,7 +5,7 @@
   "status": "partial",
   "generated_date": "2026-06-18",
   "notes": [
-    "Variant-split supplement to Phase 2. Covers only the 36 vehicles flagged for split in Phase 3.",
+    "Variant-split supplement to Phase 2. Covers only the 33 vehicles flagged for split in Phase 3.",
     "Each record is a FULL vehicle record in the flat vehicles array, matching the Phase 2 schema.",
     "The original un-split ids are retired and should not appear in production data.",
     "Maintenance items are carried from the source where available; variant-exclusive items are added, variant-exclusive items are removed as appropriate."
@@ -7851,3 +7851,4 @@
   },
   "vehicles_completed": 83
 }
+
