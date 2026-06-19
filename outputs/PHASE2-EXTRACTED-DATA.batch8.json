@@ -1,0 +1,879 @@
+﻿{
+    "phase":  2,
+    "batch":  8,
+    "status":  "reconstructed",
+    "scope":  "Ford Escape, Hyundai Tucson, Mazda CX-5, Volkswagen Tiguan, Volkswagen Jetta, Ford Bronco Sport, Hyundai Elantra, Ford Explorer, Ford Fusion, Hyundai Kona/Kona Electric",
+    "validation_notes":  [
+                             "Restored from local batch survivors and Phase 3 production records.",
+                             "Family-level reconstruction was used where the original Phase 2 record did not survive locally.",
+                             "Do not treat split variants as new batch scope; they are source material for the original family record."
+                         ],
+    "vehicles":  [
+                     {
+                         "rank":  11,
+                         "id":  "ford_escape_2020",
+                         "year":  2020,
+                         "make":  "Ford",
+                         "model":  "Escape",
+                         "trim":  "Universal schedule; gasoline and hybrid applicability varies",
+                         "engine":  "1.5L turbo, 2.0L turbo, hybrid, or plug-in hybrid",
+                         "transmission":  "Automatic, hybrid eCVT, or plug-in hybrid eCVT",
+                         "driveType":  "FWD or AWD",
+                         "source":  "2020 Ford Escape Owner\u0027s Manual",
+                         "source_url":  "https://www.ford.com/support/owner-manuals-details/",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil and filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  10000,
+                                                                  "months":  12,
+                                                                  "logic":  "Intelligent Oil-Life Monitor; maximum normal-use interval"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Severe and extreme use shorten the interval."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation and multipoint inspection",
+                                                 "interval":  {
+                                                                  "miles":  10000,
+                                                                  "months":  12,
+                                                                  "logic":  "at each oil-change interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Follow the information-display oil interval."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  20000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Replace sooner under dust or reduced airflow."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Gasoline engines; hybrid applicability requires checking."
+                                             },
+                                             {
+                                                 "service":  "Spark plug replacement",
+                                                 "interval":  {
+                                                                  "miles":  100000,
+                                                                  "months":  null,
+                                                                  "logic":  "normal-use gasoline interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Turbo severe-use operation may require earlier service."
+                                             },
+                                             {
+                                                 "service":  "Automatic transmission fluid replacement",
+                                                 "interval":  {
+                                                                  "miles":  150000,
+                                                                  "months":  null,
+                                                                  "logic":  "normal-use interval for applicable conventional automatic"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Hybrid transaxle uses a different fluid/service definition."
+                                             },
+                                             {
+                                                 "service":  "Brake fluid replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  36,
+                                                                  "logic":  "time-based"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Replace every three years."
+                                             },
+                                             {
+                                                 "service":  "Engine coolant replacement",
+                                                 "interval":  {
+                                                                  "miles":  200000,
+                                                                  "months":  120,
+                                                                  "logic":  "initial replacement; every 100,000 miles or 60 months afterward"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Hybrid cooling circuits require separate validation."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "Split conventional gasoline, hybrid, and plug-in hybrid records.",
+                                                  "Verify transmission and cooling-system intervals for hybrid variants.",
+                                                  "Official Ford portal is dynamic; direct PDF path still needs preservation."
+                                              ],
+                         "confidence":  "medium"
+                     },
+                     {
+                         "rank":  15,
+                         "id":  "hyundai_tucson_2021",
+                         "year":  2021,
+                         "make":  "Hyundai",
+                         "model":  "Tucson",
+                         "trim":  "Universal schedule; engine applicability varies",
+                         "engine":  "2.0L or 2.4L gasoline",
+                         "transmission":  "Automatic",
+                         "driveType":  "FWD or AWD",
+                         "source":  "2021 Hyundai Tucson Owner\u0027s Manual",
+                         "source_url":  "https://owners.hyundaiusa.com/us/en/resources/manuals-warranties",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil and filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  7500,
+                                                                  "months":  12,
+                                                                  "logic":  "whichever comes first under normal use"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Reduce to approximately 3,750 miles or 6 months under severe use."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation",
+                                                 "interval":  {
+                                                                  "miles":  7500,
+                                                                  "months":  12,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Inspect pressure and wear at the same time."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  15000,
+                                                                  "months":  12,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Dust and pollution can shorten interval."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "fixed normal-use interval with intermediate inspection"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Replace earlier under dusty use."
+                                             },
+                                             {
+                                                 "service":  "Spark plug replacement",
+                                                 "interval":  {
+                                                                  "miles":  97500,
+                                                                  "months":  null,
+                                                                  "logic":  "normal-use gasoline interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Verify exact engine-specific schedule."
+                                             },
+                                             {
+                                                 "service":  "Automatic transmission fluid replacement",
+                                                 "interval":  {
+                                                                  "miles":  60000,
+                                                                  "months":  null,
+                                                                  "logic":  "severe-use interval; no normal-use replacement listed"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "AWD and towing use may trigger severe schedule."
+                                             },
+                                             {
+                                                 "service":  "Engine coolant replacement",
+                                                 "interval":  {
+                                                                  "miles":  120000,
+                                                                  "months":  120,
+                                                                  "logic":  "initial replacement; every 30,000 miles or 24 months afterward"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Verify first interval against exact engine table."
+                                             },
+                                             {
+                                                 "service":  "Brake fluid inspection",
+                                                 "interval":  {
+                                                                  "miles":  15000,
+                                                                  "months":  12,
+                                                                  "logic":  "recurring inspection"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Replace based on condition and manufacturer schedule."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "Verify 2.0L versus 2.4L spark-plug timing.",
+                                                  "Transmission-fluid replacement is severe-use only.",
+                                                  "Official portal is dynamic and exact PDF URL should be captured."
+                                              ],
+                         "confidence":  "medium"
+                     },
+                     {
+                         "rank":  26,
+                         "id":  "mazda_cx5_2021",
+                         "year":  2021,
+                         "make":  "Mazda",
+                         "model":  "CX-5",
+                         "trim":  "Universal schedule; naturally aspirated and turbo differ",
+                         "engine":  "2.5L gasoline or 2.5L turbo gasoline",
+                         "transmission":  "6-speed automatic",
+                         "driveType":  "FWD or AWD",
+                         "source":  "2021 Mazda CX-5 Owner\u0027s Manual - Scheduled Maintenance",
+                         "source_url":  "https://www.mazdausa.com/static/manuals/2021/cx-5/",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil and filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  7500,
+                                                                  "months":  12,
+                                                                  "logic":  "flexible monitor or maximum interval, whichever comes first"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Severe use generally requires 5,000 miles or 6 months."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation",
+                                                 "interval":  {
+                                                                  "miles":  7500,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed mileage interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Inspect tires and inflation."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  24,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Dust can shorten interval."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  37500,
+                                                                  "months":  36,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Inspect earlier under dust."
+                                             },
+                                             {
+                                                 "service":  "Spark plug replacement",
+                                                 "interval":  {
+                                                                  "miles":  75000,
+                                                                  "months":  null,
+                                                                  "logic":  "naturally aspirated engine interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Turbo engine interval is approximately 40,000 miles; split before production."
+                                             },
+                                             {
+                                                 "service":  "Engine coolant replacement",
+                                                 "interval":  {
+                                                                  "miles":  120000,
+                                                                  "months":  120,
+                                                                  "logic":  "initial replacement; every 60,000 miles or 60 months afterward"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Use FL-22 coolant or specified equivalent."
+                                             },
+                                             {
+                                                 "service":  "Automatic transmission fluid service",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  null,
+                                                                  "logic":  "no fixed normal-use replacement in scheduled maintenance table"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Inspect for leakage; do not invent a flush interval."
+                                             },
+                                             {
+                                                 "service":  "Drive belts, brakes, steering, suspension, fuel lines, and hoses inspection",
+                                                 "interval":  {
+                                                                  "miles":  15000,
+                                                                  "months":  12,
+                                                                  "logic":  "recurring inspection"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Exact inspection rows vary by market and schedule selection."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "Split naturally aspirated and turbo records due to spark-plug interval.",
+                                                  "Confirm engine-air and cabin-filter timing from exact US table.",
+                                                  "Do not assign a fixed automatic-transmission fluid replacement interval."
+                                              ],
+                         "confidence":  "medium"
+                     },
+                     {
+                         "id":  "volkswagen_tiguan_2021",
+                         "year":  2021,
+                         "make":  "Volkswagen",
+                         "model":  "Tiguan",
+                         "trim":  "2.0T family schedule; FWD and AWD variants differ",
+                         "engine":  "2.0L turbo gasoline",
+                         "transmission":  "8-speed automatic",
+                         "driveType":  "FWD or AWD",
+                         "source":  "2021 Volkswagen Tiguan Owner Manual / maintenance schedule",
+                         "source_url":  "https://owners.vw.com/en/home/manuals-and-guides.html",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil and filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  10000,
+                                                                  "months":  12,
+                                                                  "logic":  "normal-use interval"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Use the correct VW-approved oil specification."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation and inspection",
+                                                 "interval":  {
+                                                                  "miles":  10000,
+                                                                  "months":  12,
+                                                                  "logic":  "with each oil-change interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Rotate with every service interval."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  20000,
+                                                                  "months":  24,
+                                                                  "logic":  "typical service interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Shorten interval under dust or high pollen."
+                                             },
+                                             {
+                                                 "service":  "Brake fluid replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  24,
+                                                                  "logic":  "time-based"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Confirm exact 2-year interval against the manual."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "Restored from local research notes only.",
+                                                  "Exact Tiguan maintenance chart should be verified against the model-year manual before promoting beyond archive status."
+                                              ],
+                         "confidence":  "low"
+                     },
+                     {
+                         "rank":  86,
+                         "id":  "volkswagen_jetta_2021",
+                         "year":  2021,
+                         "make":  "Volkswagen",
+                         "model":  "Jetta",
+                         "trim":  "Gasoline family schedule; trim and gearbox variants differ",
+                         "engine":  "1.4L turbo gasoline",
+                         "transmission":  "Automatic",
+                         "driveType":  "FWD",
+                         "source":  "2021 Volkswagen Jetta Owner\u0027s Manual",
+                         "source_url":  "https://owners.vw.com/en/home/manuals-and-guides.html",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil and filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  10000,
+                                                                  "months":  12,
+                                                                  "logic":  "normal-use maximum interval"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Verify exact interval against the US maintenance table for the selected engine and transmission."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation and wear inspection",
+                                                 "interval":  {
+                                                                  "miles":  10000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed mileage interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Inspect pressure and tread at the same visit."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  20000,
+                                                                  "months":  24,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Dust and pollution may shorten the interval."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Replace earlier under dusty conditions."
+                                             },
+                                             {
+                                                 "service":  "Spark plug replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  null,
+                                                                  "logic":  "engine-specific interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Exact mileage varies by trim; confirm from the manual table."
+                                             },
+                                             {
+                                                 "service":  "Brake fluid change",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  24,
+                                                                  "logic":  "time-based conditional"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Use the exact maintenance table to confirm the first replacement point."
+                                             }
+                                         ],
+                         "applicability":  {
+                                               "drive_type":  "FWD",
+                                               "transmission":  "manual_or_automatic",
+                                               "engine":  "1.4L turbo gasoline"
+                                           },
+                         "validation_flags":  [
+                                                  "Restored from the retired-id gap as a single replacement record.",
+                                                  "GLI/manual trim splits remain pending if later production rules require them.",
+                                                  "Family-level reconstruction from the gasoline variant; exact trim/package split should be preserved in the next pass.",
+                                                  "Family-level reconstruction from volkswagen_jetta_2021_gas.",
+                                                  "Restored from local batch/production data."
+                                              ],
+                         "production_ready":  false,
+                         "source_confidence":  "needs_table_verification"
+                     },
+                     {
+                         "id":  "ford_bronco_sport_2021",
+                         "year":  2021,
+                         "make":  "Ford",
+                         "model":  "Bronco Sport",
+                         "trim":  "Universal schedule; drivetrain and package variants differ",
+                         "engine":  "1.5L turbo or 2.0L turbo gasoline",
+                         "transmission":  "8-speed automatic",
+                         "driveType":  "FWD or 4WD",
+                         "source":  "2021 Ford Bronco Sport Owner Manual",
+                         "source_url":  "https://www.ford.com/support/owner-manuals-details/",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil and filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  10000,
+                                                                  "months":  12,
+                                                                  "logic":  "Intelligent Oil-Life Monitor; maximum normal-use interval"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Follow the oil-life display; severe use shortens the interval."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation and multipoint inspection",
+                                                 "interval":  {
+                                                                  "miles":  10000,
+                                                                  "months":  12,
+                                                                  "logic":  "at each oil-change interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Rotate with every oil-change interval."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  20000,
+                                                                  "months":  24,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Replace sooner under dust or reduced airflow."
+                                             },
+                                             {
+                                                 "service":  "Brake fluid replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  36,
+                                                                  "logic":  "time-based"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Replace every three years."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "Restored from local research notes only.",
+                                                  "Use the Bronco Sport owner manual for exact engine/package intervals if promoted beyond archive status."
+                                              ],
+                         "confidence":  "low"
+                     },
+                     {
+                         "rank":  87,
+                         "id":  "hyundai_elantra_2021",
+                         "year":  2021,
+                         "make":  "Hyundai",
+                         "model":  "Elantra",
+                         "trim":  "Gasoline family schedule; hybrid and sport variants differ",
+                         "engine":  "2.0L gasoline or 1.6L turbo gasoline",
+                         "transmission":  "CVT or automatic",
+                         "driveType":  "FWD",
+                         "source":  "2021 Hyundai Elantra Owner\u0027s Manual",
+                         "source_url":  "https://owners.hyundaiusa.com/us/en/resources/manuals-warranties",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil and filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  7500,
+                                                                  "months":  12,
+                                                                  "logic":  "normal-use maximum interval"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Verify exact interval against the US maintenance table for the selected Elantra powertrain."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation and wear inspection",
+                                                 "interval":  {
+                                                                  "miles":  7500,
+                                                                  "months":  12,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Inspect pressure and wear at the same visit."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  15000,
+                                                                  "months":  12,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Dust and pollution may shorten the interval."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Replace earlier under dusty conditions."
+                                             },
+                                             {
+                                                 "service":  "Spark plug replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  null,
+                                                                  "logic":  "engine-specific interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Exact mileage varies by engine; confirm from the manual table."
+                                             },
+                                             {
+                                                 "service":  "Brake fluid change",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  24,
+                                                                  "logic":  "time-based conditional"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Use the exact maintenance table to confirm the first replacement point."
+                                             }
+                                         ],
+                         "applicability":  {
+                                               "drive_type":  "FWD",
+                                               "transmission":  "IVT_or_automatic",
+                                               "engine":  "2.0L gasoline"
+                                           },
+                         "validation_flags":  [
+                                                  "Restored from the retired-id gap as a single replacement record.",
+                                                  "Hybrid and performance trim splits remain pending if later production rules require them.",
+                                                  "Family-level reconstruction from the gasoline variant; exact trim/package split should be preserved in the next pass.",
+                                                  "Family-level reconstruction from hyundai_elantra_2021_gas.",
+                                                  "Restored from local batch/production data."
+                                              ],
+                         "production_ready":  false,
+                         "source_confidence":  "needs_table_verification"
+                     },
+                     {
+                         "rank":  88,
+                         "id":  "ford_explorer_2020",
+                         "year":  2020,
+                         "make":  "Ford",
+                         "model":  "Explorer",
+                         "trim":  "Gasoline family schedule; AWD and engine variants differ",
+                         "engine":  "2.3L turbo or 3.0L V6 gasoline",
+                         "transmission":  "Automatic",
+                         "driveType":  "RWD or AWD",
+                         "source":  "2020 Ford Explorer Owner\u0027s Manual",
+                         "source_url":  "https://www.ford.com/support/owner-manuals-details/",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil and filter change",
+                                                 "interval":  {
+                                                                  "miles":  10000,
+                                                                  "months":  12,
+                                                                  "logic":  "oil-life monitor or annual maximum"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Verify exact interval against the Ford maintenance table for the selected powertrain."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation and inspection",
+                                                 "interval":  {
+                                                                  "miles":  7500,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed mileage interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Inspect pressure, wear, and tread depth at the same visit."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  20000,
+                                                                  "months":  24,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Replace earlier in dusty or high-pollen conditions."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Inspect more often in dusty conditions."
+                                             },
+                                             {
+                                                 "service":  "Spark plug replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  null,
+                                                                  "logic":  "engine-specific interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Engine lineup varies; confirm exact mileage from the manual table."
+                                             },
+                                             {
+                                                 "service":  "Brake fluid change",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  24,
+                                                                  "logic":  "time-based conditional"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Use the exact maintenance table to confirm the first replacement point."
+                                             }
+                                         ],
+                         "applicability":  {
+                                               "drive_type":  "RWD_OR_4WD",
+                                               "transmission":  "automatic",
+                                               "engine":  "Gasoline lineup (powertrain split pending)"
+                                           },
+                         "validation_flags":  [
+                                                  "Restored from the retired-id gap as a single replacement record.",
+                                                  "Hybrid/ST engine-table split remains pending if later production rules require it.",
+                                                  "Family-level reconstruction from the gasoline variant; exact drivetrain split should be preserved in the next pass.",
+                                                  "Family-level reconstruction from ford_explorer_2020_gas.",
+                                                  "Restored from local batch/production data."
+                                              ],
+                         "production_ready":  false,
+                         "source_confidence":  "needs_table_verification"
+                     },
+                     {
+                         "rank":  89,
+                         "id":  "ford_fusion_2020",
+                         "year":  2020,
+                         "make":  "Ford",
+                         "model":  "Fusion",
+                         "trim":  "Gasoline family schedule; hybrid and AWD variants differ",
+                         "engine":  "2.5L or turbo gasoline",
+                         "transmission":  "Automatic",
+                         "driveType":  "FWD or AWD",
+                         "source":  "2020 Ford Fusion Owner\u0027s Manual",
+                         "source_url":  "https://www.ford.com/support/owner-manuals-details/",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil and filter change",
+                                                 "interval":  {
+                                                                  "miles":  10000,
+                                                                  "months":  12,
+                                                                  "logic":  "oil-life monitor or annual maximum"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Verify exact interval against the Ford maintenance table for the selected powertrain."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation and inspection",
+                                                 "interval":  {
+                                                                  "miles":  7500,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed mileage interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Inspect pressure, wear, and tread depth at the same visit."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  20000,
+                                                                  "months":  24,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Replace earlier in dusty or high-pollen conditions."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Inspect more often in dusty conditions."
+                                             },
+                                             {
+                                                 "service":  "Spark plug replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  null,
+                                                                  "logic":  "engine-specific interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Gasoline, hybrid, and Energi timing can differ; confirm exact mileage from the manual table."
+                                             },
+                                             {
+                                                 "service":  "Brake fluid change",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  24,
+                                                                  "logic":  "time-based conditional"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Use the exact maintenance table to confirm the first replacement point."
+                                             }
+                                         ],
+                         "applicability":  {
+                                               "drive_type":  "FWD_OR_AWD",
+                                               "transmission":  "automatic_or_eCVT",
+                                               "engine":  "Gasoline lineup (powertrain split pending)"
+                                           },
+                         "validation_flags":  [
+                                                  "Restored from the retired-id gap as a single replacement record.",
+                                                  "Hybrid and Energi engine-table split remains pending if later production rules require it.",
+                                                  "Family-level reconstruction from the gasoline variant; exact drivetrain split should be preserved in the next pass.",
+                                                  "Family-level reconstruction from ford_fusion_2020_gas.",
+                                                  "Restored from local batch/production data."
+                                              ],
+                         "production_ready":  false,
+                         "source_confidence":  "needs_table_verification"
+                     },
+                     {
+                         "rank":  75,
+                         "id":  "hyundai_kona_2021",
+                         "year":  2021,
+                         "make":  "Hyundai",
+                         "model":  "Kona",
+                         "trim":  "Gas, turbo, and electric family schedule",
+                         "engine":  "2.0L gas, 1.6L turbo gas, or electric",
+                         "transmission":  "CVT, DCT, or single-speed reduction gear",
+                         "driveType":  "FWD or AWD",
+                         "source":  "2021 Hyundai Kona Owner\u0027s Manual",
+                         "source_url":  "https://owners.hyundaiusa.com/us/en/resources/manuals-warranties",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil and filter change",
+                                                 "interval":  {
+                                                                  "miles":  5000,
+                                                                  "months":  null,
+                                                                  "logic":  "normal-use oil-life monitor guidance"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Do not exceed manufacturer maximum interval. Confirm exact miles/months from official manual."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation, wear inspection, and tread depth measurement",
+                                                 "interval":  {
+                                                                  "miles":  5000,
+                                                                  "months":  null,
+                                                                  "logic":  "perform at each oil change interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Inspect pressure, wear, and tread depth."
+                                             },
+                                             {
+                                                 "service":  "Brake system inspection",
+                                                 "interval":  {
+                                                                  "miles":  5000,
+                                                                  "months":  null,
+                                                                  "logic":  "perform at each oil change interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Inspect pads, shoes, rotors, drums, linings, hoses, parking brake, and fluid level."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Replace more frequently in dusty conditions."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Inspect or replace per severe-use conditions as outlined in the maintenance specifications."
+                                             },
+                                             {
+                                                 "service":  "Brake fluid change",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  24,
+                                                                  "logic":  "time-based severe-use conditional"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Conditional severe-use item; normal intervals are mileage based. Confirm from official manual."
+                                             }
+                                         ],
+                         "applicability":  {
+                                               "drive_type":  "FWD_ONLY",
+                                               "transmission":  "automatic",
+                                               "engine":  "2.0l automatic",
+                                               "powertrain":  "gasoline"
+                                           },
+                         "validation_flags":  [
+                                                  "Split from hyundai_kona_2021 (gas_20).",
+                                                  "Family-level reconstruction from the 2.0L gasoline variant; electric and turbo variants are separate in Phase 3.",
+                                                  "Family-level reconstruction from hyundai_kona_2021_gas_20.",
+                                                  "Restored from local batch/production data."
+                                              ],
+                         "production_ready":  false,
+                         "source_confidence":  "needs_table_verification"
+                     }
+                 ]
+}

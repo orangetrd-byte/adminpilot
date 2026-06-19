@@ -1,0 +1,544 @@
+﻿{
+    "phase":  2,
+    "batch":  7,
+    "status":  "reconstructed",
+    "scope":  "Subaru Outback, Crosstrek, Forester, Ascent, Tesla Model 3, Toyota Sienna",
+    "validation_notes":  [
+                             "Restored from local batch survivors and Phase 3 production records.",
+                             "Family-level reconstruction was used where the original Phase 2 record did not survive locally.",
+                             "Do not treat split variants as new batch scope; they are source material for the original family record."
+                         ],
+    "vehicles":  [
+                     {
+                         "rank":  17,
+                         "id":  "subaru_outback_2020",
+                         "year":  2020,
+                         "make":  "Subaru",
+                         "model":  "Outback",
+                         "trim":  "Universal US schedule; turbo applicability varies",
+                         "engine":  "2.5L or 2.4L turbo boxer",
+                         "transmission":  "CVT",
+                         "driveType":  "AWD",
+                         "source":  "2020 Subaru Warranty and Maintenance Booklet / Vehicle Resources",
+                         "source_url":  "https://www.subaru.com/owners/vehicle-resources.html",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil and filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  6000,
+                                                                  "months":  6,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Short trips, dust, towing, and extreme conditions can shorten interval."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation and inspection",
+                                                 "interval":  {
+                                                                  "miles":  6000,
+                                                                  "months":  6,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "AWD tire circumference matching is important."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  12000,
+                                                                  "months":  12,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Earlier replacement under dust."
+                                             },
+                                             {
+                                                 "service":  "Brake fluid replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  30,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Inspect braking system at intermediate services."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  30,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Inspect earlier under dusty conditions."
+                                             },
+                                             {
+                                                 "service":  "CVT, differential, wheel-bearing, steering, suspension, and fuel-system inspection",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  30,
+                                                                  "logic":  "recurring inspection"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "CVT fluid replacement is condition/severe-use based."
+                                             },
+                                             {
+                                                 "service":  "Spark plug replacement",
+                                                 "interval":  {
+                                                                  "miles":  60000,
+                                                                  "months":  60,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Engine-specific plug type applies."
+                                             },
+                                             {
+                                                 "service":  "Engine coolant replacement",
+                                                 "interval":  {
+                                                                  "miles":  137500,
+                                                                  "months":  132,
+                                                                  "logic":  "initial interval; every 75,000 miles or 60 months afterward"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Use Subaru Super Coolant."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "Confirm turbo versus non-turbo supplementary items.",
+                                                  "Do not invent a normal fixed CVT-fluid replacement interval.",
+                                                  "Official booklet deep link still needs capture."
+                                              ],
+                         "confidence":  "medium"
+                     },
+                     {
+                         "rank":  18,
+                         "id":  "subaru_crosstrek_2020",
+                         "year":  2020,
+                         "make":  "Subaru",
+                         "model":  "Crosstrek",
+                         "trim":  "Universal US schedule; gasoline and hybrid differ",
+                         "engine":  "2.0L boxer or plug-in hybrid",
+                         "transmission":  "CVT",
+                         "driveType":  "AWD",
+                         "source":  "2020 Subaru Warranty and Maintenance Booklet / Vehicle Resources",
+                         "source_url":  "https://www.subaru.com/owners/vehicle-resources.html",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil and filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  6000,
+                                                                  "months":  6,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Severe conditions can shorten interval."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation and inspection",
+                                                 "interval":  {
+                                                                  "miles":  6000,
+                                                                  "months":  6,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Maintain matched AWD tire circumference."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  12000,
+                                                                  "months":  12,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Earlier under dust."
+                                             },
+                                             {
+                                                 "service":  "Brake fluid replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  30,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Hybrid braking requires variant review."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  30,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Inspect earlier under dust."
+                                             },
+                                             {
+                                                 "service":  "CVT and differential-fluid inspection",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  30,
+                                                                  "logic":  "recurring inspection"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Replacement remains severe-use/condition based."
+                                             },
+                                             {
+                                                 "service":  "Spark plug replacement",
+                                                 "interval":  {
+                                                                  "miles":  60000,
+                                                                  "months":  60,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Gasoline engine."
+                                             },
+                                             {
+                                                 "service":  "Engine coolant replacement",
+                                                 "interval":  {
+                                                                  "miles":  137500,
+                                                                  "months":  132,
+                                                                  "logic":  "initial interval; every 75,000 miles or 60 months afterward"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Hybrid coolant circuits require separate record."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "Split gasoline and plug-in hybrid records.",
+                                                  "Do not assign a fixed normal CVT-fluid interval.",
+                                                  "Official booklet deep link still needs capture."
+                                              ],
+                         "confidence":  "medium"
+                     },
+                     {
+                         "rank":  19,
+                         "id":  "subaru_forester_2020",
+                         "year":  2020,
+                         "make":  "Subaru",
+                         "model":  "Forester",
+                         "trim":  "Universal US schedule",
+                         "engine":  "2.5L boxer",
+                         "transmission":  "CVT",
+                         "driveType":  "AWD",
+                         "source":  "2020 Subaru Warranty and Maintenance Booklet / Vehicle Resources",
+                         "source_url":  "https://www.subaru.com/owners/vehicle-resources.html",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil and filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  6000,
+                                                                  "months":  6,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Severe conditions can shorten interval."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation and inspection",
+                                                 "interval":  {
+                                                                  "miles":  6000,
+                                                                  "months":  6,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Maintain matched AWD tire circumference."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  12000,
+                                                                  "months":  12,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Earlier under dust."
+                                             },
+                                             {
+                                                 "service":  "Brake fluid replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  30,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Inspect brakes at intermediate services."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  30,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Inspect earlier under dust."
+                                             },
+                                             {
+                                                 "service":  "CVT and differential-fluid inspection",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  30,
+                                                                  "logic":  "recurring inspection"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Replacement is severe-use/condition based."
+                                             },
+                                             {
+                                                 "service":  "Spark plug replacement",
+                                                 "interval":  {
+                                                                  "miles":  60000,
+                                                                  "months":  60,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Use specified plugs."
+                                             },
+                                             {
+                                                 "service":  "Engine coolant replacement",
+                                                 "interval":  {
+                                                                  "miles":  137500,
+                                                                  "months":  132,
+                                                                  "logic":  "initial interval; every 75,000 miles or 60 months afterward"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Use Subaru Super Coolant."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "Do not assign a fixed normal CVT-fluid replacement interval.",
+                                                  "Confirm brake-fluid month value against the exact booklet.",
+                                                  "Official booklet deep link still needs capture."
+                                              ],
+                         "confidence":  "medium"
+                     },
+                     {
+                         "id":  "subaru_ascent_2021",
+                         "year":  2021,
+                         "make":  "Subaru",
+                         "model":  "Ascent",
+                         "trim":  "AWD family schedule; turbo and severe-use details require manual confirmation",
+                         "engine":  "2.4L turbo gasoline",
+                         "transmission":  "CVT",
+                         "driveType":  "AWD",
+                         "source":  "2021 Subaru Ascent Owner\u0027s Manual / maintenance schedule",
+                         "source_url":  "https://www.subaru.com/owners/vehicle-resources.html",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil and filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  6000,
+                                                                  "months":  6,
+                                                                  "logic":  "normal-use interval"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Use the owner manual schedule and adjust for severe use."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation and inspection",
+                                                 "interval":  {
+                                                                  "miles":  6000,
+                                                                  "months":  6,
+                                                                  "logic":  "normal-use interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Rotate with each oil-change interval."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  12000,
+                                                                  "months":  12,
+                                                                  "logic":  "normal-use interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Replace sooner in dusty environments."
+                                             },
+                                             {
+                                                 "service":  "Brake fluid replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  24,
+                                                                  "logic":  "time-based"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Verify exact timing against the Ascent maintenance chart."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "Restored from local research notes only.",
+                                                  "Use the official Subaru maintenance chart for exact intervals if promoted beyond archive status."
+                                              ],
+                         "confidence":  "low"
+                     },
+                     {
+                         "id":  "tesla_model_3_2021",
+                         "year":  2021,
+                         "make":  "Tesla",
+                         "model":  "Model 3",
+                         "trim":  "EV maintenance schedule; tire, brake, and cabin-filter items only",
+                         "engine":  "Electric",
+                         "transmission":  "Single-speed reduction gear",
+                         "driveType":  "RWD or AWD",
+                         "source":  "2021 Tesla Model 3 Owner Manual",
+                         "source_url":  "https://www.tesla.com/ownersmanual/index-model-3-2017.html",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Tire rotation",
+                                                 "interval":  {
+                                                                  "miles":  6250,
+                                                                  "months":  6,
+                                                                  "logic":  "recommended interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Rotate sooner if wear patterns develop."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  24,
+                                                                  "logic":  "time-based"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Replace more often in dusty or high-pollen environments."
+                                             },
+                                             {
+                                                 "service":  "Brake fluid test/replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  48,
+                                                                  "logic":  "time-based"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Confirm interval with the exact model-year manual."
+                                             },
+                                             {
+                                                 "service":  "Air-conditioning desiccant bag replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  48,
+                                                                  "logic":  "time-based"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Service interval can vary by climate and usage."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "Restored from local research notes only.",
+                                                  "Tesla maintenance is sparse; avoid adding routine engine-oil items."
+                                              ],
+                         "confidence":  "low"
+                     },
+                     {
+                         "rank":  44,
+                         "id":  "toyota_sienna_2021",
+                         "year":  2021,
+                         "make":  "Toyota",
+                         "model":  "Sienna",
+                         "trim":  "Hybrid-only generation; one production schedule",
+                         "engine":  "2.5L hybrid",
+                         "transmission":  "eCVT",
+                         "driveType":  "FWD or AWD",
+                         "source":  "2021 Toyota Sienna Owner\u0027s Manual",
+                         "source_url":  "https://www.toyota.com/owners/warranty-owners-manuals/vehicle/sienna/2021/",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil and filter change",
+                                                 "interval":  {
+                                                                  "miles":  7500,
+                                                                  "months":  null,
+                                                                  "logic":  "normal-use oil-life monitor guidance"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Do not exceed 10,000 miles or 12 months."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation, wear inspection, and tread depth measurement",
+                                                 "interval":  {
+                                                                  "miles":  7500,
+                                                                  "months":  null,
+                                                                  "logic":  "perform at each oil change interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Rotate tires at each oil change interval indicated by the multi-information display."
+                                             },
+                                             {
+                                                 "service":  "Brake system inspection",
+                                                 "interval":  {
+                                                                  "miles":  7500,
+                                                                  "months":  null,
+                                                                  "logic":  "perform at each oil change interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Inspect pads, shoes, rotors, drums, linings, hoses, parking brake, and fluid level."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Replace more frequently in dusty conditions."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Inspect or replace per severe-use conditions as outlined in the maintenance specifications."
+                                             },
+                                             {
+                                                 "service":  "Spark plug replacement",
+                                                 "interval":  {
+                                                                  "miles":  120000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Hybrid engine plug interval; confirm exact mileage from manual."
+                                             },
+                                             {
+                                                 "service":  "Hybrid battery cooling/inverter coolant",
+                                                 "interval":  {
+                                                                  "miles":  60000,
+                                                                  "months":  null,
+                                                                  "logic":  "hybrid-specific fixed interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Keep engine and inverter coolant as separate services. Confirm exact interval from manual."
+                                             },
+                                             {
+                                                 "service":  "Brake fluid change",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  24,
+                                                                  "logic":  "time-based severe-use conditional"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Conditional severe-use item; normal intervals are mileage based."
+                                             }
+                                         ],
+                         "applicability":  {
+                                               "drive_type":  "FWD_OR_AWD",
+                                               "transmission":  "automatic",
+                                               "engine":  "2.5L hybrid",
+                                               "powertrain":  "hybrid"
+                                           },
+                         "validation_flags":  [
+                                                  "Split from toyota_sienna_2021. 2021 Sienna is hybrid-only generation; this is the only production record needed.",
+                                                  "Keep engine and inverter coolant as separate services.",
+                                                  "2021 Sienna is hybrid-only generation; the hybrid record is the only production schedule needed.",
+                                                  "Family-level reconstruction from toyota_sienna_2021_hybrid.",
+                                                  "Restored from local batch/production data."
+                                              ],
+                         "production_ready":  false,
+                         "source_confidence":  "needs_table_verification"
+                     }
+                 ]
+}
