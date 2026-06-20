@@ -11,6 +11,7 @@ function cloneDefaultState() {
     assets: [],
     lastDecodedVehicle: null,
     recalls: [],
+    recallLookupVin: "",
     lastLookup: "",
   };
 }
@@ -27,6 +28,8 @@ function createSampleAssets() {
       status: "due-soon",
       highConsequence: true,
       vin: "1FTFW1E5XJFA00000",
+      mileage: 68320,
+      mileageDate: todayKey(),
       due: "Oil change due in 320 miles",
       reminderDate: isoDateOffset(3),
       repeatEveryDays: 90,
@@ -62,6 +65,8 @@ const els = {
   assetStatus: document.getElementById("asset-status"),
   assetHighConsequence: document.getElementById("asset-high-consequence"),
   assetVin: document.getElementById("asset-vin"),
+  assetMileage: document.getElementById("asset-mileage"),
+  assetMileageDate: document.getElementById("asset-mileage-date"),
   assetDue: document.getElementById("asset-due"),
   assetReminder: document.getElementById("asset-reminder"),
   assetRepeat: document.getElementById("asset-repeat"),
@@ -99,6 +104,8 @@ const els = {
   editAssetStatus: document.getElementById("edit-asset-status"),
   editAssetHighConsequence: document.getElementById("edit-asset-high-consequence"),
   editAssetVin: document.getElementById("edit-asset-vin"),
+  editAssetMileage: document.getElementById("edit-asset-mileage"),
+  editAssetMileageDate: document.getElementById("edit-asset-mileage-date"),
   editAssetDue: document.getElementById("edit-asset-due"),
   editAssetReminder: document.getElementById("edit-asset-reminder"),
   editAssetRepeat: document.getElementById("edit-asset-repeat"),
@@ -116,6 +123,7 @@ function loadState() {
       ...parsed,
       assets: Array.isArray(parsed?.assets) ? parsed.assets : [],
       recalls: Array.isArray(parsed?.recalls) ? parsed.recalls : [],
+      recallLookupVin: typeof parsed?.recallLookupVin === "string" ? parsed.recallLookupVin : "",
     };
   } catch {
     return cloneDefaultState();
@@ -136,6 +144,17 @@ function prettyValue(value) {
   return value && String(value).trim() ? String(value).trim() : "Unknown";
 }
 
+function parseMileage(value) {
+  if (value === "" || value === null || value === undefined) return null;
+  const mileage = Number(value);
+  return Number.isFinite(mileage) && mileage >= 0 ? Math.round(mileage) : null;
+}
+
+function formatMileage(value) {
+  const mileage = parseMileage(value);
+  return mileage === null ? "Mileage not entered" : `${mileage.toLocaleString()} miles`;
+}
+
 function escapeHtml(value) {
   return String(value)
     .replace(/&/g, "&amp;")
@@ -148,6 +167,11 @@ function escapeHtml(value) {
 function setStatus(text, tone = "") {
   els.vinStatus.textContent = text;
   els.vinStatus.dataset.tone = tone;
+}
+
+function clearRecallResults() {
+  state.recalls = [];
+  state.recallLookupVin = "";
 }
 
 function todayKey() {
@@ -481,6 +505,14 @@ function renderAssets() {
             <span>${escapeHtml(asset.due || "No status")}</span>
             <span>${escapeHtml(asset.vin || "No VIN")}</span>
           </div>
+          ${
+            asset.type === "Vehicle"
+              ? `<div class="asset-meta">
+                  <span>Odometer: ${escapeHtml(formatMileage(asset.mileage))}</span>
+                  <span>Recorded: ${escapeHtml(formatDateLabel(asset.mileageDate))}</span>
+                </div>`
+              : ""
+          }
           <div class="asset-meta">
             <span>Reminder: ${escapeHtml(formatDateLabel(asset.reminderDate))}</span>
             <span>Repeat: ${escapeHtml(String(asset.repeatEveryDays || 0))} days</span>
@@ -515,6 +547,8 @@ function openAssetDialog(id) {
   els.editAssetStatus.value = asset.status || "on-track";
   els.editAssetHighConsequence.checked = Boolean(asset.highConsequence);
   els.editAssetVin.value = asset.vin || "";
+  els.editAssetMileage.value = parseMileage(asset.mileage) ?? "";
+  els.editAssetMileageDate.value = asset.mileageDate || "";
   els.editAssetDue.value = asset.due || "";
   els.editAssetReminder.value = asset.reminderDate || "";
   els.editAssetRepeat.value = asset.repeatEveryDays || "";
@@ -542,6 +576,8 @@ function saveEditedAsset(event) {
     status: els.editAssetStatus.value,
     highConsequence: els.editAssetHighConsequence.checked,
     vin: normalizeVin(els.editAssetVin.value),
+    mileage: parseMileage(els.editAssetMileage.value),
+    mileageDate: els.editAssetMileageDate.value || "",
     due: els.editAssetDue.value.trim(),
     reminderDate: els.editAssetReminder.value || "",
     repeatEveryDays: Number(els.editAssetRepeat.value) || 0,
@@ -569,8 +605,17 @@ function deleteAsset(id) {
 async function decodeVin(vinInput) {
   const vin = normalizeVin(vinInput);
   if (vin.length !== 17) {
+    clearRecallResults();
+    saveState(state);
+    render();
     setStatus("Enter a 17-character VIN", "error");
     return null;
+  }
+
+  if (state.recallLookupVin !== vin || state.lastDecodedVehicle?.vin !== vin) {
+    clearRecallResults();
+    saveState(state);
+    render();
   }
 
   setStatus("Decoding VIN...", "loading");
@@ -605,10 +650,17 @@ async function decodeVin(vinInput) {
 
 async function loadRecallsForVehicle(vehicle) {
   if (!vehicle?.make || !vehicle?.model || !vehicle?.year) {
+    clearRecallResults();
+    saveState(state);
+    render();
     setStatus("Decode VIN first", "error");
     return;
   }
 
+  const lookupVin = normalizeVin(vehicle.vin || "");
+  clearRecallResults();
+  saveState(state);
+  render();
   setStatus("Loading recalls...", "loading");
   const url = new URL("https://api.nhtsa.gov/recalls/recallsByVehicle");
   url.searchParams.set("make", vehicle.make);
@@ -629,10 +681,18 @@ async function loadRecallsForVehicle(vehicle) {
     throw new Error(`Recall lookup failed (${response.status})`);
   }
 
+  if (
+    normalizeVin(els.vinInput.value) !== lookupVin ||
+    normalizeVin(state.lastDecodedVehicle?.vin || "") !== lookupVin
+  ) {
+    return;
+  }
+
   state.recalls = results.map((item) => ({
     component: item.Component || item.component || "Unknown component",
     summary: item.Summary || item.summary || item.Notes || "No summary available.",
   }));
+  state.recallLookupVin = lookupVin;
   saveState(state);
   render();
   setStatus(state.recalls.length ? "Recalls loaded" : "No recalls found", state.recalls.length ? "warning" : "success");
@@ -645,6 +705,8 @@ async function addAssetFromForm(event) {
   const status = els.assetStatus.value;
   const highConsequence = els.assetHighConsequence.checked;
   const vin = normalizeVin(els.assetVin.value);
+  const mileage = parseMileage(els.assetMileage.value);
+  const mileageDate = els.assetMileageDate.value || (mileage === null ? "" : todayKey());
   const due = els.assetDue.value.trim();
   const reminderDate = els.assetReminder.value || "";
   const repeatEveryDays = Number(els.assetRepeat.value) || 0;
@@ -674,6 +736,8 @@ async function addAssetFromForm(event) {
     status,
     highConsequence,
     vin,
+    mileage,
+    mileageDate,
     due,
     reminderDate,
     repeatEveryDays,
@@ -738,6 +802,7 @@ async function importData(file) {
     ...parsed,
     assets: Array.isArray(parsed?.assets) ? parsed.assets : [],
     recalls: Array.isArray(parsed?.recalls) ? parsed.recalls : [],
+    recallLookupVin: typeof parsed?.recallLookupVin === "string" ? parsed.recallLookupVin : "",
   };
   saveState(state);
   render();
@@ -792,10 +857,18 @@ els.decodeVin.addEventListener("click", async () => {
 
 els.loadRecalls.addEventListener("click", async () => {
   try {
-    const vehicle = state.lastDecodedVehicle || (await decodeVin(els.vinInput.value));
+    const inputVin = normalizeVin(els.vinInput.value);
+    const decodedVin = normalizeVin(state.lastDecodedVehicle?.vin || "");
+    const vehicle =
+      inputVin && inputVin === decodedVin
+        ? state.lastDecodedVehicle
+        : await decodeVin(inputVin);
     await loadRecallsForVehicle(vehicle);
   } catch (error) {
     console.error(error);
+    clearRecallResults();
+    saveState(state);
+    render();
     setStatus("Recall lookup failed", "error");
   }
 });
@@ -819,6 +892,27 @@ els.vinInput.addEventListener("input", () => {
   const normalized = normalizeVin(els.vinInput.value);
   if (normalized !== els.vinInput.value) {
     els.vinInput.value = normalized;
+  }
+  if (
+    state.recalls.length &&
+    normalized !== normalizeVin(state.recallLookupVin || state.lastDecodedVehicle?.vin || "")
+  ) {
+    clearRecallResults();
+    saveState(state);
+    render();
+    setStatus(normalized ? "VIN changed — decode to load recalls" : "Idle");
+  }
+});
+
+els.assetMileage.addEventListener("input", () => {
+  if (parseMileage(els.assetMileage.value) !== null && !els.assetMileageDate.value) {
+    els.assetMileageDate.value = todayKey();
+  }
+});
+
+els.editAssetMileage.addEventListener("input", () => {
+  if (parseMileage(els.editAssetMileage.value) !== null && !els.editAssetMileageDate.value) {
+    els.editAssetMileageDate.value = todayKey();
   }
 });
 

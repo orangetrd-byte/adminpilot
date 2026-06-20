@@ -89,6 +89,22 @@
               />
             </label>
             <label>
+              <span>Current mileage</span>
+              <input
+                id="asset-mileage"
+                name="mileage"
+                type="number"
+                min="0"
+                step="1"
+                inputmode="numeric"
+                placeholder="68320"
+              />
+            </label>
+            <label>
+              <span>Mileage recorded date</span>
+              <input id="asset-mileage-date" name="mileageDate" type="date" />
+            </label>
+            <label>
               <span>Due / status</span>
               <input id="asset-due" name="due" placeholder="Oil change due in 320 miles" required />
             </label>
@@ -228,6 +244,20 @@
             <label>
               <span>VIN</span>
               <input id="edit-asset-vin" maxlength="17" />
+            </label>
+            <label>
+              <span>Current mileage</span>
+              <input
+                id="edit-asset-mileage"
+                type="number"
+                min="0"
+                step="1"
+                inputmode="numeric"
+              />
+            </label>
+            <label>
+              <span>Mileage recorded date</span>
+              <input id="edit-asset-mileage-date" type="date" />
             </label>
             <label>
               <span>Due / status</span>
