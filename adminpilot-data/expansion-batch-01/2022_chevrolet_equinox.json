@@ -1,0 +1,271 @@
+{
+  "id": "2022-chevrolet-equinox-all-trims",
+  "year": 2022,
+  "make": "Chevrolet",
+  "model": "Equinox",
+  "trim": "All trims (LS, LT, RS, Premier)",
+  "engine": "Gasoline: 1.5L turbo I4; exact engine code pending verification",
+  "transmission": "Automatic (6-speed)",
+  "driveType": "FWD and AWD",
+  "source": "2022 Chevrolet Equinox Owner's Manual",
+  "source_url": "https://www.chevrolet.com/ownercenter/content/dam/gmownercenter/gmna/dynamic/manuals/2022/chevrolet/equinox/2022-chevrolet-equinox-owners-manual.pdf",
+  "source_pages": "Document pages 326–333; PDF pages 327–334 (Maintenance Schedule tables on pages 329–332)",
+  "maintenance": [
+    {
+      "service": "Tire Rotation and Required Services: rotate tires (if recommended), check engine oil level and oil-life %, and change engine oil and filter if needed and reset oil-life system; check engine air-filter life % and change engine air filter if needed and reset; check engine coolant level; check windshield washer fluid level",
+      "interval": {
+        "miles": 7500,
+        "months": 12,
+        "logic": "Every 7,500 mi / 12,000 km. Oil change driven by GM Oil-Life Monitor (OLM); do NOT exceed 12 months even if OLM has not triggered. Reset oil-life system after each oil change. Dealer resets; non-dealer reset steps in owner manual."
+      },
+      "severity": "critical",
+      "schedule_type": "normal",
+      "notes": "1.5L and 2.0L gasoline engines. OLM governs oil-change frequency; minimum once per year. Air filter reset required after replacement."
+    },
+    {
+      "service": "Replace passenger compartment air filter",
+      "interval": {
+        "miles": 22500,
+        "months": 24,
+        "logic": "Every 22,500 mi / 36,000 km, or every 2 years, whichever comes first (footnote 1). Marks at 22.5k, 45k, 67.5k, 90k, 112.5k, 135k mi (36k, 72k, 108k, 144k, 180k, 216k km)."
+      },
+      "severity": "medium",
+      "schedule_type": "normal",
+      "notes": "More frequent replacement may be needed in heavy traffic, poor air quality, high dust, or environmental allergens."
+    },
+    {
+      "service": "Replace spark plugs; inspect spark plug wires and/or boots",
+      "interval": {
+        "miles": 60000,
+        "months": null,
+        "logic": "Every 60,000 mi / 96,000 km and again at 120,000 mi / 192,000 km (marks at col 8 and 16 in Additional Required Services – Normal table)."
+      },
+      "severity": "high",
+      "schedule_type": "normal",
+      "notes": "Use the spark plug specification listed for the vehicle's 1.5L gasoline engine."
+    },
+    {
+      "service": "Change rear axle fluid (equipped with AWD only)",
+      "interval": {
+        "miles": 150000,
+        "months": null,
+        "logic": "Every 150,000 mi / 240,000 km (mark at col 20 in Additional Required Services – Normal table)."
+      },
+      "severity": "high",
+      "schedule_type": "normal",
+      "notes": "AWD only. Do not directly power wash transfer case and/or front/rear axle output seals; high-pressure water can contaminate fluid."
+    },
+    {
+      "service": "Drain and fill engine cooling system",
+      "interval": {
+        "miles": 150000,
+        "months": 60,
+        "logic": "Every 150,000 mi / 240,000 km, or every 5 years, whichever comes first (footnote 3). Mark at col 20 in Additional Required Services – Normal table."
+      },
+      "severity": "high",
+      "schedule_type": "normal",
+      "notes": "Use approved GM coolant (Dex-Cool). See Cooling System section in owner manual for procedure."
+    },
+    {
+      "service": "Visually inspect accessory drive belts",
+      "interval": {
+        "miles": 150000,
+        "months": 120,
+        "logic": "Every 150,000 mi / 240,000 km, or every 10 years, whichever comes first (footnote 4). Mark at col 20 in Additional Required Services – Normal table. Inspect for fraying, excessive cracking, or damage; replace if needed."
+      },
+      "severity": "high",
+      "schedule_type": "normal",
+      "notes": "Visual inspection only until 10 years or 150k miles; replace as needed."
+    },
+    {
+      "service": "Replace brake fluid",
+      "interval": {
+        "miles": null,
+        "months": 60,
+        "logic": "Every 5 years (footnote 5). No mileage marks in maintenance table; time-only interval."
+      },
+      "severity": "critical",
+      "schedule_type": "normal",
+      "notes": "Use GM-approved brake fluid. See Brake Fluid section in owner manual."
+    },
+    {
+      "service": "Replace front and rear wiper blades",
+      "interval": {
+        "miles": 15000,
+        "months": 12,
+        "logic": "Every 15,000 mi / 24,000 km, or every 12 months, whichever comes first (footnote 6). Marks at cols 2,4,6,8,10,12,14,16,18,20 in Additional Required Services – Normal table (every 15k mi from 7.5k base): 15k, 30k, 45k, 60k, 75k, 90k, 105k, 120k, 135k, 150k mi (24k, 48k, 72k, 96k, 120k, 144k, 168k, 192k, 216k, 240k km)."
+      },
+      "severity": "medium",
+      "schedule_type": "normal",
+      "notes": "Replace more frequently if visibility is reduced."
+    },
+    {
+      "service": "Replace hood and/or body lift support gas struts",
+      "interval": {
+        "miles": 75000,
+        "months": null,
+        "logic": "Every 75,000 mi / 120,000 km and again at 150,000 mi / 240,000 km (marks at cols 10 and 20 in Additional Required Services – Normal table). Footnote 7 also notes 'or every 10 years, whichever comes first.'"
+      },
+      "severity": "medium",
+      "schedule_type": "normal",
+      "notes": "Inspect hold-open ability; replace if strut does not hold hood/hatch open. See Gas Strut(s) section in owner manual."
+    },
+    {
+      "service": "Replace air conditioning desiccant",
+      "interval": {
+        "miles": null,
+        "months": 84,
+        "logic": "Every 7 years (footnote 8). No mileage marks in maintenance table; time-only interval. Service can be complex; see dealer."
+      },
+      "severity": "medium",
+      "schedule_type": "normal",
+      "notes": "Required for A/C system longevity. Dealer recommended due to complexity."
+    },
+    {
+      "service": "Tire Rotation and Required Services: rotate tires (if recommended), check engine oil level and oil-life %, and change engine oil and filter if needed and reset oil-life system; check engine air-filter life % and change engine air filter if needed and reset; check engine coolant level; check windshield washer fluid level",
+      "interval": {
+        "miles": 7500,
+        "months": 12,
+        "logic": "Every 7,500 mi / 12,000 km. Oil change driven by GM Oil-Life Monitor (OLM); do NOT exceed 12 months even if OLM has not triggered. Reset oil-life system after each oil change."
+      },
+      "severity": "critical",
+      "schedule_type": "severe",
+      "notes": "Severe conditions: mainly heavy city traffic in hot weather; mainly hilly/mountainous terrain; frequent trailer towing; high-speed or competitive driving; taxi, police, or delivery service."
+    },
+    {
+      "service": "Replace passenger compartment air filter",
+      "interval": {
+        "miles": 22500,
+        "months": 24,
+        "logic": "Every 22,500 mi / 36,000 km, or every 2 years, whichever comes first (footnote 1). Same mark pattern as Normal schedule: cols 3, 6, 9, 12, 15, 18 (36k, 72k, 108k, 144k, 180k, 216k km)."
+      },
+      "severity": "medium",
+      "schedule_type": "severe",
+      "notes": "More frequent replacement may be needed in severe-use conditions."
+    },
+    {
+      "service": "Change automatic transmission fluid",
+      "interval": {
+        "miles": 45000,
+        "months": null,
+        "logic": "Every 45,000 mi / 72,000 km, with additional marks at 90,000 mi / 144,000 km and 135,000 mi / 216,000 km (marks at cols 6, 12, and 18 in Additional Required Services – Severe table)."
+      },
+      "severity": "high",
+      "schedule_type": "severe",
+      "notes": "Only present on Severe schedule. Use GM-approved transmission fluid. See owner manual for fluid capacity and procedure."
+    },
+    {
+      "service": "Replace spark plugs; inspect spark plug wires and/or boots",
+      "interval": {
+        "miles": 60000,
+        "months": null,
+        "logic": "Every 60,000 mi / 96,000 km and again at 120,000 mi / 192,000 km (marks at cols 8 and 16 in Additional Required Services – Severe table)."
+      },
+      "severity": "high",
+      "schedule_type": "severe",
+      "notes": "Same mileage interval as the normal schedule."
+    },
+    {
+      "service": "Change rear axle fluid (equipped with AWD only)",
+      "interval": {
+        "miles": 75000,
+        "months": null,
+        "logic": "Every 75,000 mi / 120,000 km and again at 150,000 mi / 240,000 km (marks at cols 10 and 20 in Additional Required Services – Severe table). Earlier than Normal schedule which is 150k only."
+      },
+      "severity": "high",
+      "schedule_type": "severe",
+      "notes": "AWD only. Severe schedule accelerates axle fluid change. Do not directly power wash transfer case and/or axle seals."
+    },
+    {
+      "service": "Drain and fill engine cooling system",
+      "interval": {
+        "miles": 150000,
+        "months": 60,
+        "logic": "Every 150,000 mi / 240,000 km, or every 5 years, whichever comes first (footnote 3). Mark at col 20 in Additional Required Services – Severe table."
+      },
+      "severity": "high",
+      "schedule_type": "severe",
+      "notes": "Use approved GM coolant (Dex-Cool)."
+    },
+    {
+      "service": "Visually inspect accessory drive belts",
+      "interval": {
+        "miles": 150000,
+        "months": 120,
+        "logic": "Every 150,000 mi / 240,000 km, or every 10 years, whichever comes first (footnote 4). Mark at col 20 in Additional Required Services – Severe table."
+      },
+      "severity": "high",
+      "schedule_type": "severe",
+      "notes": "Inspect for fraying, excessive cracking, or damage; replace if needed."
+    },
+    {
+      "service": "Replace brake fluid",
+      "interval": {
+        "miles": null,
+        "months": 60,
+        "logic": "Every 5 years (footnote 5). Time-only interval."
+      },
+      "severity": "critical",
+      "schedule_type": "severe",
+      "notes": "Use GM-approved brake fluid."
+    },
+    {
+      "service": "Replace front and rear wiper blades",
+      "interval": {
+        "miles": 15000,
+        "months": 12,
+        "logic": "Every 15,000 mi / 24,000 km, or every 12 months, whichever comes first (footnote 6). Same mark pattern as Normal: every 15k mi from 7.5k base. 15k, 30k, 45k, 60k, 75k, 90k, 105k, 120k, 135k, 150k mi."
+      },
+      "severity": "medium",
+      "schedule_type": "severe",
+      "notes": "Replace more frequently if visibility is reduced."
+    },
+    {
+      "service": "Replace hood and/or body lift support gas struts",
+      "interval": {
+        "miles": 75000,
+        "months": null,
+        "logic": "Every 75,000 mi / 120,000 km and again at 150,000 mi / 240,000 km (marks at cols 10 and 20 in Additional Required Services – Severe table). Footnote 7 notes 'or every 10 years, whichever comes first.'"
+      },
+      "severity": "medium",
+      "schedule_type": "severe",
+      "notes": "Inspect hold-open ability. See Gas Strut(s) section in owner manual."
+    },
+    {
+      "service": "Replace air conditioning desiccant",
+      "interval": {
+        "miles": null,
+        "months": 84,
+        "logic": "Every 7 years (footnote 8). No mileage marks in maintenance table; time-only interval."
+      },
+      "severity": "medium",
+      "schedule_type": "severe",
+      "notes": "Required for A/C system longevity. Dealer recommended due to complexity."
+    }
+  ],
+  "applicability": [
+    "All 2022 Chevrolet Equinox gasoline engines",
+    "2022 U.S. Equinox gasoline models with the 1.5L turbo engine",
+    "FWD and AWD unless individually noted in source",
+    "Normal schedule: typical passenger and cargo use within limits, reasonable roads, recommended fuel",
+    "Severe schedule: heavy city traffic in hot weather; hilly/mountainous terrain; frequent trailer towing; high-speed or competitive driving; taxi, police, or delivery service"
+  ],
+  "validation_flags": [
+    "Primary source: 2022 Chevrolet Equinox Owner's Manual PDF (document pages 327-333; PDF pages 328-334)",
+    "Official manufacturer source verified: https://www.chevrolet.com/ownercenter/content/dam/gmownercenter/gmna/dynamic/manuals/2022/chevrolet/equinox/2022-chevrolet-equinox-owners-manual.pdf",
+    "GM OLM (Oil-Life Monitor) governs primary oil-change interval; minimum once per year regardless of OLM status",
+    "Maintenance schedule extracted via pdfplumber table + pdftotext -layout + word-coordinate column mapping on pages 329-332",
+    "Base Required Services happen at every 7,500 mi / 12,000 km interval per OLM system",
+    "Normal and Severe Additional Required Services tables parsed and column-interval mapping verified against 20-column header (7,500 mi base through 150,000 mi)",
+    "Time-only items correctly flagged: brake fluid (5 years), A/C desiccant (7 years), gas struts (10 years), accessory drive belts (10 years), engine cooling system (5 years)",
+    "Severe schedule adds: automatic transmission fluid (45k/90k/135k mi), rear axle fluid at 75k mi (Normal is 150k only)",
+    "Spark plug interval: 60k mi / 96k km and 120k mi / 192k km for both Normal and Severe per extracted table",
+    "Wiper blade interval: every 15k mi / 24k km (every base interval) per footnote 6 ('or every 12 months')",
+    "Rear axle fluid applicability for AWD must be checked against the exact table and footnotes before production",
+    "No PDF pages rendered visually; tables extracted via structured text/word methods only",
+    "Do not apply schedules from adjacent model years or similar models"
+  ],
+  "production_ready": false,
+  "source_confidence": "official_source_extracted_from_pdf_pending_independent_review",
+  "review_status": "candidate"
+}

@@ -1,0 +1,222 @@
+{
+  "id": "2021-jeep-wrangler-gasoline",
+  "year": 2021,
+  "make": "Jeep",
+  "model": "Wrangler",
+  "trim": "All trims (Sport, Willys Sport, Sport S, Willys, Sahara, Rubicon, 392)",
+  "engine": "Gasoline: 3.6L Pentastar V6, 2.0L Turbo I4, 6.4L HEMI V8 (392); Separate schedule for 3.0L EcoDiesel",
+  "transmission": "Automatic (8-speed) or Manual (6-speed on select trims)",
+  "driveType": "4WD (part-time)",
+  "source": "2021 Jeep Wrangler Owner's Manual — SCHEDULED SERVICING GASOLINE ENGINE section, pages 296–300",
+  "source_url": "https://vehicleinfo.mopar.com/assets/publications/en-us/Jeep/2021/Wrangler/5690670_21_JL_OM_EN_USC_DIGITAL_E5.pdf",
+  "source_pages": "296-300",
+  "maintenance": [
+    {
+      "service": "Oil Change Indicator reset + routine oil-change bundle (change oil and filter, rotate tires on irregular wear, inspect battery, inspect CV/Universal joints, inspect brake system, inspect engine cooling system, inspect exhaust, inspect/replace engine air cleaner filter)",
+      "interval": {
+        "miles": 10000,
+        "months": 12,
+        "logic": "OLM (Oil Life Monitor) driven; NEVER exceed 10,000 miles, 12 months, or 350 engine run hours — whichever comes first. 350 hours primarily a fleet concern."
+      },
+      "severity": "critical",
+      "notes": "System-driven. 'Change Oil' / 'Oil Change Required' message illuminates based on engine operating conditions (short trips, towing, extreme temperatures). Service within next 500 mi (805 km) of message. Dealer resets indicator; non-dealer reset documented at Instrument Cluster Display page 103."
+    },
+    {
+      "service": "Monthly / pre-long-trip inspection: check engine oil level, windshield washer fluid, tire pressures & wear (rotate on irregular wear), coolant/brake master cylinder/power steering fluid levels, all interior & exterior light function",
+      "interval": {
+        "miles": null,
+        "months": 1,
+        "logic": "Once every month or before any long trip"
+      },
+      "severity": "medium",
+      "notes": "No mileage milestone; time-based only."
+    },
+    {
+      "service": "Lubricate door hinge joints (white lithium grease)",
+      "interval": {
+        "miles": null,
+        "months": 6,
+        "logic": "Twice per year (every 6 months)"
+      },
+      "severity": "low",
+      "notes": "Per manual NOTE: 'Using white lithium grease, lubricate the door hinge joints twice a year to prevent premature wear.' Also inspect all door latches for grease at every oil-change interval; reapply if necessary."
+    },
+    {
+      "service": "Inspect CV / Universal joints",
+      "interval": {
+        "miles": 20000,
+        "months": 24,
+        "logic": "Every 20,000 miles / 24 months; at every 10k mi oil-change milestone in practice"
+      },
+      "severity": "high",
+      "notes": "Table shows X at every 20k interval: 20k, 30k, 40k, 50k, 60k, 70k, 80k, 90k, 100k, 110k, 120k, 130k, 140k, 150k, 160k, 176k, 192k, 208k, 224k, 240k."
+    },
+    {
+      "service": "Inspect front suspension, tie rod ends, rear suspension; replace if necessary",
+      "interval": {
+        "miles": 20000,
+        "months": 24,
+        "logic": "Every 20,000 miles / 24 months (X at 20k, 40k, 60k, 80k, 100k, 120k, 140k, 160k, 176k, 192k, 208k, 224k, 240k)"
+      },
+      "severity": "high",
+      "notes": "Read table carefully: X at 20k, 40k, 60k, 80k, 100k, 120k, 140k, 160k, 176k, 192k, 208k, 224k, 240k."
+    },
+    {
+      "service": "Inspect front and rear axle fluid",
+      "interval": {
+        "miles": 20000,
+        "months": 24,
+        "logic": "Every 20,000 miles / 24 months (X at 20k, 60k, 100k, 140k, 160k, 200k, 220k)"
+      },
+      "severity": "high",
+      "notes": "Table X marks at: 20k, 60k, 100k, 140k, 160k, 200k, 220k. Change required under special conditions: police, taxi, fleet, off-road, or frequent trailer towing."
+    },
+    {
+      "service": "Inspect brake linings, rotors, drums, hoses, and parking brake; adjust parking brake on 4-wheel disc brake models",
+      "interval": {
+        "miles": 20000,
+        "months": 24,
+        "logic": "Every 20,000 miles / 24 months (X at 20k, 40k, 60k, 80k, 100k, 120k, 140k, 160k, 176k, 192k, 208k, 224k, 240k)"
+      },
+      "severity": "high",
+      "notes": "Replace brake linings as necessary. Parking brake adjustment at same interval for 4-wheel disc models."
+    },
+    {
+      "service": "Inspect transfer case fluid",
+      "interval": {
+        "miles": 60000,
+        "months": 72,
+        "logic": "Every 60,000 miles / 72 months (X at 60k, 120k, 192k, 240k)"
+      },
+      "severity": "medium",
+      "notes": "Change transfer case fluid under severe duty: police, taxi, fleet, or frequent trailer towing."
+    },
+    {
+      "service": "Replace engine air cleaner filter",
+      "interval": {
+        "miles": 30000,
+        "months": 36,
+        "logic": "Every 30,000 miles / 36 months (X at 30k, 60k, 90k, 120k, 150k, 180k, 210k, 240k)"
+      },
+      "severity": "medium",
+      "notes": "Inspect at every oil-change interval under dusty/off-road conditions; replace as necessary even if before 30k mi."
+    },
+    {
+      "service": "Replace cabin air filter",
+      "interval": {
+        "miles": 30000,
+        "months": 36,
+        "logic": "Every 30,000 miles / 36 months (X at 30k, 60k, 90k, 120k, 150k, 180k, 210k, 240k)"
+      },
+      "severity": "medium",
+      "notes": "In heavy traffic, dirt, dust, urban or desert areas may require earlier replacement."
+    },
+    {
+      "service": "Replace spark plugs — 2.0L Turbo I4 only",
+      "interval": {
+        "miles": 30000,
+        "months": null,
+        "logic": "30,000 miles (mileage-based only; yearly/months intervals DO NOT apply per manual footnote **)"
+      },
+      "severity": "medium",
+      "notes": "Applies to 2.0L Turbo I4 engine only. Footnote: spark plug change interval is mileage based only; yearly intervals do not apply."
+    },
+    {
+      "service": "Replace spark plugs — 3.6L Pentastar V6 and 6.4L HEMI V8 (392)",
+      "interval": {
+        "miles": 60000,
+        "months": null,
+        "logic": "60,000 miles (mileage-based only; yearly/months intervals DO NOT apply per manual footnote **)"
+      },
+      "severity": "medium",
+      "notes": "Applies to 3.6L and 6.4L engines only. Same footnote: mileage-based only, yearly intervals do not apply."
+    },
+    {
+      "service": "Flush and replace engine and intercooler (if equipped) coolant",
+      "interval": {
+        "miles": 150000,
+        "months": 120,
+        "logic": "10 years or 150,000 miles (240,000 km), whichever comes first"
+      },
+      "severity": "high",
+      "notes": "Also shown at 240,000 miles as part of replacement cycle; do not exceed 10 years or 150k mi."
+    },
+    {
+      "service": "Change manual transmission fluid — special conditions only",
+      "interval": {
+        "miles": 30000,
+        "months": 36,
+        "logic": "Required every 30,000 miles (when manual transmission equipped AND operating under special conditions)"
+      },
+      "severity": "high",
+      "notes": "Required if using vehicle for: trailer towing, snow plowing, heavy loading, taxi, police, delivery service (commercial), off-road/desert operation, or >50% sustained high speeds above 90°F (32°C). Not required under normal use."
+    },
+    {
+      "service": "Inspect and replace PCV valve if necessary",
+      "interval": {
+        "miles": 60000,
+        "months": 72,
+        "logic": "60,000 miles / 72 months"
+      },
+      "severity": "medium",
+      "notes": "Per maintenance table page 298."
+    },
+    {
+      "service": "Change front and rear axle fluid — special conditions only",
+      "interval": {
+        "miles": 60000,
+        "months": 72,
+        "logic": "60,000 miles / 72 months under special conditions"
+      },
+      "severity": "medium",
+      "notes": "Required if using vehicle for: police, taxi, fleet, off-road, or frequent trailer towing."
+    },
+    {
+      "service": "Replace accessory drive belt(s)",
+      "interval": {
+        "miles": 150000,
+        "months": 120,
+        "logic": "150,000 miles / 120 months (10 years)"
+      },
+      "severity": "medium",
+      "notes": "Per maintenance table page 301 (diesel section shares similar layout)."
+    },
+    {
+      "service": "Change transfer case fluid — normal use",
+      "interval": {
+        "miles": 150000,
+        "months": 120,
+        "logic": "150,000 miles / 120 months (normal use)"
+      },
+      "severity": "medium",
+      "notes": "Page 301 table entry. Under severe duty (police/taxi/fleet/frequent towing): see interval above for severe duty (60k mi)."
+    }
+  ],
+  "diesel_section_note": {
+    "note": "Separate diesel maintenance schedule (3.0L EcoDiesel engine) appears at pages 299–302. OIL CHANGE limit is stricter: max 10,000 miles or 12 months (no 350-hour exception). DEF fill required at every oil change. Fuel filter & water drain at every oil change. Biodiesel >5% (B6-B20) states (e.g. Minnesota summer): oil changes and fuel filter must not exceed 8,000 miles or 6 months. Diesel schedule NOT merged into this file.",
+    "source_pages": "299-302"
+  },
+  "applicability": [
+    "All 2021 Jeep Wrangler gasoline engines (3.6L V6, 2.0L I4 Turbo, 6.4L HEMI V8 392)",
+    "4WD (part-time) unless individually noted",
+    "Normal duty schedule; special operating condition overrides exist for several items"
+  ],
+  "validation_flags": [
+    "Primary source: 2021 Jeep Wrangler Owner's Manual PDF (pages 296-300 gasoline; 299-302 diesel)",
+    "Official manufacturer source: https://vehicleinfo.mopar.com/assets/publications/en-us/Jeep/2021/Wrangler/5690670_21_JL_OM_EN_USC_DIGITAL_E5.pdf",
+    "Tables were not parsable by pdfplumber (empty); text extracted via pdftotext with -layout option",
+    "Hermes reported rendering pages 298-300 for visual inspection; those generated images are not included in this review package.",
+    "OLM (oil-life monitor) rule: max 10,000 mi / 12 months / 350 hours NEVER exceeded even if indicator has not triggered",
+    "Spark plug replacement: mileage-based ONLY for both 2.0L (30k) and 3.6L (60k); yearly intervals do not apply per manual footnote",
+    "Manual transmission fluid change is special-duty only — NOT a normal-use interval",
+    "Front/rear axle fluid change is special-duty only (police/taxi/fleet/off-road/frequent towing)",
+    "Transfer case fluid inspection at 60k/60mo (normal); change at 150k/120mo (normal use) or 60k/60mo (severe duty)",
+    "Diesel schedule intentionally excluded from this file — requires separate entry",
+    "Do not apply schedules from other model years or JL-based models",
+    "Verify intervals against actual rendered PDF pages before production use"
+  ],
+  "production_ready": false,
+  "source_confidence": "official_source_extracted_and_verified_pending_independent_review",
+  "extraction_method": "pdftotext -layout + visual PNG inspection (pages 298-300). pdfplumber returned tables_count=0; target pages identified and rendered as PNGs for visual inspection.",
+  "review_status": "candidate"
+}

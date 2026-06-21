@@ -1,0 +1,218 @@
+{
+  "id": "2020-buick-enclave-all-engines-normal",
+  "year": 2020,
+  "make": "Buick",
+  "model": "Enclave",
+  "trim": "All trims (Preferred, Essence, Premium, Avenir)",
+  "engine": "Gasoline: 3.6L V6 (LFY)",
+  "transmission": "Automatic 9-speed (H9A 9T50)",
+  "driveType": "FWD and AWD",
+  "source": "2020 Buick Enclave Owner's Manual",
+  "source_url": "https://www.buick.com/ownercenter/content/dam/gmownercenter/gmna/dynamic/manuals/2020/buick/enclave/2020-buick-enclave-owners-manual.pdf",
+  "maintenance": [
+    {
+      "service": "Rotate tires and perform Required Services (engine oil level and life check; oil and filter change per OLM; engine air filter life check)",
+      "interval": {
+        "miles": 7500,
+        "months": 12,
+        "logic": "GM OLM governs oil change timing: do NOT exceed 7,500 miles (12 months). Oil Life Monitor alerts based on driving conditions; service within 600 mi (1,000 km) of alert. Tire rotation and all listed checks occur at every eligible service visit."
+      },
+      "severity": "critical",
+      "notes": "OLM (Oil Life Monitor) is the primary driver for this interval. Even if the monitor has not illuminated, change oil and filter at least once per year and reset the OLM. If the OLM is accidentally reset, service within 3,000 mi (5,000 km)."
+    },
+    {
+      "service": "Check engine oil level and life percentage",
+      "interval": {
+        "miles": null,
+        "months": 1,
+        "logic": "Check every fuel stop (at minimum) and at minimum once per month."
+      },
+      "severity": "high",
+      "notes": "At each fuel fill verify level. Supplement with engine oil life system status."
+    },
+    {
+      "service": "Check tire inflation pressure",
+      "interval": {
+        "miles": null,
+        "months": 1,
+        "logic": "Once a month or before a long trip."
+      },
+      "severity": "high",
+      "notes": "Inflate to pressures shown on Tire and Loading Information label."
+    },
+    {
+      "service": "Inspect tires for wear",
+      "interval": {
+        "miles": null,
+        "months": 1,
+        "logic": "Once a month or before a long trip."
+      },
+      "severity": "high",
+      "notes": "Rotate tires at first sign of irregular wear, even if before 7,500 mi threshold."
+    },
+    {
+      "service": "Check windshield washer fluid level",
+      "interval": {
+        "miles": null,
+        "months": 1,
+        "logic": "Once a month or before a long trip."
+      },
+      "severity": "medium",
+      "notes": ""
+    },
+    {
+      "service": "Replace passenger compartment air filter (cabin air filter)",
+      "interval": {
+        "miles": 20000,
+        "months": 24,
+        "logic": "GM published: every 20,000 miles (32,000 km) OR every 24 months, whichever comes first. Source table marks service at ~22,500 / 45,000 / 67,500 / 90,000 / 112,500 / 135,000 / 150,000 mile milestones. More frequent replacement may be needed in heavy traffic, poor air quality, or dusty conditions."
+      },
+      "severity": "medium",
+      "notes": "Also replace sooner if airflow is reduced, windows fog, or odors are present. GM dealer can help determine when necessary."
+    },
+    {
+      "service": "Inspect evaporative emission control system (vapor lines and hoses)",
+      "interval": {
+        "miles": 60000,
+        "months": 60,
+        "logic": "Every 60 months (5 years). Source table marks at ~52,500 / 97,500 / 142,500 mile milestones (whichever comes first). Visually check all fuel and vapor lines and hoses for proper attachment, connection, routing, and condition."
+      },
+      "severity": "high",
+      "notes": "Evap system inspection per footnote (2) in source manual."
+    },
+    {
+      "service": "Inspect engine air cleaner filter; replace if vehicle is not equipped with the engine air filter life system",
+      "interval": {
+        "miles": 32000,
+        "months": 48,
+        "logic": "If the vehicle is NOT equipped with the engine air filter life system: replace every 4 years (48 months) OR per floor schedule. Inspect at each oil change in dusty conditions. Per source footnote (3)."
+      },
+      "severity": "medium",
+      "notes": "If equipped with the engine air filter life system: check life percentage at each oil change; replace when REPLACE AT NEXT OIL CHANGE or REPLACE ENGINE AIR FILTER SOON message displays, then reset the system."
+    },
+    {
+      "service": "Check and replace windshield wiper blades",
+      "interval": {
+        "miles": null,
+        "months": 12,
+        "logic": "Inspect at each oil change. Replace when worn or at least every 12 months, whichever comes first. Per source footnote (8)."
+      },
+      "severity": "medium",
+      "notes": "May need more frequent replacement depending on climate and use."
+    },
+    {
+      "service": "Replace spark plugs and inspect spark plug wires",
+      "interval": {
+        "miles": 97500,
+        "months": null,
+        "logic": "Replace at 97,500 miles (156,000 km; approximately 100,000 miles). Inspect spark plug wires at same interval. Per source table at 97,500 mi column."
+      },
+      "severity": "high",
+      "notes": "Iridium-tipped spark plugs; do not reuse if removed. GM part 12621664."
+    },
+    {
+      "service": "Change rear axle fluid (AWD only)",
+      "interval": {
+        "miles": 150000,
+        "months": 120,
+        "logic": "Normal driving: change at 150,000 miles (240,000 km) or 120 months per source table. Severe: schedule may differ. Per source footnote (4): do not directly power wash transfer case and/or front/rear axle output seals, as high-pressure water can contaminate fluid."
+      },
+      "severity": "high",
+      "notes": "Applies only to 2020 Buick Enclave AWD models. FWD models do not have a serviceable rear axle fluid fill. Use Genuine GM Fluid (ACDelco 10W-30 or equivalent)."
+    },
+    {
+      "service": "Change automatic transmission fluid (SEVERE conditions only)",
+      "interval": {
+        "miles": 45000,
+        "months": 48,
+        "logic": "Applies only under severe conditions defined in source: heavy city traffic in hot weather, hilly/mountainous terrain, frequent trailer towing, high-speed/competitive driving, or taxi/police/delivery service. Per source table Severe schedule at 45,000 mi / 52,500 mi / 67,500 mi columns."
+      },
+      "severity": "critical",
+      "notes": "For normal driving, the 9-speed automatic (H9A/9T50) in the 2020 Enclave does not require routine transmission fluid changes under normal conditions. Consult GM bulletin or dealer if severe classification is uncertain."
+    },
+    {
+      "service": "Drain and fill engine cooling system",
+      "interval": {
+        "miles": 150000,
+        "months": 60,
+        "logic": "Use DEX-COOL (orange-colored) coolant only. Per source footnote (5): every 5 years (60 months) OR 150,000 miles (240,000 km), whichever comes first."
+      },
+      "severity": "critical",
+      "notes": "Premature coolant degradation can cause overheating, water pump bearing failure, and heater core issues. Do NOT mix with non-DEX-COOL (green) coolant."
+    },
+    {
+      "service": "Visually inspect accessory drive belts (and replace if needed)",
+      "interval": {
+        "miles": 150000,
+        "months": 120,
+        "logic": "Inspect every 10 years (120 months). Per source footnote (6): inspect for fraying, excessive cracking, or damage; replace if needed. Check occurs at major service milestones."
+      },
+      "severity": "high",
+      "notes": "The 2020 Enclave 3.6L V6 (LFY) uses a single serpentine-style accessory drive belt (alternator, water pump, AC compressor). Inspect visually; listen for noise."
+    },
+    {
+      "service": "Replace brake fluid",
+      "interval": {
+        "miles": 60000,
+        "months": 60,
+        "logic": "Brake fluid change is TIME-BASED, not mileage-based in the schedule matrix. Per source footnote (7): replace every 5 years (60 months). Perform DOT 3 brake fluid flush; bleed all circuits and ABS modulator."
+      },
+      "severity": "critical",
+      "notes": "Moisture-absorbing property of brake fluid (DOT 3) limits service life to ~5 years. Corrosion of ABS modulator and calipers can result from aged fluid. Not on the main mileage grid table because it is not tied to 7,500 mi service intervals."
+    },
+    {
+      "service": "Replace hood and/or body lift-support gas struts",
+      "interval": {
+        "miles": 150000,
+        "months": 120,
+        "logic": "Every 10 years (120 months) OR 150,000 miles, whichever comes first. Per source footnote (9). Source schedule table marks at 97,500 mi / 150,000 mi columns depending on driving severity."
+      },
+      "severity": "medium",
+      "notes": "Inspect struts annually for hold-open ability; replace if hood/hatch drops or gas strut has visible oil leak or cracking."
+    },
+    {
+      "service": "Replace air conditioning desiccant (AC system service)",
+      "interval": {
+        "miles": null,
+        "months": 84,
+        "logic": "Every 7 years (84 months) from vehicle in-service date, regardless of mileage. Per source footnote (10). Not on the mileage table because purely time-based."
+      },
+      "severity": "high",
+      "notes": "Desiccant absorbs moisture inside the AC system. Degradation reduces cooling efficiency and can cause compressor damage. Service can be complex; see dealer for A/C desiccant replacement."
+    }
+  ],
+  "applicability": [
+    "All 2020 Buick Enclave gasoline engines (3.6L V6 LFY)",
+    "FWD and AWD models; axle fluid change applies only to AWD",
+    "Automatic transmission fluid change applies only under severe conditions per source definition",
+    "Engine air filter: Vehicle-specific depending on whether engine air filter life monitoring system is equipped",
+    "Odometer and date-based rules apply; 'whichever comes first' governs all intervals",
+    "Do not apply schedules from other model years"
+  ],
+  "validation_flags": [
+    "Primary source: 2020 Buick Enclave Owner's Manual PDF (book pages 329-333 / PDF pages 331-334)",
+    "Official manufacturer source verified: https://www.buick.com/ownercenter/content/dam/gmownercenter/gmna/dynamic/manuals/2020/buick/enclave/2020-buick-enclave-owners-manual.pdf",
+    "Maintenance schedule extracted using pdfplumber structured table + pdftotext -layout + text cross-reference across pages 326-335",
+    "OLM (Oil Life Monitor): GM OLS governs oil changes; max interval 7,500 miles / 12 months; minimum once per year even if OLM has not triggered service alert",
+    "OLM safety margins: Service within 1,000 km / 600 mi of CHANGE ENGINE OIL SOON alert; if OLM is accidentally reset, service within 5,000 km / 3,000 mi",
+    "Fuel economy and emissions impacts from neglected maintenance noted in source; oil change is safest interval to prevent damage",
+    "Tire rotation: GM explicitly lists 12,000 km / 7,500 mi (every oil change) interval—reconciles with table row showing @ at ALL columns",
+    "Passenger compartment air filter: GM publishes 20,000 mi OR 24 months; table marks at 22,500/45,000/67,500/90,000/112,500/135,000/150,000 mi—time rule drives 'whichever comes first' logic",
+    "Engine air filter: Vehicles with engine air filter life system are governed by the life % message; vehicles without system: source footnote (3) says every 4 years (48 months), inspect at each oil change in dusty conditions",
+    "Evaporative control system: footnote (2)—inspect every 5 years; table marks at 52,500/97,500/142,500 mi",
+    "Spark plugs: table marks at 97,500 miles column (matches published GM spec ~100,000 miles); inspect wires simultaneously",
+    "Rear axle fluid (AWD): normal schedule 150,000 miles per table; severe check may differ—verify against GM AWD service bulletin if vehicle used in severe conditions",
+    "Coolant system: footnote (5)—every 5 years (60 months) OR 150,000 miles, whichever first; DEX-COOL only",
+    "Brake fluid: footnote (7)—every 5 years (purely time-based, absent from mileage table); DOT 3 spec",
+    "Wiper blades: footnote (8)—every 12 months per footnote; check at every service; replace on wear",
+    "Accessory drive belts: footnote (6)—every 10 years; inspect and replace if damaged",
+    "Gas struts: footnote (9)—every 10 years; table marks at 67,500 and 150,000 mile columns depending on severity",
+    "AC desiccant: footnote (10)—every 7 years (84 months); not present in mileage table",
+    "Transmission fluid change severe only: 45,000 mi / 48 months per Severe schedule; normal schedule table shows no transmission fluid service",
+    "Do not direct powerwash axle and transfer case seals (footnote 4)—contamination voids seals and fluid life",
+    "Secondary text extraction confirmed via pdfplumber table extraction and pdftotext -layout on PDF pages 329-334 (owner's manual pages 328-333)"
+  ],
+  "production_ready": false,
+  "source_confidence": "official_source_extracted_directly_pending_independent_review",
+  "review_status": "candidate"
+}

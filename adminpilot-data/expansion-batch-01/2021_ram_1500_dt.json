@@ -1,0 +1,249 @@
+{
+  "id": "2021-ram-1500-dt-all-engines-normal",
+  "year": 2021,
+  "make": "Ram",
+  "model": "1500",
+  "trim": "2021 Ram 1500 DT (5th generation) — all trims",
+  "engine": "Gasoline: 3.6L Pentastar V6 (eTorque), 5.7L HEMI V8 (eTorque available); Diesel: 3.0L EcoDiesel I6 (separate Diesel supplement)",
+  "transmission": "Automatic (8-speed TorqueFlite 8HP75)",
+  "driveType": "2WD and 4WD",
+  "source": "2021 Ram 1500 Owner's Manual",
+  "source_url": "https://vehicleinfo.mopar.com/assets/publications/en-us/Ram/2021/1500_DT/5633293_21_DT_OM_EN_USC_DIGITAL_E4.pdf",
+  "source_pages": "Document 299–306 (PDF 301–306)",
+  "maintenance": [
+    {
+      "service": "Oil change indicator driven oil and filter change",
+      "interval": {
+        "miles": 10000,
+        "months": 12,
+        "logic": "Oil change indicator system driven; NEVER exceed 10,000 miles (16,000 km), 12 months, or 350 engine run hours — whichever comes first. More frequent service needed under severe conditions (frequent short trips, trailer tow, extreme temperatures). Service within next 500 miles (805 km) of message. Dealer resets indicator; non-dealer reset steps in Instrument Cluster Display page 92. 350 hours primarily fleet concern."
+      },
+      "severity": "critical",
+      "notes": "Gasoline and Diesel. Indicator illuminates based on engine operation conditions. Reset required after each oil change."
+    },
+    {
+      "service": "Monthly / pre-long-trip check: engine oil level, windshield washer fluid, tire pressures & wear (rotate on irregular wear), coolant / brake master cylinder / power steering fluid levels, all interior & exterior light function",
+      "interval": {
+        "miles": null,
+        "months": 1,
+        "logic": "Once every month or before any long trip"
+      },
+      "severity": "medium",
+      "notes": "Gasoline and Diesel. Rotate tires at first sign of irregular wear, even if before oil indicator illuminates."
+    },
+    {
+      "service": "Lubricate door hinge roller pivot joints (white lithium grease)",
+      "interval": {
+        "miles": null,
+        "months": 6,
+        "logic": "Twice per year (every 6 months)"
+      },
+      "severity": "low",
+      "notes": "Gasoline and Diesel. NOTE: 'Using white lithium grease, lubricate the door hinge roller pivot joints twice a year to prevent premature wear.'"
+    },
+    {
+      "service": "At every oil-change interval: rotate tires, inspect battery / clean & tighten terminals, inspect CV/Universal joints, inspect brake pads / shoes / rotors / drums / hoses, inspect engine cooling system / hoses, inspect exhaust system, inspect engine air cleaner filter (replace in dusty/off-road conditions), inspect / replace Evaporative System Fresh Air Filter as necessary",
+      "interval": {
+        "miles": 10000,
+        "months": 12,
+        "logic": "At every oil change as indicated by Oil Change Indicator system"
+      },
+      "severity": "high",
+      "notes": "Gasoline only. Bundle performed at each dealer oil change when indicator is reset."
+    },
+    {
+      "service": "At every oil-change interval: change oil and filter, rotate tires, inspect battery / clean & tighten terminals, inspect CV/Universal joints, inspect brake pads / shoes / rotors / drums / hoses / parking brake, inspect engine cooling system / hoses, inspect exhaust system, inspect engine air cleaner filter (replace in dusty/off-road conditions), lubricate door hinge roller pivot joints (twice yearly)",
+      "interval": {
+        "miles": 10000,
+        "months": 12,
+        "logic": "At every oil change as indicated by Oil Change Indicator system"
+      },
+      "severity": "high",
+      "notes": "Diesel only. Adds DEF tank fill, fuel filter change / water drain."
+    },
+    {
+      "service": "Completely fill Diesel Exhaust Fluid (DEF) tank",
+      "interval": {
+        "miles": 10000,
+        "months": 12,
+        "logic": "At every oil change (every 10,000 miles / 12 months per Oil Change Indicator)"
+      },
+      "severity": "high",
+      "notes": "Diesel only. ALSO listed in table with X marks at every year (1–15) confirming every-oil-change cadence."
+    },
+    {
+      "service": "Change fuel filter and drain water from fuel filter assembly",
+      "interval": {
+        "miles": 10000,
+        "months": 12,
+        "logic": "At every oil change. In states mandating biodiesel blends >5% (B6–B20), required every 8,000 miles and must not exceed 6 months."
+      },
+      "severity": "high",
+      "notes": "Diesel only. Special California/Minnesota summer and other state mandates apply."
+    },
+    {
+      "service": "Inspect CV / Universal joints",
+      "interval": {
+        "miles": 20000,
+        "months": 24,
+        "logic": "Every 20,000 miles / 24 months (X at 20k, 30k, 40k, 50k, 60k, 70k, 80k, 90k, 160k, 100k, 176k, 110k, 192k, 240k)"
+      },
+      "severity": "high",
+      "notes": "Gasoline and Diesel. Table shows X at every maintenance checkpoint from 2 through 15 years."
+    },
+    {
+      "service": "Inspect front suspension, tie rod ends, and replace if necessary",
+      "interval": {
+        "miles": 20000,
+        "months": 24,
+        "logic": "Every 20,000 miles / 24 months (X at 20k, 40k, 60k, 80k, 100k, 120k, 140k)"
+      },
+      "severity": "high",
+      "notes": "Gasoline and Diesel. X marks at even-year checkpoints: 2, 4, 6, 8, 10, 12, 14."
+    },
+    {
+      "service": "Inspect front and rear axle fluid; change if leakage suspected or if used for police, taxi, fleet, off-road, or frequent trailer towing",
+      "interval": {
+        "miles": 30000,
+        "months": 36,
+        "logic": "Every 30,000 miles / 36 months (X at 30k, 60k, 90k, 120k, 150k)"
+      },
+      "severity": "high",
+      "notes": "Gasoline and Diesel. X marks at 3, 6, 9, 12, 15 years."
+    },
+    {
+      "service": "Inspect brake linings, rotors, drums, hoses, and parking brake; replace as necessary",
+      "interval": {
+        "miles": 20000,
+        "months": 24,
+        "logic": "Every 20,000 miles / 24 months (X at 20k, 40k, 60k, 80k, 100k, 120k, 140k)"
+      },
+      "severity": "critical",
+      "notes": "Gasoline and Diesel. X marks at even-year checkpoints: 2, 4, 6, 8, 10, 12, 14."
+    },
+    {
+      "service": "Inspect transfer case fluid",
+      "interval": {
+        "miles": null,
+        "months": null,
+        "logic": "Year 15 only (X at 240,000 km / 150,000 miles)"
+      },
+      "severity": "medium",
+      "notes": "Gasoline only. Also listed separately as inspect AND change for police, taxi, fleet, or frequent trailer towing at years 9 and 15."
+    },
+    {
+      "service": "Inspect transfer case fluid; change for police, taxi, fleet, or frequent trailer towing",
+      "interval": {
+        "miles": null,
+        "months": null,
+        "logic": "Years 9 and 15 only (X at 90,000 mi / 144,000 km and 240,000 km / 150,000 mi)"
+      },
+      "severity": "medium",
+      "notes": "Gasoline and Diesel."
+    },
+    {
+      "service": "Change transfer case fluid",
+      "interval": {
+        "miles": null,
+        "months": null,
+        "logic": "Year 15 only (X at 240,000 km / 150,000 miles)"
+      },
+      "severity": "medium",
+      "notes": "Gasoline and Diesel."
+    },
+    {
+      "service": "Replace cabin air filter",
+      "interval": {
+        "miles": 20000,
+        "months": 24,
+        "logic": "Every 20,000 miles / 24 months (X at 20k, 40k, 60k, 80k, 100k, 120k, 140k)"
+      },
+      "severity": "medium",
+      "notes": "Gasoline and Diesel. X marks at even-year checkpoints: 2, 4, 6, 8, 10, 12, 14."
+    },
+    {
+      "service": "Replace engine air cleaner filter",
+      "interval": {
+        "miles": 30000,
+        "months": 36,
+        "logic": "Every 30,000 miles / 36 months (X at 30k, 60k, 90k, 120k, 150k)"
+      },
+      "severity": "medium",
+      "notes": "Gasoline and Diesel. Inspect at every oil-change interval under dusty/off-road conditions; replace as necessary even if before scheduled interval. X marks at 3, 6, 9, 12, 15 years."
+    },
+    {
+      "service": "Replace accessory drive belt with OEM grade Mopar belt (Stop/Start equipped models)",
+      "interval": {
+        "miles": null,
+        "months": null,
+        "logic": "Year 15 only (X at 240,000 km / 150,000 miles)"
+      },
+      "severity": "medium",
+      "notes": "Gasoline only."
+    },
+    {
+      "service": "Replace accessory drive belt(s)",
+      "interval": {
+        "miles": null,
+        "months": null,
+        "logic": "Year 15 only (X at 240,000 km / 150,000 miles)"
+      },
+      "severity": "medium",
+      "notes": "Diesel only."
+    },
+    {
+      "service": "Replace spark plugs",
+      "interval": {
+        "miles": 100000,
+        "months": null,
+        "logic": "100,000 miles (mileage-based only; yearly/months intervals do not apply per footnote **)"
+      },
+      "severity": "high",
+      "notes": "Gasoline only. Table X marks year 10 (160,000 miles). Footnote explicitly states mileage-based only; yearly intervals do not apply."
+    },
+    {
+      "service": "Inspect and replace PCV valve if necessary",
+      "interval": {
+        "miles": null,
+        "months": null,
+        "logic": "Year 15 only (X at 240,000 km / 150,000 miles)"
+      },
+      "severity": "low",
+      "notes": "Gasoline only."
+    },
+    {
+      "service": "Flush and replace engine coolant",
+      "interval": {
+        "miles": 150000,
+        "months": 120,
+        "logic": "10 years or 150,000 miles (240,000 km), whichever comes first. Also shown at year 15 (X at 240,000 km / 150,000 miles)."
+      },
+      "severity": "high",
+      "notes": "Gasoline and Diesel. Do not exceed 10 years or 150,000 miles."
+    }
+  ],
+  "applicability": [
+    "All 2021 Ram 1500 DT gasoline engines (3.6L Pentastar V6, 5.7L HEMI V8)",
+    "All 2021 Ram 1500 DT diesel engines (3.0L EcoDiesel I6)",
+    "2WD and 4WD unless individually noted in source",
+    "Severe-duty definitions: police, taxi, fleet, off-road, frequent trailer towing, dusty areas, very short trip driving"
+  ],
+  "validation_flags": [
+    "Primary source: 2021 Ram 1500 Owner's Manual PDF (document pages 299-306; PDF pages 301-306)",
+    "Official manufacturer source verified: https://vehicleinfo.mopar.com/assets/publications/en-us/Ram/2021/1500_DT/5633293_21_DT_OM_EN_USC_DIGITAL_E4.pdf",
+    "Maintenance schedule extracted from Gasoline section (pages 299-301/302 document) and Diesel section (pages 303-306/307 document)",
+    "Task reference to 'pages 299-300' corresponds to document page numbers; PDF physical pages are 301-306",
+    "Codex must verify all intervals against rendered PDF pages before production",
+    "Gasoline and Diesel share many items but diesel adds DEF, fuel filter/water drain, and biodiesel-specific rules",
+    "Oil Change Indicator system governs primary service intervals up to 10,000 mi / 12 mo / 350 hr",
+    "Table columns use non-monotonic mileage ordering per original document layout (e.g., 10k→20k→30k→...→90k→160k→100k→176k→...→240k/150k) — preserve source order in logic strings",
+    "Spark plug replacement is mileage-based only; yearly intervals do not apply per footnote **",
+    "Door hinge lubrication is twice yearly regardless of mileage",
+    "Coolant flush at 10 years or 150k miles, whichever comes first; table also shows entry at year 15",
+    "Diesel biodiesel (B6-B20) states mandate 8,000 miles / 6 months for oil change and fuel filter",
+    "Do not apply schedules from adjacent model years or similar models"
+  ],
+  "production_ready": false,
+  "source_confidence": "official_source_pending_codex_review",
+  "review_status": "candidate"
+}

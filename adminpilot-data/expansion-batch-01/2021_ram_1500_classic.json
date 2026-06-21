@@ -1,0 +1,324 @@
+{
+  "id": "2021-ram-1500-classic-all-engines-normal",
+  "year": 2021,
+  "make": "Ram",
+  "model": "1500 Classic",
+  "trim": "2021 Ram 1500 Classic (previous DS generation) — all trims",
+  "engine": "Gasoline: 3.6L Pentastar V6, 5.7L HEMI V8",
+  "transmission": "Automatic; exact transmission variant pending verification",
+  "driveType": "2WD and 4WD",
+  "source": "2021 Ram 1500 Classic Owner's Manual",
+  "source_url": "https://vehicleinfo.mopar.com/assets/publications/en-us/Ram/2021/1500_Classic/P135665_21_DS_OM_EN_USC_DIGITAL.pdf",
+  "maintenance": [
+    {
+      "service": "Change engine oil and filter",
+      "interval": {
+        "miles": 10000,
+        "months": 12,
+        "logic": "Oil Life Monitor (OLM) based: no more than 10,000 miles (16,000 km), 12 months, or 350 hours of engine run time, whichever comes first. Monitor will illuminate based on operating conditions; service within next 500 miles (805 km)."
+      },
+      "severity": "critical",
+      "notes": "OLM determines actual interval based on short trips, towing, temperature, etc. Fleet note: 350 hours is generally only a concern for fleet customers."
+    },
+    {
+      "service": "Rotate tires at first sign of irregular wear",
+      "interval": {
+        "miles": 10000,
+        "months": 12,
+        "logic": "At every oil change interval; also when first irregular wear is noticed even if before OLM triggers."
+      },
+      "severity": "high",
+      "notes": "Irregular wear prompt overrides strict mileage intervals."
+    },
+    {
+      "service": "Inspect battery; clean and tighten terminals as required",
+      "interval": {
+        "miles": 10000,
+        "months": 12,
+        "logic": "At every oil change interval"
+      },
+      "severity": "high",
+      "notes": "Maintenance-free battery; no water addition required."
+    },
+    {
+      "service": "Inspect CV/Universal joints",
+      "interval": {
+        "miles": 10000,
+        "months": 12,
+        "logic": "At every oil change interval"
+      },
+      "severity": "high",
+      "notes": ""
+    },
+    {
+      "service": "Inspect automatic transmission fluid (if equipped with dipstick)",
+      "interval": {
+        "miles": 10000,
+        "months": 12,
+        "logic": "At every oil change interval"
+      },
+      "severity": "high",
+      "notes": "Applies only to transmissions equipped with a dipstick."
+    },
+    {
+      "service": "Inspect brake pads, shoes, rotors, drums, hoses and parking brake",
+      "interval": {
+        "miles": 10000,
+        "months": 12,
+        "logic": "At every oil change interval"
+      },
+      "severity": "critical",
+      "notes": ""
+    },
+    {
+      "service": "Inspect engine cooling system protection and hoses",
+      "interval": {
+        "miles": 10000,
+        "months": 12,
+        "logic": "At every oil change interval"
+      },
+      "severity": "high",
+      "notes": ""
+    },
+    {
+      "service": "Inspect exhaust system",
+      "interval": {
+        "miles": 10000,
+        "months": 12,
+        "logic": "At every oil change interval"
+      },
+      "severity": "high",
+      "notes": ""
+    },
+    {
+      "service": "Inspect engine air cleaner filter; replace if necessary",
+      "interval": {
+        "miles": 10000,
+        "months": 12,
+        "logic": "At every oil change interval (replace if dusty/off-road conditions warrant)"
+      },
+      "severity": "medium",
+      "notes": "More frequent replacement in extreme dusty conditions."
+    },
+    {
+      "service": "Inspect and replace Evaporative System Fresh Air Filter as necessary",
+      "interval": {
+        "miles": 10000,
+        "months": 12,
+        "logic": "At every oil change interval; replace more frequently in extreme dusty conditions"
+      },
+      "severity": "medium",
+      "notes": ""
+    },
+    {
+      "service": "Lubricate door hinge roller pivot joints with white lithium grease",
+      "interval": {
+        "miles": null,
+        "months": 6,
+        "logic": "Twice a year (every 6 months)"
+      },
+      "severity": "medium",
+      "notes": "Apply white lithium grease to prevent premature wear."
+    },
+    {
+      "service": "Check engine oil level",
+      "interval": {
+        "miles": null,
+        "months": 1,
+        "logic": "Once a month or before a long trip"
+      },
+      "severity": "medium",
+      "notes": ""
+    },
+    {
+      "service": "Check windshield washer fluid level",
+      "interval": {
+        "miles": null,
+        "months": 1,
+        "logic": "Once a month or before a long trip"
+      },
+      "severity": "medium",
+      "notes": "Use washer solvent only; do not use radiator antifreeze."
+    },
+    {
+      "service": "Check tire pressure and inspect for unusual wear or damage",
+      "interval": {
+        "miles": null,
+        "months": 1,
+        "logic": "Once a month or before a long trip; rotate at first sign of irregular wear"
+      },
+      "severity": "high",
+      "notes": ""
+    },
+    {
+      "service": "Check coolant reservoir and brake master cylinder fluid levels",
+      "interval": {
+        "miles": null,
+        "months": 1,
+        "logic": "Once a month or before a long trip; fill as needed"
+      },
+      "severity": "high",
+      "notes": ""
+    },
+    {
+      "service": "Check function of all interior and exterior lights",
+      "interval": {
+        "miles": null,
+        "months": 1,
+        "logic": "Once a month or before a long trip"
+      },
+      "severity": "medium",
+      "notes": ""
+    },
+    {
+      "service": "Inspect CV/Universal joints",
+      "interval": {
+        "miles": 20000,
+        "months": 24,
+        "logic": "Every 20,000 miles or 24 months"
+      },
+      "severity": "high",
+      "notes": "Additional inspection beyond monthly/OLM checks."
+    },
+    {
+      "service": "Inspect front suspension, tie rod ends; replace if necessary",
+      "interval": {
+        "miles": 40000,
+        "months": 48,
+        "logic": "Every 40,000 miles or 48 months (also 20k, 60k, 80k, 100k, 120k, 140k)"
+      },
+      "severity": "high",
+      "notes": ""
+    },
+    {
+      "service": "Inspect front and rear axle surfaces and gear oil level; change axle fluid for police/taxi/fleet/off-road/frequent trailer towing",
+      "interval": {
+        "miles": 30000,
+        "months": 36,
+        "logic": "Every 30,000 miles or 36 months (also 60k, 90k, 120k, 150k)"
+      },
+      "severity": "medium",
+      "notes": "Special condition: change axle fluid if vehicle used for police, taxi, fleet, off-road, or frequent trailer towing."
+    },
+    {
+      "service": "Inspect brake linings; replace as necessary",
+      "interval": {
+        "miles": 20000,
+        "months": 24,
+        "logic": "Every 20,000 miles or 24 months (also 40k, 60k, 80k, 100k, 120k, 140k)"
+      },
+      "severity": "critical",
+      "notes": ""
+    },
+    {
+      "service": "Adjust parking brake as necessary",
+      "interval": {
+        "miles": 20000,
+        "months": 24,
+        "logic": "Every 20,000 miles or 24 months (also 40k, 60k, 80k, 100k, 120k, 140k)"
+      },
+      "severity": "high",
+      "notes": ""
+    },
+    {
+      "service": "Inspect transfer case fluid",
+      "interval": {
+        "miles": 30000,
+        "months": 36,
+        "logic": "Every 30,000 miles or 36 months (also 90k, 150k)"
+      },
+      "severity": "high",
+      "notes": ""
+    },
+    {
+      "service": "Inspect transfer case fluid and change for special conditions (police, taxi, fleet, or frequent trailer towing)",
+      "interval": {
+        "miles": 60000,
+        "months": 72,
+        "logic": "Every 60,000 miles or 72 months for special use; also at 120k/120 months"
+      },
+      "severity": "high",
+      "notes": "Change fluid for police, taxi, fleet, or frequent trailer towing applications."
+    },
+    {
+      "service": "Change transfer case fluid",
+      "interval": {
+        "miles": 120000,
+        "months": 120,
+        "logic": "Every 120,000 miles or 120 months"
+      },
+      "severity": "high",
+      "notes": "Standard change interval."
+    },
+    {
+      "service": "Replace cabin air filter",
+      "interval": {
+        "miles": 40000,
+        "months": 48,
+        "logic": "Every 40,000 miles or 48 months (also 20k, 60k, 80k, 100k, 120k, 140k)"
+      },
+      "severity": "medium",
+      "notes": ""
+    },
+    {
+      "service": "Replace engine air cleaner filter",
+      "interval": {
+        "miles": 30000,
+        "months": 36,
+        "logic": "Every 30,000 miles or 36 months (also 60k, 90k, 120k, 150k); more frequent in dusty/off-road conditions"
+      },
+      "severity": "medium",
+      "notes": ""
+    },
+    {
+      "service": "Replace spark plugs",
+      "interval": {
+        "miles": 100000,
+        "months": null,
+        "logic": "100,000 miles only (yearly intervals do not apply)"
+      },
+      "severity": "high",
+      "notes": "Mileage-based only per source footnote 1."
+    },
+    {
+      "service": "Flush and replace engine coolant",
+      "interval": {
+        "miles": 150000,
+        "months": 120,
+        "logic": "Every 150,000 miles or 120 months (also 100,000 miles / 120 months). Whichever comes first."
+      },
+      "severity": "critical",
+      "notes": "Source states '10 years or 150,000 miles (240,000 km) whichever comes first.' First replacement at 100k/120 months if due."
+    },
+    {
+      "service": "Inspect and replace PCV valve if necessary",
+      "interval": {
+        "miles": 100000,
+        "months": 120,
+        "logic": "Every 100,000 miles or 120 months"
+      },
+      "severity": "medium",
+      "notes": ""
+    }
+  ],
+  "applicability": [
+    "All 2021 Ram 1500 Classic gasoline engines",
+    "2WD and 4WD unless individually noted in source",
+    "Oil change interval driven by OLM; never exceed 10,000 miles, 12 months, or 350 hours",
+    "Automatic transmission fluid inspection only if dipstick-equipped",
+    "Door hinge lubrication applies twice yearly regardless of mileage"
+  ],
+  "validation_flags": [
+    "Primary source: 2021 Ram 1500 Classic Owner's Manual PDF (book pages 248-251 / PDF pages 250-253)",
+    "Official manufacturer source verified: https://vehicleinfo.mopar.com/assets/publications/en-us/Ram/2021/1500_Classic/P135665_21_DS_OM_EN_USC_DIGITAL.pdf",
+    "Maintenance schedule extracted using pdfplumber table and text extraction",
+    "Oil change interval governed by OLM; extracted max interval is 10,000 miles / 12 months / 350 hours",
+    "Spark plug replacement is mileage-based only (no yearly interval) per source footnote",
+    "Door hinge lubrication noted every 6 months from source NOTE on page 249",
+    "Axle fluid change for special conditions (police, taxi, fleet, off-road, frequent trailer towing) explicitly stated in source",
+    "Do not conflate with 2021 Ram 1500 DT (new generation) maintenance schedule"
+  ],
+  "production_ready": false,
+  "source_confidence": "official_source_extracted_directly_pending_independent_review",
+  "review_status": "candidate"
+}

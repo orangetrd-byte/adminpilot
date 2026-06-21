@@ -1,0 +1,73 @@
+{
+  "batch_id": "expansion-batch-01",
+  "snapshot_date": "2026-06-21T11:30:00-04:00",
+  "description": "Reviewed candidate maintenance schedules recovered from the Hermes expansion run",
+  "production_ready_overall": false,
+  "integration_status": "candidate_review_only",
+  "total_records": 6,
+  "records": [
+    {
+      "file": "2020_buick_enclave.json",
+      "status": "candidate",
+      "reason": "Structured extraction exists; production-ready claim was removed pending independent page verification."
+    },
+    {
+      "file": "2020_ford_edge.json",
+      "status": "candidate",
+      "reason": "Normalized from Hermes's alternate schedule structure; page verification remains open."
+    },
+    {
+      "file": "2021_jeep_wrangler.json",
+      "status": "candidate",
+      "reason": "Gasoline schedule extracted; engine, transmission, and severe-duty applicability still require independent verification."
+    },
+    {
+      "file": "2021_ram_1500_classic.json",
+      "status": "candidate",
+      "reason": "Official-manual extraction exists; production-ready claim was removed pending independent verification."
+    },
+    {
+      "file": "2021_ram_1500_dt.json",
+      "status": "replacement_candidate",
+      "reason": "Potential replacement for the canonical low-confidence Ram 1500 record; powertrain-specific applicability remains unresolved."
+    },
+    {
+      "file": "2022_chevrolet_equinox.json",
+      "status": "candidate",
+      "reason": "Structured extraction exists, but engine claims and table alignment require independent verification."
+    }
+  ],
+  "rejected_artifacts": [
+    {
+      "file": "2020_chevrolet_malibu.json",
+      "reason": "Not a vehicle record; it contains page previews from the wrong manual section."
+    },
+    {
+      "file": "2020_gmc_terrain.json",
+      "reason": "Placeholder service entry explicitly states that the schedule was not parsed."
+    },
+    {
+      "file": "ford_f150_2020_maintenance.json",
+      "reason": "Duplicate alternate dataset structure for a vehicle already represented in this batch."
+    },
+    {
+      "file": "toyota_rav4_2021_maintenance.json",
+      "reason": "Already represented in the repository's canonical Phase 2 dataset; not an expansion record."
+    },
+    {
+      "file": "2019_toyota_camry.json",
+      "reason": "Already represented in the canonical dataset; the candidate still has known two-column extraction bleed."
+    },
+    {
+      "file": "2020_ford_f150.json",
+      "reason": "Already represented in the canonical dataset and does not justify a second competing record."
+    }
+  ],
+  "review_rules": [
+    "No candidate in this directory may set production_ready=true.",
+    "Condition-based maintenance remains condition-based; fixed intervals are not invented.",
+    "Severe-use services must not be presented as normal-use requirements.",
+    "Rendered-page verification is required before integration into the canonical dataset.",
+    "Variant-specific engine, transmission, and drivetrain rules must be split or explicitly scoped."
+  ]
+}
