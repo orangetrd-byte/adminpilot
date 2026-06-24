@@ -10,6 +10,8 @@ function cloneDefaultState() {
   return {
     assets: [],
     lastDecodedVehicle: null,
+    candidateMaintenance: null,
+    maintenanceLookupKey: "",
     recalls: [],
     recallLookupVin: "",
     lastLookup: "",
@@ -80,6 +82,7 @@ const els = {
   onTrackCount: document.getElementById("on-track-count"),
   vehicleCard: document.getElementById("vehicle-card"),
   recallCard: document.getElementById("recall-card"),
+  maintenanceCard: document.getElementById("maintenance-card"),
   timeline: document.getElementById("timeline"),
   reminderList: document.getElementById("reminder-list"),
   notifyEnable: document.getElementById("notify-enable"),
@@ -122,6 +125,12 @@ function loadState() {
       ...DEFAULT_STATE,
       ...parsed,
       assets: Array.isArray(parsed?.assets) ? parsed.assets : [],
+      candidateMaintenance:
+        parsed?.candidateMaintenance && typeof parsed.candidateMaintenance === "object"
+          ? parsed.candidateMaintenance
+          : null,
+      maintenanceLookupKey:
+        typeof parsed?.maintenanceLookupKey === "string" ? parsed.maintenanceLookupKey : "",
       recalls: Array.isArray(parsed?.recalls) ? parsed.recalls : [],
       recallLookupVin: typeof parsed?.recallLookupVin === "string" ? parsed.recallLookupVin : "",
     };
@@ -174,6 +183,11 @@ function clearRecallResults() {
   state.recallLookupVin = "";
 }
 
+function clearCandidateMaintenance() {
+  state.candidateMaintenance = null;
+  state.maintenanceLookupKey = "";
+}
+
 function todayKey() {
   return new Date().toISOString().slice(0, 10);
 }
@@ -213,6 +227,93 @@ function getDecodedField(results, fieldName) {
   return value && String(value).trim() ? String(value).trim() : "";
 }
 
+function normalizeScheduleKey(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "");
+}
+
+function getMaintenanceLookupKey(vehicle) {
+  return [vehicle?.year, vehicle?.make, vehicle?.model].map(normalizeScheduleKey).join("|");
+}
+
+function isMaintenanceCandidateMatch(record, vehicle, fileName) {
+  if (!record || !vehicle) return false;
+  if (String(record.year || "") !== String(vehicle.year || "")) return false;
+  if (normalizeScheduleKey(record.make) !== normalizeScheduleKey(vehicle.make)) return false;
+
+  const recordModel = normalizeScheduleKey(record.model);
+  const decodedModel = normalizeScheduleKey(vehicle.model);
+  if (!recordModel || !decodedModel) return false;
+  if (recordModel !== decodedModel && !recordModel.includes(decodedModel) && !decodedModel.includes(recordModel)) {
+    return false;
+  }
+
+  const trimKey = normalizeScheduleKey(`${vehicle.trim || ""} ${vehicle.model || ""}`);
+  const fileKey = normalizeScheduleKey(fileName || "");
+  if (fileKey.includes("classic") && !trimKey.includes("classic")) {
+    return false;
+  }
+  if (trimKey.includes("classic") && !fileKey.includes("classic")) {
+    return false;
+  }
+
+  return true;
+}
+
+function formatInterval(interval = {}) {
+  const parts = [];
+  if (interval.miles !== null && interval.miles !== undefined) {
+    parts.push(`${Number(interval.miles).toLocaleString()} mi`);
+  }
+  if (interval.months !== null && interval.months !== undefined) {
+    parts.push(`${Number(interval.months).toLocaleString()} mo`);
+  }
+  return parts.length ? parts.join(" / ") : interval.logic || "Condition-based";
+}
+
+async function loadCandidateMaintenanceForVehicle(vehicle) {
+  const lookupKey = getMaintenanceLookupKey(vehicle);
+  clearCandidateMaintenance();
+
+  if (!vehicle?.year || !vehicle?.make || !vehicle?.model) {
+    state.maintenanceLookupKey = lookupKey;
+    return null;
+  }
+
+  const manifestResponse = await fetch("./adminpilot-data/expansion-batch-01/manifest.json", {
+    cache: "no-store",
+  });
+  if (!manifestResponse.ok) {
+    throw new Error("Maintenance manifest failed to load");
+  }
+
+  const manifest = await manifestResponse.json();
+  const records = Array.isArray(manifest.records) ? manifest.records : [];
+  for (const entry of records) {
+    if (!entry?.file) continue;
+    const recordResponse = await fetch(`./adminpilot-data/expansion-batch-01/${entry.file}`, {
+      cache: "no-store",
+    });
+    if (!recordResponse.ok) continue;
+    const record = await recordResponse.json();
+    if (!isMaintenanceCandidateMatch(record, vehicle, entry.file)) continue;
+
+    state.candidateMaintenance = {
+      file: entry.file,
+      manifestStatus: entry.status || "candidate",
+      manifestReason: entry.reason || "",
+      record,
+    };
+    state.maintenanceLookupKey = lookupKey;
+    return state.candidateMaintenance;
+  }
+
+  state.maintenanceLookupKey = lookupKey;
+  return null;
+}
+
 function fileToDataUrl(file) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -237,6 +338,7 @@ function render() {
 
   renderVehicleCard();
   renderRecallCard();
+  renderMaintenanceCard();
   renderTimeline();
   renderReminderCenter(reminders);
   renderAssets();
@@ -294,6 +396,62 @@ function renderRecallCard() {
         )
         .join("")}
     </div>
+  `;
+}
+
+function renderMaintenanceCard() {
+  const vehicle = state.lastDecodedVehicle;
+  const candidate = state.candidateMaintenance;
+
+  if (!vehicle) {
+    els.maintenanceCard.className = "info-card empty";
+    els.maintenanceCard.innerHTML =
+      "<strong>No maintenance schedule loaded yet.</strong><small>Candidate schedules appear after a successful VIN decode.</small>";
+    return;
+  }
+
+  const currentKey = getMaintenanceLookupKey(vehicle);
+  if (!candidate || state.maintenanceLookupKey !== currentKey) {
+    els.maintenanceCard.className = "info-card empty";
+    els.maintenanceCard.innerHTML = `
+      <strong>No candidate schedule found.</strong>
+      <small>No quarantined maintenance record matches ${escapeHtml(
+        `${prettyValue(vehicle.year)} ${prettyValue(vehicle.make)} ${prettyValue(vehicle.model)}`
+      )} yet.</small>
+    `;
+    return;
+  }
+
+  const record = candidate.record || {};
+  const maintenance = Array.isArray(record.maintenance) ? record.maintenance : [];
+  const preview = maintenance.slice(0, 6);
+
+  els.maintenanceCard.className = "info-card";
+  els.maintenanceCard.innerHTML = `
+    <div class="info-title">
+      <strong>${escapeHtml(record.year)} ${escapeHtml(record.make)} ${escapeHtml(record.model)} candidate schedule</strong>
+      <span class="pill warning">Candidate only</span>
+    </div>
+    <small class="candidate-warning">
+      Source: ${escapeHtml(record.source || "Unknown source")} · File: ${escapeHtml(candidate.file)}
+    </small>
+    <div class="recall-list maintenance-list">
+      ${preview
+        .map(
+          (item) => `
+            <article class="recall-item">
+              <strong>${escapeHtml(item.service || "Maintenance item")}</strong>
+              <small>${escapeHtml(formatInterval(item.interval))}</small>
+            </article>
+          `
+        )
+        .join("")}
+    </div>
+    <small class="candidate-warning">
+      Showing ${preview.length} of ${maintenance.length} candidate items. Status: ${escapeHtml(
+        candidate.manifestStatus || record.review_status || "candidate"
+      )}. Not production-ready; verify source pages before relying on intervals.
+    </small>
   `;
 }
 
@@ -606,6 +764,7 @@ async function decodeVin(vinInput) {
   const vin = normalizeVin(vinInput);
   if (vin.length !== 17) {
     clearRecallResults();
+    clearCandidateMaintenance();
     saveState(state);
     render();
     setStatus("Enter a 17-character VIN", "error");
@@ -614,6 +773,7 @@ async function decodeVin(vinInput) {
 
   if (state.recallLookupVin !== vin || state.lastDecodedVehicle?.vin !== vin) {
     clearRecallResults();
+    clearCandidateMaintenance();
     saveState(state);
     render();
   }
@@ -642,9 +802,22 @@ async function decodeVin(vinInput) {
 
   state.lastDecodedVehicle = vehicle;
   state.lastLookup = vin;
+  clearCandidateMaintenance();
   saveState(state);
   render();
-  setStatus("VIN decoded", "success");
+  setStatus("Loading candidate schedule...", "loading");
+  try {
+    const candidate = await loadCandidateMaintenanceForVehicle(vehicle);
+    saveState(state);
+    render();
+    setStatus(candidate ? "VIN decoded + candidate schedule loaded" : "VIN decoded; no candidate schedule", candidate ? "warning" : "success");
+  } catch (error) {
+    console.error(error);
+    clearCandidateMaintenance();
+    saveState(state);
+    render();
+    setStatus("VIN decoded; schedule unavailable", "warning");
+  }
   return vehicle;
 }
 
@@ -801,6 +974,12 @@ async function importData(file) {
     ...DEFAULT_STATE,
     ...parsed,
     assets: Array.isArray(parsed?.assets) ? parsed.assets : [],
+    candidateMaintenance:
+      parsed?.candidateMaintenance && typeof parsed.candidateMaintenance === "object"
+        ? parsed.candidateMaintenance
+        : null,
+    maintenanceLookupKey:
+      typeof parsed?.maintenanceLookupKey === "string" ? parsed.maintenanceLookupKey : "",
     recalls: Array.isArray(parsed?.recalls) ? parsed.recalls : [],
     recallLookupVin: typeof parsed?.recallLookupVin === "string" ? parsed.recallLookupVin : "",
   };
@@ -898,6 +1077,7 @@ els.vinInput.addEventListener("input", () => {
     normalized !== normalizeVin(state.recallLookupVin || state.lastDecodedVehicle?.vin || "")
   ) {
     clearRecallResults();
+    clearCandidateMaintenance();
     saveState(state);
     render();
     setStatus(normalized ? "VIN changed — decode to load recalls" : "Idle");
