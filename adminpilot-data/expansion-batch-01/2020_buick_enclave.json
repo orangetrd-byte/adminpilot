@@ -153,7 +153,7 @@
     {
       "service": "Replace brake fluid",
       "interval": {
-        "miles": 60000,
+        "miles": null,
         "months": 60,
         "logic": "Brake fluid change is TIME-BASED, not mileage-based in the schedule matrix. Per source footnote (7): replace every 5 years (60 months). Perform DOT 3 brake fluid flush; bleed all circuits and ABS modulator."
       },

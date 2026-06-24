@@ -103,7 +103,7 @@
       "service": "Replace hood and/or body lift support gas struts",
       "interval": {
         "miles": 75000,
-        "months": null,
+        "months": 120,
         "logic": "Every 75,000 mi / 120,000 km and again at 150,000 mi / 240,000 km (marks at cols 10 and 20 in Additional Required Services – Normal table). Footnote 7 also notes 'or every 10 years, whichever comes first.'"
       },
       "severity": "medium",
@@ -224,7 +224,7 @@
       "service": "Replace hood and/or body lift support gas struts",
       "interval": {
         "miles": 75000,
-        "months": null,
+        "months": 120,
         "logic": "Every 75,000 mi / 120,000 km and again at 150,000 mi / 240,000 km (marks at cols 10 and 20 in Additional Required Services – Severe table). Footnote 7 notes 'or every 10 years, whichever comes first.'"
       },
       "severity": "medium",
