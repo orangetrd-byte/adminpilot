@@ -4,7 +4,7 @@
   "description": "Reviewed candidate maintenance schedules recovered from Hermes and source-checked 10-pack additions",
   "production_ready_overall": false,
   "integration_status": "candidate_review_only",
-  "total_records": 14,
+  "total_records": 16,
   "records": [
     {
       "file": "2019_toyota_camry.json",
@@ -17,14 +17,24 @@
       "reason": "Structured extraction exists; production-ready claim was removed pending independent page verification."
     },
     {
-      "file": "2020_ford_f150.json",
+      "file": "2020_chevrolet_malibu.json",
       "status": "candidate",
-      "reason": "Normalized from the official 2020 Ford F-150 Owner's Manual; diesel-specific schedule is excluded."
+      "reason": "Rebuilt from Chevrolet's official 2020 Malibu Owner's Manual; previous malformed page-preview artifact was discarded."
     },
     {
       "file": "2020_ford_edge.json",
       "status": "candidate",
       "reason": "Normalized from Hermes's alternate schedule structure; page verification remains open."
+    },
+    {
+      "file": "2020_ford_f150.json",
+      "status": "candidate",
+      "reason": "Normalized from the official 2020 Ford F-150 Owner's Manual; diesel-specific schedule is excluded."
+    },
+    {
+      "file": "2020_gmc_terrain.json",
+      "status": "candidate",
+      "reason": "Rebuilt from GMC's official 2020 Terrain Owner's Manual; previous placeholder artifact was discarded and diesel rows are excluded."
     },
     {
       "file": "2020_toyota_corolla.json",
@@ -78,14 +88,6 @@
     }
   ],
   "rejected_artifacts": [
-    {
-      "file": "2020_chevrolet_malibu.json",
-      "reason": "Not a vehicle record; it contains page previews from the wrong manual section."
-    },
-    {
-      "file": "2020_gmc_terrain.json",
-      "reason": "Placeholder service entry explicitly states that the schedule was not parsed."
-    },
     {
       "file": "ford_f150_2020_maintenance.json",
       "reason": "Duplicate alternate dataset structure; a normalized F-150 candidate is now represented in this batch."

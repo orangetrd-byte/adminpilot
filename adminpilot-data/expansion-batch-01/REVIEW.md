@@ -9,7 +9,7 @@ manifest and validation report were generated.
 
 ## Accepted as candidates
 
-Fourteen records are retained because they contain usable maintenance content and
+Sixteen records are retained because they contain usable maintenance content and
 identify an official manufacturer source:
 
 - 2019 Toyota Camry

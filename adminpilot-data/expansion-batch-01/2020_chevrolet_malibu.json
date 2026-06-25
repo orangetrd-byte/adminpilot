@@ -1,0 +1,194 @@
+{
+  "id": "2020-chevrolet-malibu-gas-candidate",
+  "year": 2020,
+  "make": "Chevrolet",
+  "model": "Malibu",
+  "trim": "Gasoline trims; VIN test anchor is LS",
+  "engine": "Gasoline engines covered by the 2020 Malibu Owner's Manual: 1.5L L4 and 2.0L L4",
+  "transmission": "CVT for 1.5L engine; automatic transmission for 2.0L engine",
+  "driveType": "FWD",
+  "source": "Chevrolet Malibu Owner's Manual - 2020",
+  "source_url": "https://www.chevrolet.com/ownercenter/content/dam/gmownercenter/gmna/dynamic/manuals/2020/chevrolet/malibu/2020-chevrolet-malibu-owners-manual.pdf",
+  "maintenance": [
+    {
+      "service": "Rotate tires and perform required services",
+      "interval": {
+        "miles": 7500,
+        "months": null,
+        "logic": "Every 7,500 miles / 12,000 km; required service visit includes tire rotation if recommended, oil level and oil-life check, oil and filter change if needed, coolant and washer-fluid checks, and vehicle inspections."
+      },
+      "severity": "high",
+      "notes": "Oil timing remains GM Oil Life System driven. Change oil and filter within 600 miles of CHANGE ENGINE OIL SOON and at least once per year."
+    },
+    {
+      "service": "Change engine oil and filter",
+      "interval": {
+        "miles": null,
+        "months": 12,
+        "logic": "GM Oil Life System; change within 600 miles / 1,000 km of CHANGE ENGINE OIL SOON, and at least once every year even if the message has not appeared."
+      },
+      "severity": "critical",
+      "notes": "If the oil life system is accidentally reset, service within 3,000 miles / 5,000 km since the last service."
+    },
+    {
+      "service": "Check engine air filter life and replace if needed",
+      "interval": {
+        "miles": 7500,
+        "months": null,
+        "logic": "At required service intervals; follow engine air filter life percentage/status where equipped."
+      },
+      "severity": "medium",
+      "notes": "If not equipped with the engine air filter life system, replace engine air cleaner filter per the table/footnote."
+    },
+    {
+      "service": "Replace passenger compartment air filter",
+      "interval": {
+        "miles": 22500,
+        "months": 24,
+        "logic": "Every 22,500 miles / 36,000 km pattern in the Additional Required Services table, or every two years, whichever comes first."
+      },
+      "severity": "medium",
+      "notes": "More frequent replacement may be needed in heavy traffic, poor air quality, high dust, allergens, reduced airflow, fogging, or odors."
+    },
+    {
+      "service": "Inspect evaporative control system",
+      "interval": {
+        "miles": 45000,
+        "months": null,
+        "logic": "Table marks this inspection at 45,000-mile intervals in both normal and severe schedules."
+      },
+      "severity": "medium",
+      "notes": "Visually check fuel and vapor lines and hoses for proper attachment, connection, routing, and condition."
+    },
+    {
+      "service": "Replace engine air cleaner filter if not equipped with engine air filter life system",
+      "interval": {
+        "miles": 45000,
+        "months": 48,
+        "logic": "Table marks replacement at 45,000-mile intervals; footnote states every four years, whichever comes first."
+      },
+      "severity": "medium",
+      "notes": "If driving in dusty conditions, inspect at each oil change or more often as needed."
+    },
+    {
+      "service": "Replace spark plugs; inspect spark plug wires and/or boots",
+      "interval": {
+        "miles": 97500,
+        "months": null,
+        "logic": "Normal and severe tables mark spark plug service at 97,500 miles and 150,000 miles in the 7,500-mile schedule grid."
+      },
+      "severity": "high",
+      "notes": "Applies to 1.5L and 2.0L gasoline engines."
+    },
+    {
+      "service": "Drain and fill engine cooling system and power electronics cooling system",
+      "interval": {
+        "miles": 150000,
+        "months": 60,
+        "logic": "Every 150,000 miles / 240,000 km or every five years, whichever comes first."
+      },
+      "severity": "high",
+      "notes": "Use the coolant specified by the owner manual."
+    },
+    {
+      "service": "Visually inspect accessory drive belts",
+      "interval": {
+        "miles": 150000,
+        "months": 120,
+        "logic": "Every 150,000 miles / 240,000 km or every 10 years, whichever comes first."
+      },
+      "severity": "medium",
+      "notes": "Inspect for fraying, excessive cracking, or damage; replace if needed."
+    },
+    {
+      "service": "Replace brake fluid",
+      "interval": {
+        "miles": null,
+        "months": 60,
+        "logic": "Every five years."
+      },
+      "severity": "high",
+      "notes": "Time-based service from the maintenance schedule footnote."
+    },
+    {
+      "service": "Replace windshield wiper blades",
+      "interval": {
+        "miles": 15000,
+        "months": 12,
+        "logic": "Table marks every 15,000 miles; footnote states every 12 months, whichever comes first."
+      },
+      "severity": "low",
+      "notes": "Replace sooner if visibility is reduced."
+    },
+    {
+      "service": "Replace hood and/or body lift support gas struts",
+      "interval": {
+        "miles": 75000,
+        "months": 120,
+        "logic": "Table marks 75,000 and 150,000 miles; footnote states every 10 years, whichever comes first."
+      },
+      "severity": "medium",
+      "notes": "Applies where equipped."
+    },
+    {
+      "service": "Replace air conditioning desiccant",
+      "interval": {
+        "miles": null,
+        "months": 84,
+        "logic": "Every seven years."
+      },
+      "severity": "medium",
+      "notes": "Manual says this service can be complex; see dealer."
+    },
+    {
+      "service": "Change automatic transmission fluid, except 1.5L engine",
+      "interval": {
+        "miles": 45000,
+        "months": null,
+        "logic": "Severe schedule only; table marks 45,000, 90,000, and 135,000 miles."
+      },
+      "severity": "high",
+      "notes": "Applies to 2.0L engine automatic transmission severe schedule only; do not apply to 1.5L CVT."
+    },
+    {
+      "service": "Change automatic transmission fluid and filter for 1.5L engine",
+      "interval": {
+        "miles": 45000,
+        "months": null,
+        "logic": "Severe schedule only; table marks 45,000, 90,000, and 135,000 miles."
+      },
+      "severity": "high",
+      "notes": "Applies to 1.5L CVT severe schedule only. Owner manual lists CVT fluid separately from 2.0L automatic transmission fluid."
+    },
+    {
+      "service": "Lubricate chassis components",
+      "interval": {
+        "miles": null,
+        "months": null,
+        "logic": "Severe commercial use vehicles only; perform at every oil change."
+      },
+      "severity": "medium",
+      "notes": "Special Application Services item, not a normal passenger-use maintenance requirement."
+    }
+  ],
+  "applicability": [
+    "2020 Chevrolet Malibu gasoline models",
+    "VIN test target is 2020 Chevrolet Malibu LS",
+    "1.5L and 2.0L engines require separate transmission-service applicability",
+    "FWD passenger vehicles unless an item is explicitly marked severe commercial use",
+    "Severe schedule applies when mainly driven in heavy city traffic in hot weather, mainly driven in hilly or mountainous terrain, frequent trailer towing, high-speed or competitive driving, or taxi/police/delivery service."
+  ],
+  "validation_flags": [
+    "Candidate rebuilt from Chevrolet's official 2020 Malibu Owner's Manual PDF.",
+    "Official source URL follows the GM Owner Center manual pattern and resolved successfully.",
+    "Previous malformed page-preview artifact for 2020_chevrolet_malibu.json was not used.",
+    "Service and Maintenance text extracted from document pages 302-315; rendered-page verification remains required before production.",
+    "Normal and severe schedule tables were extracted from the official PDF text; column alignment still needs human visual review.",
+    "Oil timing is GM Oil Life System driven and must not be reduced to a simple fixed-mile oil interval.",
+    "Severe transmission service is split by engine: 1.5L uses CVT fluid and filter; 2.0L uses automatic transmission fluid.",
+    "Severe commercial chassis lubrication is retained as conditional, not normal passenger-use service."
+  ],
+  "production_ready": false,
+  "source_confidence": "official_source_text_extracted_pending_visual_review",
+  "review_status": "candidate"
+}
