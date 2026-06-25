@@ -1,0 +1,191 @@
+{
+  "id": "2021-chevrolet-silverado-1500-gas-candidate",
+  "year": 2021,
+  "make": "Chevrolet",
+  "model": "Silverado 1500",
+  "trim": "Gasoline trims; VIN test anchor is RST",
+  "engine": "Gasoline engines covered by the 2021 Silverado 1500 Owner's Manual; Duramax diesel supplement excluded",
+  "transmission": "Automatic",
+  "driveType": "2WD and 4WD as equipped",
+  "source": "Chevrolet Owner's Manual - 2021 Silverado 1500",
+  "source_url": "https://www.chevrolet.com/ownercenter/content/dam/gmownercenter/gmna/dynamic/manuals/2021/chevrolet/silverado-1500/2021-chevrolet-silverado-1500-owners-manual.pdf",
+  "maintenance": [
+    {
+      "service": "Rotate tires and perform required services",
+      "interval": {
+        "miles": 7500,
+        "months": null,
+        "logic": "Every 7,500 miles; check oil level and oil life percentage, change engine oil and filter if needed"
+      },
+      "severity": "high",
+      "notes": "The manual states the Tire Rotation and Required Services are recommended every 12,000 km/7,500 mi. Oil change timing remains Oil Life System driven, with at least one oil/filter change per year."
+    },
+    {
+      "service": "Change engine oil and filter",
+      "interval": {
+        "miles": null,
+        "months": 12,
+        "logic": "Engine Oil Life System; change within 600 miles of CHANGE ENGINE OIL SOON, and at least once per year"
+      },
+      "severity": "critical",
+      "notes": "If the oil life system is accidentally reset, service within 3,000 miles since the last service."
+    },
+    {
+      "service": "Check engine air filter life and replace if needed",
+      "interval": {
+        "miles": 7500,
+        "months": null,
+        "logic": "At required service intervals; follow engine air filter life percentage/status where equipped"
+      },
+      "severity": "medium",
+      "notes": "If not equipped with engine air filter life system, inspect the engine air cleaner filter. Footnote says replacement is also every four years, whichever comes first; dusty use requires more frequent inspection."
+    },
+    {
+      "service": "Replace passenger compartment air filter",
+      "interval": {
+        "miles": 22500,
+        "months": 24,
+        "logic": "Every 22,500 miles or two years, whichever comes first"
+      },
+      "severity": "medium",
+      "notes": "Manual table repeats this item at 22,500-mile intervals. Heavy traffic, poor air quality, high dust, reduced airflow, fogging, or odors may require earlier replacement."
+    },
+    {
+      "service": "Inspect evaporative control system",
+      "interval": {
+        "miles": 45000,
+        "months": null,
+        "logic": "Every 45,000 miles in the Additional Required Services tables"
+      },
+      "severity": "medium",
+      "notes": "Visually check fuel and vapor lines and hoses for attachment, connection, routing, and condition."
+    },
+    {
+      "service": "Replace spark plugs and inspect spark plug wires or boots except 2.7L L4 Turbo",
+      "interval": {
+        "miles": 97500,
+        "months": null,
+        "logic": "Every 97,500 miles for engines except 2.7L L4 Turbo"
+      },
+      "severity": "high",
+      "notes": "Do not apply this interval to the 2.7L L4 Turbo engine."
+    },
+    {
+      "service": "Replace spark plugs and inspect spark plug wires or boots for 2.7L L4 Turbo",
+      "interval": {
+        "miles": 60000,
+        "months": null,
+        "logic": "Every 60,000 miles for 2.7L L4 Turbo"
+      },
+      "severity": "high",
+      "notes": "Manual table shows 2.7L L4 Turbo spark plug service at 60,000-mile intervals."
+    },
+    {
+      "service": "Change transfer case fluid",
+      "interval": {
+        "miles": 97500,
+        "months": null,
+        "logic": "Normal schedule; 4WD only"
+      },
+      "severity": "high",
+      "notes": "Do not directly power wash transfer case or axle output seals; contaminated fluid should be replaced."
+    },
+    {
+      "service": "Change automatic transmission fluid and filter",
+      "interval": {
+        "miles": 45000,
+        "months": null,
+        "logic": "Severe schedule only; repeats at 45,000-mile intervals"
+      },
+      "severity": "high",
+      "notes": "Shown in the severe schedule at 45,000, 90,000, and 135,000 miles. Not listed as a normal-use fixed interval in the extracted normal table."
+    },
+    {
+      "service": "Change transfer case fluid",
+      "interval": {
+        "miles": 45000,
+        "months": null,
+        "logic": "Severe schedule only; 4WD only; repeats at 45,000-mile intervals"
+      },
+      "severity": "high",
+      "notes": "Shown in the severe schedule at 45,000, 90,000, and 135,000 miles."
+    },
+    {
+      "service": "Drain and fill engine cooling system",
+      "interval": {
+        "miles": 150000,
+        "months": 60,
+        "logic": "Every 150,000 miles or five years, whichever comes first"
+      },
+      "severity": "high",
+      "notes": "Manual footnote refers to Cooling System section."
+    },
+    {
+      "service": "Visually inspect accessory drive belts",
+      "interval": {
+        "miles": 150000,
+        "months": 120,
+        "logic": "Every 150,000 miles or 10 years, whichever comes first"
+      },
+      "severity": "medium",
+      "notes": "Inspect for fraying, excessive cracking, or damage; replace if needed."
+    },
+    {
+      "service": "Replace brake fluid",
+      "interval": {
+        "miles": null,
+        "months": 60,
+        "logic": "Every five years"
+      },
+      "severity": "high",
+      "notes": "Time-based service from maintenance table footnote."
+    },
+    {
+      "service": "Replace windshield wiper blades",
+      "interval": {
+        "miles": 15000,
+        "months": 12,
+        "logic": "Every 15,000 miles or 12 months, whichever comes first"
+      },
+      "severity": "low",
+      "notes": "Manual table repeats this item at 15,000-mile intervals."
+    },
+    {
+      "service": "Replace hood gas struts and tailgate dampener",
+      "interval": {
+        "miles": 75000,
+        "months": 120,
+        "logic": "Every 75,000 miles or 10 years, whichever comes first"
+      },
+      "severity": "medium",
+      "notes": "Manual table shows this item at 75,000 and 150,000 miles."
+    },
+    {
+      "service": "Replace air conditioning desiccant",
+      "interval": {
+        "miles": null,
+        "months": 84,
+        "logic": "Every seven years"
+      },
+      "severity": "medium",
+      "notes": "Manual says this service can be complex; see dealer."
+    }
+  ],
+  "applicability": [
+    "2021 Chevrolet Silverado 1500 gasoline models",
+    "VIN test target is 2021 Chevrolet Silverado 1500 RST",
+    "Diesel engine maintenance is excluded and belongs to the Duramax diesel supplement",
+    "Severe schedule applies to heavy city traffic in hot weather, hilly or mountainous terrain, frequent trailer towing, high speed or competitive driving, or taxi/police/delivery service"
+  ],
+  "validation_flags": [
+    "Candidate built from Chevrolet's official 2021 Silverado 1500 Owner's Manual PDF.",
+    "Text/table extraction checked Service and Maintenance pages 408-415; rendered-page verification remains required before production.",
+    "Claude draft was used only as an advisory checklist; unsupported normal transmission/transfer-case intervals were not copied.",
+    "Manual identifies the smaller gasoline engine as 2.7L L4 Turbo; do not use later TurboMax naming without source support.",
+    "Automatic transmission fluid and filter appears in the severe table at 45,000-mile intervals, not as a normal fixed interval in the extracted normal table.",
+    "Oil change timing is Oil Life System driven and must not be reduced to a simple fixed-mile interval."
+  ],
+  "production_ready": false,
+  "source_confidence": "official_source_text_extracted_pending_visual_review",
+  "review_status": "candidate"
+}

@@ -9,7 +9,7 @@ manifest and validation report were generated.
 
 ## Accepted as candidates
 
-Thirteen records are retained because they contain usable maintenance content and
+Fourteen records are retained because they contain usable maintenance content and
 identify an official manufacturer source:
 
 - 2019 Toyota Camry
@@ -17,6 +17,7 @@ identify an official manufacturer source:
 - 2020 Ford F-150
 - 2020 Ford Edge
 - 2020 Toyota Corolla
+- 2021 Chevrolet Silverado 1500
 - 2021 Ford Explorer
 - 2021 Honda Accord
 - 2021 Honda CRV

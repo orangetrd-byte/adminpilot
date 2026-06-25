@@ -4,7 +4,7 @@
   "description": "Reviewed candidate maintenance schedules recovered from Hermes and source-checked 10-pack additions",
   "production_ready_overall": false,
   "integration_status": "candidate_review_only",
-  "total_records": 13,
+  "total_records": 14,
   "records": [
     {
       "file": "2019_toyota_camry.json",
@@ -30,6 +30,11 @@
       "file": "2020_toyota_corolla.json",
       "status": "candidate",
       "reason": "Built from the official 2020 Corolla Toyota Warranty & Maintenance Guide with special-condition items preserved as conditional."
+    },
+    {
+      "file": "2021_chevrolet_silverado_1500.json",
+      "status": "candidate",
+      "reason": "Built from Chevrolet's official 2021 Silverado 1500 Owner's Manual; Oil Life System and severe-use services remain explicitly scoped."
     },
     {
       "file": "2021_ford_explorer.json",
