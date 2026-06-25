@@ -1,0 +1,1112 @@
+const STORAGE_KEY = "adminpilot.state.v1";
+
+function isoDateOffset(days) {
+  const date = new Date();
+  date.setDate(date.getDate() + days);
+  return date.toISOString().slice(0, 10);
+}
+
+function cloneDefaultState() {
+  return {
+    assets: [],
+    lastDecodedVehicle: null,
+    candidateMaintenance: null,
+    maintenanceLookupKey: "",
+    recalls: [],
+    recallLookupVin: "",
+    lastLookup: "",
+  };
+}
+
+const DEFAULT_STATE = cloneDefaultState();
+
+function createSampleAssets() {
+  const createdAt = new Date().toISOString();
+  return [
+    {
+      id: crypto.randomUUID(),
+      name: "2019 Ford F-150",
+      type: "Vehicle",
+      status: "due-soon",
+      highConsequence: true,
+      vin: "1FTFW1E5XJFA00000",
+      mileage: 68320,
+      mileageDate: todayKey(),
+      due: "Oil change due in 320 miles",
+      reminderDate: isoDateOffset(3),
+      repeatEveryDays: 90,
+      note: "Track service before road trip.",
+      consequence: "Risk of skipped maintenance and a noisy reminder later.",
+      attachments: [],
+      reminderHistory: [],
+      createdAt,
+    },
+    {
+      id: crypto.randomUUID(),
+      name: "Home warranty",
+      type: "Document",
+      status: "on-track",
+      highConsequence: true,
+      vin: "",
+      due: "Renewal in 42 days",
+      reminderDate: isoDateOffset(14),
+      repeatEveryDays: 365,
+      note: "Store policy number and contact details.",
+      consequence: "Could miss a renewal or claim deadline.",
+      attachments: [],
+      reminderHistory: [],
+      createdAt,
+    },
+  ];
+}
+
+const els = {
+  assetForm: document.getElementById("asset-form"),
+  assetName: document.getElementById("asset-name"),
+  assetType: document.getElementById("asset-type"),
+  assetStatus: document.getElementById("asset-status"),
+  assetHighConsequence: document.getElementById("asset-high-consequence"),
+  assetVin: document.getElementById("asset-vin"),
+  assetMileage: document.getElementById("asset-mileage"),
+  assetMileageDate: document.getElementById("asset-mileage-date"),
+  assetDue: document.getElementById("asset-due"),
+  assetReminder: document.getElementById("asset-reminder"),
+  assetRepeat: document.getElementById("asset-repeat"),
+  assetNote: document.getElementById("asset-note"),
+  assetConsequence: document.getElementById("asset-consequence"),
+  assetFile: document.getElementById("asset-file"),
+  assetList: document.getElementById("asset-list"),
+  overdueCount: document.getElementById("overdue-count"),
+  dueSoonCount: document.getElementById("due-soon-count"),
+  highConsequenceCount: document.getElementById("high-consequence-count"),
+  onTrackCount: document.getElementById("on-track-count"),
+  vehicleCard: document.getElementById("vehicle-card"),
+  recallCard: document.getElementById("recall-card"),
+  maintenanceCard: document.getElementById("maintenance-card"),
+  timeline: document.getElementById("timeline"),
+  reminderList: document.getElementById("reminder-list"),
+  notifyEnable: document.getElementById("notify-enable"),
+  notifyStatus: document.getElementById("notify-status"),
+  vinInput: document.getElementById("vin-input"),
+  vinStatus: document.getElementById("vin-status"),
+  lastSave: document.getElementById("last-save"),
+  addSample: document.getElementById("add-sample"),
+  clearData: document.getElementById("clear-data"),
+  fillVin: document.getElementById("fill-vin"),
+  decodeVin: document.getElementById("decode-vin"),
+  loadRecalls: document.getElementById("load-recalls"),
+  exportData: document.getElementById("export-data"),
+  importFile: document.getElementById("import-file"),
+  assetDialog: document.getElementById("asset-dialog"),
+  assetDialogForm: document.getElementById("asset-dialog-form"),
+  assetDialogClose: document.getElementById("asset-dialog-close"),
+  assetDialogDelete: document.getElementById("asset-dialog-delete"),
+  assetDialogId: document.getElementById("asset-id"),
+  editAssetName: document.getElementById("edit-asset-name"),
+  editAssetType: document.getElementById("edit-asset-type"),
+  editAssetStatus: document.getElementById("edit-asset-status"),
+  editAssetHighConsequence: document.getElementById("edit-asset-high-consequence"),
+  editAssetVin: document.getElementById("edit-asset-vin"),
+  editAssetMileage: document.getElementById("edit-asset-mileage"),
+  editAssetMileageDate: document.getElementById("edit-asset-mileage-date"),
+  editAssetDue: document.getElementById("edit-asset-due"),
+  editAssetReminder: document.getElementById("edit-asset-reminder"),
+  editAssetRepeat: document.getElementById("edit-asset-repeat"),
+  editAssetNote: document.getElementById("edit-asset-note"),
+  editAssetConsequence: document.getElementById("edit-asset-consequence"),
+};
+
+let state = loadState();
+
+function loadState() {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || "");
+    return {
+      ...DEFAULT_STATE,
+      ...parsed,
+      assets: Array.isArray(parsed?.assets) ? parsed.assets : [],
+      candidateMaintenance:
+        parsed?.candidateMaintenance && typeof parsed.candidateMaintenance === "object"
+          ? parsed.candidateMaintenance
+          : null,
+      maintenanceLookupKey:
+        typeof parsed?.maintenanceLookupKey === "string" ? parsed.maintenanceLookupKey : "",
+      recalls: Array.isArray(parsed?.recalls) ? parsed.recalls : [],
+      recallLookupVin: typeof parsed?.recallLookupVin === "string" ? parsed.recallLookupVin : "",
+    };
+  } catch {
+    return cloneDefaultState();
+  }
+}
+
+function saveState(nextState) {
+  state = nextState;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  els.lastSave.textContent = `Saved ${new Date().toLocaleTimeString()}`;
+}
+
+function normalizeVin(value) {
+  return value.replace(/[^a-z0-9]/gi, "").toUpperCase().slice(0, 17);
+}
+
+function prettyValue(value) {
+  return value && String(value).trim() ? String(value).trim() : "Unknown";
+}
+
+function parseMileage(value) {
+  if (value === "" || value === null || value === undefined) return null;
+  const mileage = Number(value);
+  return Number.isFinite(mileage) && mileage >= 0 ? Math.round(mileage) : null;
+}
+
+function formatMileage(value) {
+  const mileage = parseMileage(value);
+  return mileage === null ? "Mileage not entered" : `${mileage.toLocaleString()} miles`;
+}
+
+function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function setStatus(text, tone = "") {
+  els.vinStatus.textContent = text;
+  els.vinStatus.dataset.tone = tone;
+}
+
+function clearRecallResults() {
+  state.recalls = [];
+  state.recallLookupVin = "";
+}
+
+function clearCandidateMaintenance() {
+  state.candidateMaintenance = null;
+  state.maintenanceLookupKey = "";
+}
+
+function todayKey() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function dayDiff(from, to) {
+  const start = new Date(`${from}T00:00:00`);
+  const end = new Date(`${to}T00:00:00`);
+  return Math.round((end - start) / 86400000);
+}
+
+function formatStatus(status) {
+  if (status === "overdue") return "Overdue";
+  if (status === "due-soon") return "Due soon";
+  return "On track";
+}
+
+function formatDateLabel(value) {
+  if (!value) return "No reminder date";
+  const date = new Date(`${value}T00:00:00`);
+  if (Number.isNaN(date.getTime())) return "No reminder date";
+  return date.toLocaleDateString(undefined, {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+function addDays(value, days) {
+  const date = new Date(`${value}T00:00:00`);
+  date.setDate(date.getDate() + days);
+  return date.toISOString().slice(0, 10);
+}
+
+function getDecodedField(results, fieldName) {
+  const match = results.find((item) => item.Variable === fieldName);
+  const value = match?.Value;
+  return value && String(value).trim() ? String(value).trim() : "";
+}
+
+function normalizeScheduleKey(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "");
+}
+
+function getMaintenanceLookupKey(vehicle) {
+  return [vehicle?.year, vehicle?.make, vehicle?.model].map(normalizeScheduleKey).join("|");
+}
+
+function isMaintenanceCandidateMatch(record, vehicle, fileName) {
+  if (!record || !vehicle) return false;
+  if (String(record.year || "") !== String(vehicle.year || "")) return false;
+  if (normalizeScheduleKey(record.make) !== normalizeScheduleKey(vehicle.make)) return false;
+
+  const recordModel = normalizeScheduleKey(record.model);
+  const decodedModel = normalizeScheduleKey(vehicle.model);
+  if (!recordModel || !decodedModel) return false;
+  if (recordModel !== decodedModel && !recordModel.includes(decodedModel) && !decodedModel.includes(recordModel)) {
+    return false;
+  }
+
+  const trimKey = normalizeScheduleKey(`${vehicle.trim || ""} ${vehicle.model || ""}`);
+  const fileKey = normalizeScheduleKey(fileName || "");
+  if (fileKey.includes("classic") && !trimKey.includes("classic")) {
+    return false;
+  }
+  if (trimKey.includes("classic") && !fileKey.includes("classic")) {
+    return false;
+  }
+
+  return true;
+}
+
+function formatInterval(interval = {}) {
+  const parts = [];
+  if (interval.miles !== null && interval.miles !== undefined) {
+    parts.push(`${Number(interval.miles).toLocaleString()} mi`);
+  }
+  if (interval.months !== null && interval.months !== undefined) {
+    parts.push(`${Number(interval.months).toLocaleString()} mo`);
+  }
+  return parts.length ? parts.join(" / ") : interval.logic || "Condition-based";
+}
+
+async function loadCandidateMaintenanceForVehicle(vehicle) {
+  const lookupKey = getMaintenanceLookupKey(vehicle);
+  clearCandidateMaintenance();
+
+  if (!vehicle?.year || !vehicle?.make || !vehicle?.model) {
+    state.maintenanceLookupKey = lookupKey;
+    return null;
+  }
+
+  const manifestResponse = await fetch("./adminpilot-data/expansion-batch-01/manifest.json", {
+    cache: "no-store",
+  });
+  if (!manifestResponse.ok) {
+    throw new Error("Maintenance manifest failed to load");
+  }
+
+  const manifest = await manifestResponse.json();
+  const records = Array.isArray(manifest.records) ? manifest.records : [];
+  for (const entry of records) {
+    if (!entry?.file) continue;
+    const recordResponse = await fetch(`./adminpilot-data/expansion-batch-01/${entry.file}`, {
+      cache: "no-store",
+    });
+    if (!recordResponse.ok) continue;
+    const record = await recordResponse.json();
+    if (!isMaintenanceCandidateMatch(record, vehicle, entry.file)) continue;
+
+    state.candidateMaintenance = {
+      file: entry.file,
+      manifestStatus: entry.status || "candidate",
+      manifestReason: entry.reason || "",
+      record,
+    };
+    state.maintenanceLookupKey = lookupKey;
+    return state.candidateMaintenance;
+  }
+
+  state.maintenanceLookupKey = lookupKey;
+  return null;
+}
+
+function fileToDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result || ""));
+    reader.onerror = () => reject(reader.error);
+    reader.readAsDataURL(file);
+  });
+}
+
+function render() {
+  const assets = state.assets;
+  const overdue = assets.filter((asset) => asset.status === "overdue").length;
+  const dueSoon = assets.filter((asset) => asset.status === "due-soon").length;
+  const highConsequence = assets.filter((asset) => asset.highConsequence).length;
+  const onTrack = assets.filter((asset) => !asset.status || asset.status === "on-track").length;
+  const reminders = getReminderItems();
+
+  els.overdueCount.textContent = String(overdue);
+  els.dueSoonCount.textContent = String(dueSoon);
+  els.highConsequenceCount.textContent = String(highConsequence);
+  els.onTrackCount.textContent = String(onTrack);
+
+  renderVehicleCard();
+  renderRecallCard();
+  renderMaintenanceCard();
+  renderTimeline();
+  renderReminderCenter(reminders);
+  renderAssets();
+  pingDueReminders(reminders);
+}
+
+function renderVehicleCard() {
+  const vehicle = state.lastDecodedVehicle;
+  if (!vehicle) {
+    els.vehicleCard.className = "info-card empty";
+    els.vehicleCard.innerHTML =
+      "<strong>No VIN decoded yet.</strong><small>Decode a 17-character VIN to auto-fill vehicle details.</small>";
+    return;
+  }
+
+  els.vehicleCard.className = "info-card";
+  els.vehicleCard.innerHTML = `
+    <div class="info-title">
+      <strong>${prettyValue(vehicle.year)} ${prettyValue(vehicle.make)} ${prettyValue(vehicle.model)}</strong>
+      <span class="pill">${prettyValue(vehicle.trim)}</span>
+    </div>
+    <div class="meta-grid">
+      <div><span>VIN</span><strong>${prettyValue(vehicle.vin)}</strong></div>
+      <div><span>Body</span><strong>${prettyValue(vehicle.bodyClass)}</strong></div>
+      <div><span>Drive</span><strong>${prettyValue(vehicle.driveType)}</strong></div>
+      <div><span>Plant</span><strong>${prettyValue(vehicle.plantCity)}</strong></div>
+    </div>
+  `;
+}
+
+function renderRecallCard() {
+  if (!state.recalls.length) {
+    els.recallCard.className = "info-card empty";
+    els.recallCard.innerHTML =
+      "<strong>No recall data loaded yet.</strong><small>Recall status appears after a successful VIN decode.</small>";
+    return;
+  }
+
+  els.recallCard.className = "info-card";
+  els.recallCard.innerHTML = `
+    <div class="info-title">
+      <strong>${state.recalls.length} active recall${state.recalls.length === 1 ? "" : "s"}</strong>
+      <span class="pill warning">NHTSA</span>
+    </div>
+    <div class="recall-list">
+      ${state.recalls
+        .slice(0, 3)
+        .map(
+          (recall) => `
+            <article class="recall-item">
+              <strong>${escapeHtml(recall.component)}</strong>
+              <small>${escapeHtml(recall.summary)}</small>
+            </article>
+          `
+        )
+        .join("")}
+    </div>
+  `;
+}
+
+function renderMaintenanceCard() {
+  const vehicle = state.lastDecodedVehicle;
+  const candidate = state.candidateMaintenance;
+
+  if (!vehicle) {
+    els.maintenanceCard.className = "info-card empty";
+    els.maintenanceCard.innerHTML =
+      "<strong>No maintenance schedule loaded yet.</strong><small>Candidate schedules appear after a successful VIN decode.</small>";
+    return;
+  }
+
+  const currentKey = getMaintenanceLookupKey(vehicle);
+  if (!candidate || state.maintenanceLookupKey !== currentKey) {
+    els.maintenanceCard.className = "info-card empty";
+    els.maintenanceCard.innerHTML = `
+      <strong>No candidate schedule found.</strong>
+      <small>No quarantined maintenance record matches ${escapeHtml(
+        `${prettyValue(vehicle.year)} ${prettyValue(vehicle.make)} ${prettyValue(vehicle.model)}`
+      )} yet.</small>
+    `;
+    return;
+  }
+
+  const record = candidate.record || {};
+  const maintenance = Array.isArray(record.maintenance) ? record.maintenance : [];
+  const preview = maintenance.slice(0, 6);
+
+  els.maintenanceCard.className = "info-card";
+  els.maintenanceCard.innerHTML = `
+    <div class="info-title">
+      <strong>${escapeHtml(record.year)} ${escapeHtml(record.make)} ${escapeHtml(record.model)} candidate schedule</strong>
+      <span class="pill warning">Candidate only</span>
+    </div>
+    <small class="candidate-warning">
+      Source: ${escapeHtml(record.source || "Unknown source")} · File: ${escapeHtml(candidate.file)}
+    </small>
+    <div class="recall-list maintenance-list">
+      ${preview
+        .map(
+          (item) => `
+            <article class="recall-item">
+              <strong>${escapeHtml(item.service || "Maintenance item")}</strong>
+              <small>${escapeHtml(formatInterval(item.interval))}</small>
+            </article>
+          `
+        )
+        .join("")}
+    </div>
+    <small class="candidate-warning">
+      Showing ${preview.length} of ${maintenance.length} candidate items. Status: ${escapeHtml(
+        candidate.manifestStatus || record.review_status || "candidate"
+      )}. Not production-ready; verify source pages before relying on intervals.
+    </small>
+  `;
+}
+
+function renderTimeline() {
+  const groups = {
+    overdue: state.assets.filter((asset) => asset.status === "overdue"),
+    dueSoon: state.assets.filter((asset) => asset.status === "due-soon"),
+    highConsequence: state.assets.filter((asset) => asset.highConsequence),
+    onTrack: state.assets.filter((asset) => !asset.status || asset.status === "on-track"),
+  };
+
+  const renderGroup = (title, tone, items) => `
+    <section class="timeline-group">
+      <div class="timeline-head">
+        <strong>${title}</strong>
+        <span class="pill ${tone}">${items.length}</span>
+      </div>
+      <div class="timeline-items">
+        ${items.length
+          ? items
+              .map(
+                (item) => `
+                  <article class="timeline-item ${escapeHtml(item.status || "on-track")}">
+                    <span class="timeline-dot"></span>
+                    <div>
+                      <strong>${escapeHtml(item.name)}</strong>
+                      <small>${escapeHtml(item.due || "No due date")}</small>
+                    </div>
+                  </article>
+                `
+              )
+              .join("")
+          : "<div class='timeline-empty'>No items</div>"}
+      </div>
+    </section>
+  `;
+
+  els.timeline.innerHTML = [
+    renderGroup("Overdue", "error", groups.overdue),
+    renderGroup("Due soon", "warning", groups.dueSoon),
+    renderGroup("High consequence", "error", groups.highConsequence),
+    renderGroup("On track", "success", groups.onTrack),
+  ].join("");
+}
+
+function getReminderItems() {
+  const today = todayKey();
+  return state.assets
+    .filter((asset) => asset.reminderDate)
+    .map((asset) => {
+      const daysAway = dayDiff(today, asset.reminderDate);
+      const overdue = daysAway < 0;
+      const dueSoon = daysAway >= 0 && daysAway <= 7;
+      return {
+        id: asset.id,
+        name: asset.name,
+        status: overdue ? "overdue" : dueSoon ? "due-soon" : "on-track",
+        label: overdue ? "Overdue" : dueSoon ? "Soon" : "Upcoming",
+        summary: `${formatDateLabel(asset.reminderDate)} · repeat ${Number(asset.repeatEveryDays) || 0} days`,
+        dueDate: asset.reminderDate,
+        lastReminderPing: asset.lastReminderPing || "",
+        repeatEveryDays: Number(asset.repeatEveryDays) || 0,
+      };
+    })
+    .sort((a, b) => a.dueDate.localeCompare(b.dueDate));
+}
+
+function renderReminderCenter(reminders) {
+  if (!reminders.length) {
+    els.reminderList.innerHTML =
+      "<div class='timeline-empty'>No active reminders yet. Add a reminder date to start a queue.</div>";
+    return;
+  }
+
+  els.reminderList.innerHTML = reminders
+    .map(
+      (item) => `
+        <article class="reminder-item ${escapeHtml(item.status)}">
+          <div>
+            <strong>${escapeHtml(item.name)}</strong>
+            <small>${escapeHtml(item.summary)}</small>
+          </div>
+          <span class="pill ${escapeHtml(item.status)}">${escapeHtml(item.label)}</span>
+        </article>
+      `
+    )
+    .join("");
+}
+
+function pingDueReminders(reminders) {
+  if (!("Notification" in window)) {
+    els.notifyStatus.textContent = "Browser only";
+    return;
+  }
+
+  if (Notification.permission !== "granted") {
+    els.notifyStatus.textContent = "Browser only";
+    return;
+  }
+
+  const today = todayKey();
+  let changed = false;
+  for (const reminder of reminders) {
+    if (reminder.status === "on-track") continue;
+    const asset = state.assets.find((item) => item.id === reminder.id);
+    if (!asset || asset.lastReminderPing === today) continue;
+
+    new Notification("AdminPilot reminder", {
+      body: `${asset.name}: ${asset.due}`,
+    });
+    asset.lastReminderPing = today;
+    asset.reminderHistory = Array.isArray(asset.reminderHistory) ? asset.reminderHistory : [];
+    asset.reminderHistory.unshift({
+      at: new Date().toISOString(),
+      title: asset.name,
+      body: asset.due,
+    });
+    if (Number(asset.repeatEveryDays) > 0) {
+      asset.reminderDate = addDays(asset.reminderDate, Number(asset.repeatEveryDays));
+      asset.status = "due-soon";
+    }
+    changed = true;
+  }
+
+  els.notifyStatus.textContent = "Enabled";
+  if (changed) {
+    saveState(state);
+  }
+}
+
+async function enableNotifications() {
+  if (!("Notification" in window)) {
+    els.notifyStatus.textContent = "Unsupported";
+    return;
+  }
+
+  const permission = await Notification.requestPermission();
+  els.notifyStatus.textContent = permission === "granted" ? "Enabled" : "Blocked";
+}
+
+function renderAttachmentChips(attachments = []) {
+  if (!attachments.length) return "";
+  return `
+    <div class="attachment-list">
+      ${attachments
+        .map(
+          (attachment, index) => `
+            <a class="attachment-chip" href="${escapeHtml(attachment.dataUrl)}" download="${escapeHtml(attachment.name)}">
+              ${index + 1}. ${escapeHtml(attachment.name)}
+            </a>
+          `
+        )
+        .join("")}
+    </div>
+  `;
+}
+
+function renderReminderHistory(asset) {
+  const history = Array.isArray(asset.reminderHistory) ? asset.reminderHistory : [];
+  if (!history.length) return "";
+
+  return `
+    <details class="history">
+      <summary>Reminder history (${history.length})</summary>
+      <div class="history-list">
+        ${history
+          .slice(0, 5)
+          .map(
+            (entry) => `
+              <div class="history-item">
+                <strong>${escapeHtml(entry.title || "Reminder")}</strong>
+                <small>${escapeHtml(new Date(entry.at).toLocaleString())}</small>
+                <p>${escapeHtml(entry.body || "")}</p>
+              </div>
+            `
+          )
+          .join("")}
+      </div>
+    </details>
+  `;
+}
+
+function renderAssets() {
+  if (!state.assets.length) {
+    els.assetList.innerHTML =
+      "<div class='asset empty'><strong>No assets yet</strong><small>Add a vehicle, home item, or document to get started.</small></div>";
+    return;
+  }
+
+  els.assetList.innerHTML = state.assets
+    .map((asset) => {
+      const badge = asset.type === "Vehicle" && asset.vin ? "VIN linked" : asset.type;
+      const attachmentCount = Array.isArray(asset.attachments) ? asset.attachments.length : 0;
+      return `
+        <article class="asset ${asset.status || "on-track"}">
+          <div class="asset-top">
+            <div>
+              <strong>${escapeHtml(asset.name)}</strong>
+              <small>${escapeHtml(asset.note || "No notes added.")}</small>
+            </div>
+            <span class="pill">${escapeHtml(badge)}</span>
+          </div>
+          <div class="asset-status-row">
+            <span class="status ${escapeHtml(asset.status || "on-track")}">${escapeHtml(formatStatus(asset.status))}</span>
+            <span class="status-meta">${attachmentCount} attachment${attachmentCount === 1 ? "" : "s"}</span>
+          </div>
+          ${asset.highConsequence ? "<div class='consequence-badge'>High consequence</div>" : ""}
+          <div class="asset-meta">
+            <span>${escapeHtml(asset.due || "No status")}</span>
+            <span>${escapeHtml(asset.vin || "No VIN")}</span>
+          </div>
+          ${
+            asset.type === "Vehicle"
+              ? `<div class="asset-meta">
+                  <span>Odometer: ${escapeHtml(formatMileage(asset.mileage))}</span>
+                  <span>Recorded: ${escapeHtml(formatDateLabel(asset.mileageDate))}</span>
+                </div>`
+              : ""
+          }
+          <div class="asset-meta">
+            <span>Reminder: ${escapeHtml(formatDateLabel(asset.reminderDate))}</span>
+            <span>Repeat: ${escapeHtml(String(asset.repeatEveryDays || 0))} days</span>
+          </div>
+          ${renderAttachmentChips(asset.attachments)}
+          ${asset.consequence ? `<p class="asset-consequence">${escapeHtml(asset.consequence)}</p>` : ""}
+          ${renderReminderHistory(asset)}
+          <div class="asset-actions">
+            <button type="button" class="secondary" data-edit-id="${escapeHtml(asset.id)}">Edit</button>
+            <button type="button" class="secondary danger" data-delete-id="${escapeHtml(asset.id)}">Delete</button>
+          </div>
+        </article>
+      `;
+    })
+    .join("");
+
+  document.querySelectorAll("[data-edit-id]").forEach((button) => {
+    button.addEventListener("click", () => openAssetDialog(button.dataset.editId));
+  });
+  document.querySelectorAll("[data-delete-id]").forEach((button) => {
+    button.addEventListener("click", () => deleteAsset(button.dataset.deleteId));
+  });
+}
+
+function openAssetDialog(id) {
+  const asset = state.assets.find((item) => item.id === id);
+  if (!asset) return;
+
+  els.assetDialogId.value = asset.id;
+  els.editAssetName.value = asset.name || "";
+  els.editAssetType.value = asset.type || "Vehicle";
+  els.editAssetStatus.value = asset.status || "on-track";
+  els.editAssetHighConsequence.checked = Boolean(asset.highConsequence);
+  els.editAssetVin.value = asset.vin || "";
+  els.editAssetMileage.value = parseMileage(asset.mileage) ?? "";
+  els.editAssetMileageDate.value = asset.mileageDate || "";
+  els.editAssetDue.value = asset.due || "";
+  els.editAssetReminder.value = asset.reminderDate || "";
+  els.editAssetRepeat.value = asset.repeatEveryDays || "";
+  els.editAssetNote.value = asset.note || "";
+  els.editAssetConsequence.value = asset.consequence || "";
+  els.assetDialog.showModal();
+}
+
+function closeAssetDialog() {
+  if (els.assetDialog.open) {
+    els.assetDialog.close();
+  }
+}
+
+function saveEditedAsset(event) {
+  event.preventDefault();
+  const id = els.assetDialogId.value;
+  const index = state.assets.findIndex((item) => item.id === id);
+  if (index < 0) return;
+
+  state.assets[index] = {
+    ...state.assets[index],
+    name: els.editAssetName.value.trim(),
+    type: els.editAssetType.value,
+    status: els.editAssetStatus.value,
+    highConsequence: els.editAssetHighConsequence.checked,
+    vin: normalizeVin(els.editAssetVin.value),
+    mileage: parseMileage(els.editAssetMileage.value),
+    mileageDate: els.editAssetMileageDate.value || "",
+    due: els.editAssetDue.value.trim(),
+    reminderDate: els.editAssetReminder.value || "",
+    repeatEveryDays: Number(els.editAssetRepeat.value) || 0,
+    note: els.editAssetNote.value.trim(),
+    consequence: els.editAssetConsequence.value.trim(),
+    reminderHistory: Array.isArray(state.assets[index].reminderHistory)
+      ? state.assets[index].reminderHistory
+      : [],
+  };
+  saveState(state);
+  render();
+  closeAssetDialog();
+}
+
+function deleteAsset(id) {
+  const asset = state.assets.find((item) => item.id === id);
+  if (!asset) return;
+  if (!confirm(`Delete ${asset.name}?`)) return;
+
+  state.assets = state.assets.filter((item) => item.id !== id);
+  saveState(state);
+  render();
+}
+
+async function decodeVin(vinInput) {
+  const vin = normalizeVin(vinInput);
+  if (vin.length !== 17) {
+    clearRecallResults();
+    clearCandidateMaintenance();
+    saveState(state);
+    render();
+    setStatus("Enter a 17-character VIN", "error");
+    return null;
+  }
+
+  if (state.recallLookupVin !== vin || state.lastDecodedVehicle?.vin !== vin) {
+    clearRecallResults();
+    clearCandidateMaintenance();
+    saveState(state);
+    render();
+  }
+
+  setStatus("Decoding VIN...", "loading");
+  const response = await fetch(
+    `https://vpic.nhtsa.dot.gov/api/vehicles/decodevin/${encodeURIComponent(vin)}?format=json`
+  );
+
+  if (!response.ok) {
+    throw new Error("VIN lookup failed");
+  }
+
+  const data = await response.json();
+  const results = Array.isArray(data.Results) ? data.Results : [];
+  const vehicle = {
+    vin,
+    year: getDecodedField(results, "Model Year"),
+    make: getDecodedField(results, "Make"),
+    model: getDecodedField(results, "Model"),
+    trim: getDecodedField(results, "Trim"),
+    bodyClass: getDecodedField(results, "Body Class"),
+    driveType: getDecodedField(results, "Drive Type"),
+    plantCity: getDecodedField(results, "Plant City"),
+  };
+
+  state.lastDecodedVehicle = vehicle;
+  state.lastLookup = vin;
+  clearCandidateMaintenance();
+  saveState(state);
+  render();
+  setStatus("Loading candidate schedule...", "loading");
+  try {
+    const candidate = await loadCandidateMaintenanceForVehicle(vehicle);
+    saveState(state);
+    render();
+    setStatus(candidate ? "VIN decoded + candidate schedule loaded" : "VIN decoded; no candidate schedule", candidate ? "warning" : "success");
+  } catch (error) {
+    console.error(error);
+    clearCandidateMaintenance();
+    saveState(state);
+    render();
+    setStatus("VIN decoded; schedule unavailable", "warning");
+  }
+  return vehicle;
+}
+
+async function loadRecallsForVehicle(vehicle) {
+  if (!vehicle?.make || !vehicle?.model || !vehicle?.year) {
+    clearRecallResults();
+    saveState(state);
+    render();
+    setStatus("Decode VIN first", "error");
+    return;
+  }
+
+  const lookupVin = normalizeVin(vehicle.vin || "");
+  clearRecallResults();
+  saveState(state);
+  render();
+  setStatus("Loading recalls...", "loading");
+  const url = new URL("https://api.nhtsa.gov/recalls/recallsByVehicle");
+  url.searchParams.set("make", vehicle.make);
+  url.searchParams.set("model", vehicle.model);
+  url.searchParams.set("modelYear", vehicle.year);
+
+  const response = await fetch(url);
+  const raw = await response.text();
+  let data;
+  try {
+    data = JSON.parse(raw);
+  } catch {
+    throw new Error(`Recall lookup failed (${response.status})`);
+  }
+
+  const results = Array.isArray(data?.results) ? data.results : Array.isArray(data?.Results) ? data.Results : [];
+  if (!response.ok) {
+    throw new Error(`Recall lookup failed (${response.status})`);
+  }
+
+  if (
+    normalizeVin(els.vinInput.value) !== lookupVin ||
+    normalizeVin(state.lastDecodedVehicle?.vin || "") !== lookupVin
+  ) {
+    return;
+  }
+
+  state.recalls = results.map((item) => ({
+    component: item.Component || item.component || "Unknown component",
+    summary: item.Summary || item.summary || item.Notes || "No summary available.",
+  }));
+  state.recallLookupVin = lookupVin;
+  saveState(state);
+  render();
+  setStatus(state.recalls.length ? "Recalls loaded" : "No recalls found", state.recalls.length ? "warning" : "success");
+}
+
+async function addAssetFromForm(event) {
+  event.preventDefault();
+  const name = els.assetName.value.trim();
+  const type = els.assetType.value;
+  const status = els.assetStatus.value;
+  const highConsequence = els.assetHighConsequence.checked;
+  const vin = normalizeVin(els.assetVin.value);
+  const mileage = parseMileage(els.assetMileage.value);
+  const mileageDate = els.assetMileageDate.value || (mileage === null ? "" : todayKey());
+  const due = els.assetDue.value.trim();
+  const reminderDate = els.assetReminder.value || "";
+  const repeatEveryDays = Number(els.assetRepeat.value) || 0;
+  const note = els.assetNote.value.trim();
+  const consequence = els.assetConsequence.value.trim();
+  const file = els.assetFile.files?.[0] || null;
+
+  if (!name || !due) {
+    return;
+  }
+
+  const attachments = [];
+  if (file) {
+    attachments.push({
+      id: crypto.randomUUID(),
+      name: file.name,
+      type: file.type || "application/octet-stream",
+      size: file.size,
+      dataUrl: await fileToDataUrl(file),
+    });
+  }
+
+  const asset = {
+    id: crypto.randomUUID(),
+    name,
+    type,
+    status,
+    highConsequence,
+    vin,
+    mileage,
+    mileageDate,
+    due,
+    reminderDate,
+    repeatEveryDays,
+    note,
+    consequence,
+    attachments,
+    reminderHistory: [],
+    createdAt: new Date().toISOString(),
+  };
+
+  state.assets = [asset, ...state.assets];
+  saveState(state);
+  render();
+  event.target.reset();
+  els.assetType.value = "Vehicle";
+  els.assetStatus.value = "on-track";
+  els.assetHighConsequence.checked = false;
+  els.assetName.focus();
+}
+
+function addSampleData() {
+  state.assets = [...createSampleAssets(), ...state.assets];
+  saveState(state);
+  render();
+}
+
+function clearData() {
+  if (confirm("Export a backup before clearing?")) {
+    exportData();
+  }
+
+  if (!confirm("Clear all AdminPilot local data?")) {
+    return;
+  }
+
+  localStorage.removeItem(STORAGE_KEY);
+  state = cloneDefaultState();
+  render();
+  setStatus("Idle");
+}
+
+function exportData() {
+  const blob = new Blob([JSON.stringify(state, null, 2)], {
+    type: "application/json",
+  });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = "adminpilot-backup.json";
+  anchor.click();
+  URL.revokeObjectURL(url);
+}
+
+async function importData(file) {
+  const text = await file.text();
+  const parsed = JSON.parse(text);
+  if (!parsed || typeof parsed !== "object") {
+    throw new Error("Invalid backup");
+  }
+  state = {
+    ...DEFAULT_STATE,
+    ...parsed,
+    assets: Array.isArray(parsed?.assets) ? parsed.assets : [],
+    candidateMaintenance:
+      parsed?.candidateMaintenance && typeof parsed.candidateMaintenance === "object"
+        ? parsed.candidateMaintenance
+        : null,
+    maintenanceLookupKey:
+      typeof parsed?.maintenanceLookupKey === "string" ? parsed.maintenanceLookupKey : "",
+    recalls: Array.isArray(parsed?.recalls) ? parsed.recalls : [],
+    recallLookupVin: typeof parsed?.recallLookupVin === "string" ? parsed.recallLookupVin : "",
+  };
+  saveState(state);
+  render();
+  return true;
+}
+
+els.assetForm.addEventListener("submit", addAssetFromForm);
+els.addSample.addEventListener("click", addSampleData);
+els.clearData.addEventListener("click", clearData);
+els.exportData.addEventListener("click", exportData);
+els.importFile.addEventListener("change", async () => {
+  const file = els.importFile.files?.[0];
+  if (!file) return;
+  try {
+    const imported = await importData(file);
+    if (!imported) {
+      throw new Error("Invalid backup");
+    }
+    setStatus("Backup imported", "success");
+  } catch {
+    setStatus("Import failed", "error");
+  } finally {
+    els.importFile.value = "";
+  }
+});
+
+els.assetDialogForm.addEventListener("submit", saveEditedAsset);
+els.assetDialogClose.addEventListener("click", closeAssetDialog);
+els.assetDialogDelete.addEventListener("click", () => {
+  const id = els.assetDialogId.value;
+  closeAssetDialog();
+  deleteAsset(id);
+});
+
+els.notifyEnable.addEventListener("click", enableNotifications);
+
+els.decodeVin.addEventListener("click", async () => {
+  try {
+    const vehicle = await decodeVin(els.vinInput.value);
+    if (vehicle) {
+      els.assetVin.value = vehicle.vin;
+      els.assetName.value = `${prettyValue(vehicle.year)} ${prettyValue(vehicle.make)} ${prettyValue(vehicle.model)}`.trim();
+      els.assetDue.value = "Recall check complete";
+      els.assetNote.value = "Vehicle details decoded from NHTSA.";
+      els.assetReminder.value = isoDateOffset(7);
+    }
+  } catch (error) {
+    console.error(error);
+    setStatus("VIN lookup failed", "error");
+  }
+});
+
+els.loadRecalls.addEventListener("click", async () => {
+  try {
+    const inputVin = normalizeVin(els.vinInput.value);
+    const decodedVin = normalizeVin(state.lastDecodedVehicle?.vin || "");
+    const vehicle =
+      inputVin && inputVin === decodedVin
+        ? state.lastDecodedVehicle
+        : await decodeVin(inputVin);
+    await loadRecallsForVehicle(vehicle);
+  } catch (error) {
+    console.error(error);
+    clearRecallResults();
+    saveState(state);
+    render();
+    setStatus("Recall lookup failed", "error");
+  }
+});
+
+els.fillVin.addEventListener("click", async () => {
+  const vin = normalizeVin(els.assetVin.value || els.vinInput.value);
+  if (!vin) {
+    setStatus("Enter a VIN first", "error");
+    return;
+  }
+  els.vinInput.value = vin;
+  try {
+    await decodeVin(vin);
+  } catch (error) {
+    console.error(error);
+    setStatus("VIN flow failed", "error");
+  }
+});
+
+els.vinInput.addEventListener("input", () => {
+  const normalized = normalizeVin(els.vinInput.value);
+  if (normalized !== els.vinInput.value) {
+    els.vinInput.value = normalized;
+  }
+  if (
+    state.recalls.length &&
+    normalized !== normalizeVin(state.recallLookupVin || state.lastDecodedVehicle?.vin || "")
+  ) {
+    clearRecallResults();
+    clearCandidateMaintenance();
+    saveState(state);
+    render();
+    setStatus(normalized ? "VIN changed — decode to load recalls" : "Idle");
+  }
+});
+
+els.assetMileage.addEventListener("input", () => {
+  if (parseMileage(els.assetMileage.value) !== null && !els.assetMileageDate.value) {
+    els.assetMileageDate.value = todayKey();
+  }
+});
+
+els.editAssetMileage.addEventListener("input", () => {
+  if (parseMileage(els.editAssetMileage.value) !== null && !els.editAssetMileageDate.value) {
+    els.editAssetMileageDate.value = todayKey();
+  }
+});
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(() => {
+      // Offline support is optional in local file testing.
+    });
+  });
+}
+
+setInterval(() => {
+  render();
+}, 60000);
+
+render();
+setStatus("Idle");

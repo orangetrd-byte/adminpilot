@@ -1,0 +1,533 @@
+﻿{
+    "phase":  2,
+    "batch":  2,
+    "status":  "reconstructed",
+    "scope":  "Toyota RAV4, Highlander, Tacoma, Corolla",
+    "validation_notes":  [
+                             "Restored from local batch survivors and Phase 3 production records.",
+                             "Family-level reconstruction was used where the original Phase 2 record did not survive locally.",
+                             "Do not treat split variants as new batch scope; they are source material for the original family record."
+                         ],
+    "vehicles":  [
+                     {
+                         "rank":  3,
+                         "id":  "toyota_rav4_2021",
+                         "year":  2021,
+                         "make":  "Toyota",
+                         "model":  "RAV4",
+                         "trim":  "Universal schedule; gasoline, hybrid, and 4WD applicability varies",
+                         "engine":  "2.5L gasoline or 2.5L hybrid",
+                         "transmission":  "8-speed automatic or hybrid eCVT",
+                         "driveType":  "FWD or AWD",
+                         "source":  "Toyota 2021 RAV4 Warranty and Maintenance Guide",
+                         "source_url":  "https://assets.sia.toyota.com/publications/en/omms-s/T-MMS-21RAV4/pdf/T-MMS-21RAV4.pdf",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Routine maintenance inspection",
+                                                 "interval":  {
+                                                                  "miles":  5000,
+                                                                  "months":  6,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Inspect fluid levels, wipers, brake friction components, and floor-mat installation."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation",
+                                                 "interval":  {
+                                                                  "miles":  5000,
+                                                                  "months":  6,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Included at every scheduled maintenance visit."
+                                             },
+                                             {
+                                                 "service":  "Engine oil and oil filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  10000,
+                                                                  "months":  12,
+                                                                  "logic":  "whichever comes first under normal use with 0W-16 oil"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Reduce to 5,000 miles or 6 months under special operating conditions or when temporary 0W-20 oil is used."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Heavy traffic, dirt, dust, desert, or urban driving may require earlier replacement."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Inspect more frequently on dirt or dusty roads."
+                                             },
+                                             {
+                                                 "service":  "Transfer case oil replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "fixed interval for 4WD"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Four-wheel-drive models only."
+                                             },
+                                             {
+                                                 "service":  "Engine coolant replacement",
+                                                 "interval":  {
+                                                                  "miles":  100000,
+                                                                  "months":  120,
+                                                                  "logic":  "initial replacement; every 50,000 miles or 60 months afterward"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Based on Toyota Super Long-Life Coolant."
+                                             },
+                                             {
+                                                 "service":  "Spark plug replacement",
+                                                 "interval":  {
+                                                                  "miles":  120000,
+                                                                  "months":  144,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Required under the emissions-control warranty schedule."
+                                             },
+                                             {
+                                                 "service":  "Automatic transmission fluid replacement",
+                                                 "interval":  {
+                                                                  "miles":  120000,
+                                                                  "months":  144,
+                                                                  "logic":  "special operating conditions only"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Replace at this interval when primarily towing, heavily loaded, extensively idling, or driving at low speed for long distances. Under normal use, inspect for leakage rather than replace at a fixed interval."
+                                             },
+                                             {
+                                                 "service":  "Rear differential oil replacement",
+                                                 "interval":  {
+                                                                  "miles":  15000,
+                                                                  "months":  18,
+                                                                  "logic":  "special operating conditions only"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Four-wheel-drive models used primarily for towing, car-top carrying, or heavy loading."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "Split gasoline and hybrid records before production if inverter-coolant details are exposed to users.",
+                                                  "Do not present 120,000-mile transmission-fluid replacement as a normal-use requirement.",
+                                                  "Verify whether the app should model 4WD transfer-case service separately from AWD hybrid drivetrains."
+                                              ]
+                     },
+                     {
+                         "rank":  13,
+                         "id":  "toyota_highlander_2021",
+                         "year":  2021,
+                         "make":  "Toyota",
+                         "model":  "Highlander",
+                         "trim":  "Universal schedule; gasoline, hybrid, and 4WD applicability varies",
+                         "engine":  "3.5L V6 gasoline or 2.5L hybrid",
+                         "transmission":  "8-speed automatic or hybrid eCVT",
+                         "driveType":  "FWD or AWD",
+                         "source":  "Toyota 2021 Highlander Warranty and Maintenance Guide",
+                         "source_url":  "https://assets.sia.toyota.com/publications/en/omms-s/T-MMS-21Highlander/pdf/T-MMS-21Highlander.pdf",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Routine maintenance inspection",
+                                                 "interval":  {
+                                                                  "miles":  5000,
+                                                                  "months":  6,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Includes fluid-level, wiper, brake, and general condition checks."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation",
+                                                 "interval":  {
+                                                                  "miles":  5000,
+                                                                  "months":  6,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Included at every scheduled maintenance visit."
+                                             },
+                                             {
+                                                 "service":  "Engine oil and oil filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  10000,
+                                                                  "months":  12,
+                                                                  "logic":  "whichever comes first under normal use with 0W-20 oil"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Reduce to 5,000 miles or 6 months under special operating conditions or after temporary use of 5W-20 mineral oil."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Earlier replacement may be needed under dusty or heavy-traffic use."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Inspect more frequently on dirt or dusty roads."
+                                             },
+                                             {
+                                                 "service":  "Rear differential oil replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "fixed interval for 4WD in the guide"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Four-wheel-drive models only."
+                                             },
+                                             {
+                                                 "service":  "Transfer case oil replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "fixed interval for 4WD in the guide"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Four-wheel-drive models only."
+                                             },
+                                             {
+                                                 "service":  "Engine coolant replacement",
+                                                 "interval":  {
+                                                                  "miles":  100000,
+                                                                  "months":  120,
+                                                                  "logic":  "initial replacement; every 50,000 miles or 60 months afterward"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Hybrid inverter coolant requires variant-specific review."
+                                             },
+                                             {
+                                                 "service":  "Spark plug replacement",
+                                                 "interval":  {
+                                                                  "miles":  120000,
+                                                                  "months":  144,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Required under the emissions-control warranty schedule."
+                                             },
+                                             {
+                                                 "service":  "Automatic transmission fluid replacement",
+                                                 "interval":  {
+                                                                  "miles":  120000,
+                                                                  "months":  144,
+                                                                  "logic":  "special operating conditions only"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Listed for primary towing, car-top carrying, or heavy loading. Normal-use schedule calls for leakage inspection."
+                                             },
+                                             {
+                                                 "service":  "Vacuum pump for brake booster replacement",
+                                                 "interval":  {
+                                                                  "miles":  120000,
+                                                                  "months":  144,
+                                                                  "logic":  "whichever comes first on applicable gasoline engine"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Applicability varies by powertrain."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "Split gasoline and hybrid records before production.",
+                                                  "Confirm which drivetrain combinations use a transfer case versus an electric rear axle.",
+                                                  "Transmission fluid is conditional under severe use, not a universal normal-use replacement."
+                                              ]
+                     },
+                     {
+                         "rank":  10,
+                         "id":  "toyota_tacoma_2021",
+                         "year":  2021,
+                         "make":  "Toyota",
+                         "model":  "Tacoma",
+                         "trim":  "Universal schedule; 2WD/4WD and engine applicability varies",
+                         "engine":  "2.7L four-cylinder or 3.5L V6",
+                         "transmission":  "6-speed automatic or 6-speed manual",
+                         "driveType":  "2WD or 4WD",
+                         "source":  "Toyota 2021 Tacoma Warranty and Maintenance Guide",
+                         "source_url":  "https://assets.sia.toyota.com/publications/en/omms-s/T-MMS-21Tacoma/pdf/T-MMS-21Tacoma.pdf",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Routine maintenance inspection",
+                                                 "interval":  {
+                                                                  "miles":  5000,
+                                                                  "months":  6,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Includes fluid-level, wiper, brake, and general-condition checks."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation",
+                                                 "interval":  {
+                                                                  "miles":  5000,
+                                                                  "months":  6,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Included at every scheduled maintenance visit."
+                                             },
+                                             {
+                                                 "service":  "Propeller shaft lubrication and bolt re-torque",
+                                                 "interval":  {
+                                                                  "miles":  5000,
+                                                                  "months":  6,
+                                                                  "logic":  "whichever comes first for applicable 4WD use"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "The guide includes recurring 4WD propeller-shaft maintenance, with additional requirements under dirt-road, salt-road, and towing use."
+                                             },
+                                             {
+                                                 "service":  "Engine oil and oil filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  10000,
+                                                                  "months":  12,
+                                                                  "logic":  "whichever comes first under normal use with 0W-20 oil"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Reduce to 5,000 miles or 6 months under special operating conditions or after temporary use of 5W-20 mineral oil."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Earlier replacement may be needed under dusty or heavy-traffic use."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Inspect more frequently on dirt or dusty roads."
+                                             },
+                                             {
+                                                 "service":  "Manual transmission oil replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "special operating conditions only"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Listed for primary towing, car-top carrying, or heavy loading."
+                                             },
+                                             {
+                                                 "service":  "Front and rear differential oil replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "special operating conditions only"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Front differential applies to 4WD; rear differential applies under towing or heavy loading."
+                                             },
+                                             {
+                                                 "service":  "Transfer case oil replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "special operating conditions only"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Four-wheel-drive models primarily driven on dirt/dust or under other listed special conditions."
+                                             },
+                                             {
+                                                 "service":  "Engine coolant replacement",
+                                                 "interval":  {
+                                                                  "miles":  100000,
+                                                                  "months":  120,
+                                                                  "logic":  "initial replacement; every 50,000 miles or 60 months afterward"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Based on Toyota Super Long-Life Coolant."
+                                             },
+                                             {
+                                                 "service":  "Spark plug replacement",
+                                                 "interval":  {
+                                                                  "miles":  120000,
+                                                                  "months":  144,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Required under the emissions-control warranty schedule."
+                                             },
+                                             {
+                                                 "service":  "Automatic transmission fluid replacement",
+                                                 "interval":  {
+                                                                  "miles":  120000,
+                                                                  "months":  144,
+                                                                  "logic":  "special operating conditions only"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Listed under towing/heavy loading and extensive-idling/low-speed service. Normal-use schedule calls for inspection for leakage."
+                                             },
+                                             {
+                                                 "service":  "Vacuum pump for brake booster replacement",
+                                                 "interval":  {
+                                                                  "miles":  120000,
+                                                                  "months":  144,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Applies to the 2GR-FKS V6 only."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "Separate 2.7L and 3.5L records if engine-specific service is shown in the UI.",
+                                                  "Separate automatic and manual transmission records before production.",
+                                                  "Driveline-fluid intervals depend heavily on 4WD and severe-use conditions."
+                                              ]
+                     },
+                     {
+                         "rank":  21,
+                         "id":  "toyota_corolla_2020",
+                         "year":  2020,
+                         "make":  "Toyota",
+                         "model":  "Corolla",
+                         "trim":  "Universal schedule; engine and transmission applicability varies",
+                         "engine":  "1.8L or 2.0L gasoline; hybrid applicability varies",
+                         "transmission":  "CVT or 6-speed manual",
+                         "driveType":  "FWD",
+                         "source":  "Toyota 2020 Corolla Warranty and Maintenance Guide",
+                         "source_url":  "https://assets.sia.toyota.com/publications/en/omms-s/T-MMS-20Corolla/pdf/T-MMS-20Corolla.pdf",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Routine maintenance inspection",
+                                                 "interval":  {
+                                                                  "miles":  5000,
+                                                                  "months":  6,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Includes fluid-level, wiper, brake, and general-condition checks."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation",
+                                                 "interval":  {
+                                                                  "miles":  5000,
+                                                                  "months":  6,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Included at every scheduled maintenance visit."
+                                             },
+                                             {
+                                                 "service":  "Engine oil and oil filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  10000,
+                                                                  "months":  12,
+                                                                  "logic":  "whichever comes first under normal use with the specified oil"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Use 0W-20 for the 2ZR-FAE or 0W-16 for the M20A-FKS. Reduce to 5,000 miles or 6 months under special operating conditions or after temporary substitute oil."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Earlier replacement may be needed under dusty or heavy-traffic use."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Inspect more frequently on dirt or dusty roads."
+                                             },
+                                             {
+                                                 "service":  "Manual transmission oil replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "special operating conditions only"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Listed for primary towing, car-top carrying, or heavy loading."
+                                             },
+                                             {
+                                                 "service":  "Engine coolant replacement",
+                                                 "interval":  {
+                                                                  "miles":  100000,
+                                                                  "months":  120,
+                                                                  "logic":  "initial replacement; every 50,000 miles or 60 months afterward"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Based on Toyota Super Long-Life Coolant."
+                                             },
+                                             {
+                                                 "service":  "Spark plug replacement",
+                                                 "interval":  {
+                                                                  "miles":  120000,
+                                                                  "months":  144,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Required under the emissions-control warranty schedule."
+                                             },
+                                             {
+                                                 "service":  "Transmission fluid or oil replacement",
+                                                 "interval":  {
+                                                                  "miles":  120000,
+                                                                  "months":  144,
+                                                                  "logic":  "special operating conditions only"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Manual transmission fluid is listed under towing/heavy-load use; CVT fluid is listed under extensive-idling or low-speed service. Normal-use schedule calls for leakage inspection."
+                                             },
+                                             {
+                                                 "service":  "Vacuum pump for brake booster replacement",
+                                                 "interval":  {
+                                                                  "miles":  120000,
+                                                                  "months":  144,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Applies to the 2ZR-FAE engine only."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "Split 1.8L, 2.0L, and hybrid records before production if exact oil and cooling-system guidance is displayed.",
+                                                  "Split CVT and manual-transmission records before production.",
+                                                  "Transmission-fluid replacement is conditional under severe use."
+                                              ]
+                     }
+                 ]
+}

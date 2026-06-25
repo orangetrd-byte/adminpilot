@@ -1,0 +1,40 @@
+AdminPilot Phase 2.5 merge validation
+Generated: 2026-06-19
+
+Phase 2 batch files loaded: 9
+Phase 2 raw records loaded: 61
+Phase 2 unique ids loaded: 48
+Retired ids after fix_retired_ids.py: 34
+Split records inserted: 89
+Phase 2 non-retired source records (including recovered omissions): 17
+Phase 2 records already present in Phase 2.5: ['chevrolet_tahoe_suburban_2021', 'gmc_yukon_yukon_xl_2021']
+Ordinary non-overlapping Phase 2 singles: 13
+Flagged Nissan recovery records: 2
+Standalone records retained/restored: 15
+Total production records: 104
+Unique production ids: 104
+Duplicate ids: none
+Retired ids present as vehicle ids: none
+
+Checks:
+PASS - total_records_is_104
+PASS - split_records_is_89
+PASS - phase2_nonretired_source_records_is_17
+PASS - ordinary_singles_is_13
+PASS - flagged_nissan_records_is_2
+PASS - standalone_records_is_15
+PASS - unique_ids_is_104
+PASS - no_duplicate_ids
+PASS - no_retired_ids_in_vehicles
+PASS - all_split_ids_present
+
+Recovery note:
+Nissan Rogue Sport and Nissan Sentra were listed in TRACKER.md but absent from the committed Phase 2 batch data.
+They were restored from committed Nissan schedule records and flagged for Claude's final source/schema validation.
+
+Bookkeeping:
+89 Phase 2.5 + 13 ordinary singles + 2 flagged Nissan recoveries = 104 unique records.
+Phase 2 copies of chevrolet_tahoe_suburban_2021 and gmc_yukon_yukon_xl_2021 were excluded.
+The Phase 2.5 versions of those two ids are authoritative and retained.
+
+OVERALL: PASS

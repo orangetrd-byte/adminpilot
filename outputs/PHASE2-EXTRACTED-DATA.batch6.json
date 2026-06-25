@@ -1,0 +1,371 @@
+﻿{
+    "phase":  2,
+    "batch":  6,
+    "status":  "reconstructed",
+    "scope":  "Honda CR-V, Honda Accord, Honda Civic, Honda HR-V",
+    "validation_notes":  [
+                             "Restored from local batch survivors and Phase 3 production records.",
+                             "Family-level reconstruction was used where the original Phase 2 record did not survive locally.",
+                             "Do not treat split variants as new batch scope; they are source material for the original family record."
+                         ],
+    "vehicles":  [
+                     {
+                         "rank":  32,
+                         "id":  "honda_cr_v_2021",
+                         "year":  2021,
+                         "make":  "Honda",
+                         "model":  "CR-V",
+                         "trim":  "Gasoline",
+                         "engine":  "1.5L turbo 4-cylinder",
+                         "transmission":  "Automatic",
+                         "driveType":  "FWD or AWD",
+                         "source":  "2021 Honda CR-V Owner\u0027s Manual",
+                         "source_url":  "https://mygarage.honda.com/s/manuals-search",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil and filter change",
+                                                 "interval":  {
+                                                                  "miles":  7500,
+                                                                  "months":  null,
+                                                                  "logic":  "normal-use oil-life monitor guidance"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Honda uses Maintenance Minder; actual intervals are condition-based. Do not exceed one year or 10,000 miles between service intervals."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation",
+                                                 "interval":  {
+                                                                  "miles":  7500,
+                                                                  "months":  null,
+                                                                  "logic":  "perform at each oil change interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Inspect wear, tread depth, and pressure."
+                                             },
+                                             {
+                                                 "service":  "Brake system inspection",
+                                                 "interval":  {
+                                                                  "miles":  7500,
+                                                                  "months":  null,
+                                                                  "logic":  "perform at each oil change interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Inspect pads, rotors, lining, hoses, parking brake, and fluid level."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Replace more frequently in dusty conditions."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Inspect or replace per severe-use conditions as outlined in the maintenance specifications."
+                                             },
+                                             {
+                                                 "service":  "Spark plug replacement",
+                                                 "interval":  {
+                                                                  "miles":  60000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Separate CR-V Hybrid record required."
+                                             }
+                                         ],
+                         "applicability":  {
+                                               "drive_type":  "FWD_OR_AWD",
+                                               "transmission":  "automatic",
+                                               "engine":  "1.5L turbo 4-cylinder",
+                                               "powertrain":  "gasoline"
+                                           },
+                         "validation_flags":  [
+                                                  "Split from honda_cr_v_2021. Hybrid record is separate.",
+                                                  "Restored from local batch/production data."
+                                              ],
+                         "production_ready":  false,
+                         "source_confidence":  "needs_table_verification"
+                     },
+                     {
+                         "rank":  14,
+                         "id":  "honda_accord_2019",
+                         "year":  2019,
+                         "make":  "Honda",
+                         "model":  "Accord",
+                         "trim":  "Universal Maintenance Minder schedule; gasoline and hybrid differ",
+                         "engine":  "1.5L turbo, 2.0L turbo, or hybrid",
+                         "transmission":  "CVT, 10-speed automatic, manual, or hybrid e-CVT",
+                         "driveType":  "FWD",
+                         "source":  "2019 Honda Accord Owner\u0027s Manual / Honda Maintenance Minder",
+                         "source_url":  "https://mygarage.honda.com/s/manuals-search",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  12,
+                                                                  "logic":  "Maintenance Minder A; at least annually if no message"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Oil life percentage determines timing."
+                                             },
+                                             {
+                                                 "service":  "Engine oil/filter and comprehensive inspections",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  12,
+                                                                  "logic":  "Maintenance Minder B; condition-based"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Includes brakes, steering, suspension, fluids, exhaust, fuel lines, and hoses."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  null,
+                                                                  "logic":  "Maintenance Minder sub-item 1"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Perform when displayed."
+                                             },
+                                             {
+                                                 "service":  "Engine/cabin filters and drive-belt inspection",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  null,
+                                                                  "logic":  "Maintenance Minder sub-item 2"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Dusty operation can require earlier service."
+                                             },
+                                             {
+                                                 "service":  "Transmission fluid replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  null,
+                                                                  "logic":  "Maintenance Minder sub-item 3"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Fluid differs across CVT, automatic, manual, and hybrid variants."
+                                             },
+                                             {
+                                                 "service":  "Spark plugs and valve-clearance inspection",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  null,
+                                                                  "logic":  "Maintenance Minder sub-item 4"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Perform when displayed."
+                                             },
+                                             {
+                                                 "service":  "Engine coolant replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  null,
+                                                                  "logic":  "Maintenance Minder sub-item 5"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Hybrid cooling circuits require separate validation."
+                                             },
+                                             {
+                                                 "service":  "Brake fluid replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  36,
+                                                                  "logic":  "Maintenance Minder sub-item 7 or every 3 years"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Time based when no reminder appears."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "Split transmission and hybrid variants.",
+                                                  "Honda Minder service should remain condition-based.",
+                                                  "Verify sub-item numbering against the exact 2019 US manual."
+                                              ],
+                         "confidence":  "medium"
+                     },
+                     {
+                         "rank":  22,
+                         "id":  "honda_civic_2019",
+                         "year":  2019,
+                         "make":  "Honda",
+                         "model":  "Civic",
+                         "trim":  "Universal Maintenance Minder schedule; engine/transmission variants differ",
+                         "engine":  "2.0L gasoline, 1.5L turbo, or Type R 2.0L turbo",
+                         "transmission":  "CVT or manual",
+                         "driveType":  "FWD",
+                         "source":  "2019 Honda Civic Owner\u0027s Manual / Honda Maintenance Minder",
+                         "source_url":  "https://mygarage.honda.com/s/manuals-search",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  12,
+                                                                  "logic":  "Maintenance Minder A; at least annually if no message"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Oil life percentage determines timing."
+                                             },
+                                             {
+                                                 "service":  "Engine oil/filter and comprehensive inspections",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  12,
+                                                                  "logic":  "Maintenance Minder B; condition-based"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Includes brakes, parking brake, steering, suspension, fluids, exhaust, fuel lines, and hoses."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  null,
+                                                                  "logic":  "Maintenance Minder sub-item 1"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Perform when displayed."
+                                             },
+                                             {
+                                                 "service":  "Engine/cabin filters and drive-belt inspection",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  null,
+                                                                  "logic":  "Maintenance Minder sub-item 2"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Dusty operation can require earlier service."
+                                             },
+                                             {
+                                                 "service":  "Transmission fluid replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  null,
+                                                                  "logic":  "Maintenance Minder sub-item 3"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "CVT and manual fluids differ."
+                                             },
+                                             {
+                                                 "service":  "Spark plugs and valve-clearance inspection",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  null,
+                                                                  "logic":  "Maintenance Minder sub-item 4"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Engine variant matters."
+                                             },
+                                             {
+                                                 "service":  "Engine coolant replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  null,
+                                                                  "logic":  "Maintenance Minder sub-item 5"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Perform when displayed."
+                                             },
+                                             {
+                                                 "service":  "Brake fluid replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  36,
+                                                                  "logic":  "Maintenance Minder sub-item 7 or every 3 years"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Time based when no reminder appears."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "Split base, turbo, Type R, CVT, and manual variants where required.",
+                                                  "Keep Minder services condition-based.",
+                                                  "Verify sub-item numbering against exact 2019 body-style manual."
+                                              ],
+                         "confidence":  "medium"
+                     },
+                     {
+                         "id":  "honda_hr_v_2021",
+                         "year":  2021,
+                         "make":  "Honda",
+                         "model":  "HR-V",
+                         "trim":  "Maintenance Minder schedule; gasoline and AWD applicability varies",
+                         "engine":  "1.8L gasoline",
+                         "transmission":  "CVT",
+                         "driveType":  "FWD or AWD",
+                         "source":  "2021 Honda HR-V Owner\u0027s Manual / Honda Maintenance Minder",
+                         "source_url":  "https://mygarage.honda.com/s/manuals-search",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  12,
+                                                                  "logic":  "Maintenance Minder A; change at least annually if no message appears"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Oil life percentage determines normal timing."
+                                             },
+                                             {
+                                                 "service":  "Engine oil and filter replacement plus inspections",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  12,
+                                                                  "logic":  "Maintenance Minder B; condition-based"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Includes brake, steering, suspension, and fluid inspections."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  null,
+                                                                  "logic":  "Maintenance Minder sub-item 1"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Perform when sub-item 1 appears."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter, cabin filter, and drive-belt inspection",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  null,
+                                                                  "logic":  "Maintenance Minder sub-item 2"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Dusty conditions can require earlier service."
+                                             },
+                                             {
+                                                 "service":  "Brake fluid replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  36,
+                                                                  "logic":  "Maintenance Minder sub-item 7 or every 3 years if not prompted"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Time limit applies independently of mileage."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "Restored from local research notes only.",
+                                                  "Honda Maintenance Minder is condition-based; do not invent fixed mileage."
+                                              ],
+                         "confidence":  "low"
+                     }
+                 ]
+}

@@ -1,0 +1,292 @@
+﻿{
+    "phase":  2,
+    "batch":  1,
+    "status":  "reconstructed",
+    "scope":  "Ford F-150, Tesla Model Y, Mercedes-Benz GLC-Class",
+    "validation_notes":  [
+                             "Restored from local batch survivors and Phase 3 production records.",
+                             "Family-level reconstruction was used where the original Phase 2 record did not survive locally.",
+                             "Do not treat split variants as new batch scope; they are source material for the original family record."
+                         ],
+    "vehicles":  [
+                     {
+                         "rank":  1,
+                         "id":  "ford_f150_2020",
+                         "year":  2020,
+                         "make":  "Ford",
+                         "model":  "F-150",
+                         "trim":  "Universal schedule; gasoline and diesel variants differ",
+                         "engine":  "Gasoline or diesel depending on configuration",
+                         "transmission":  "Automatic",
+                         "driveType":  "2WD or 4WD",
+                         "source":  "2020 Ford F-150 Owner\u0027s Manual",
+                         "source_url":  "https://www.fordservicecontent.com/Ford_Content/Catalog/owner_information/2020-Ford-F-150-Owners-Manual-version-1_om-EN-US_08_2019.pdf",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil and filter change",
+                                                 "interval":  {
+                                                                  "miles":  7500,
+                                                                  "months":  null,
+                                                                  "logic":  "normal use example range is 7,500-10,000 miles; severe use shortens to 5,000-7,500 miles; extreme use 3,000-5,000 miles"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Ford uses the Intelligent Oil-Life Monitor; the manual says actual intervals depend on severity of use. Do not exceed one year or 10,000 miles between service intervals."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation, wear inspection, and tread depth measurement",
+                                                 "interval":  {
+                                                                  "miles":  7500,
+                                                                  "months":  null,
+                                                                  "logic":  "perform at every oil change interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Rotate tires at each oil change interval indicated by the information display."
+                                             },
+                                             {
+                                                 "service":  "Brake system inspection",
+                                                 "interval":  {
+                                                                  "miles":  7500,
+                                                                  "months":  null,
+                                                                  "logic":  "perform at every oil change interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Inspect pads, shoes, rotors, drums, linings, hoses, and parking brake."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  20000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Within 3,000 miles of the last engine oil and filter change."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Within 3,000 miles of the last engine oil and filter change."
+                                             },
+                                             {
+                                                 "service":  "Fuel filters replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval for fuel filter replacement items"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Applies to engine-mounted and frame-mounted fuel filters; diesel-specific in some configurations."
+                                             },
+                                             {
+                                                 "service":  "Spark plugs replacement",
+                                                 "interval":  {
+                                                                  "miles":  100000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Gasoline engine only. Special operating conditions may call for 60,000-mile replacement."
+                                             },
+                                             {
+                                                 "service":  "Automatic transmission fluid and filter change",
+                                                 "interval":  {
+                                                                  "miles":  150000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Inspect fluid level at each oil change interval if equipped with dipstick."
+                                             },
+                                             {
+                                                 "service":  "Front axle fluid change",
+                                                 "interval":  {
+                                                                  "miles":  150000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Four-wheel-drive vehicles."
+                                             },
+                                             {
+                                                 "service":  "Rear axle fluid change",
+                                                 "interval":  {
+                                                                  "miles":  150000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Applies as listed in the normal maintenance chart."
+                                             },
+                                             {
+                                                 "service":  "Transfer case fluid change",
+                                                 "interval":  {
+                                                                  "miles":  150000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Four-wheel-drive vehicles."
+                                             },
+                                             {
+                                                 "service":  "Brake fluid change",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  36,
+                                                                  "logic":  "time-based"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Do not exceed the designated 3-year interval."
+                                             },
+                                             {
+                                                 "service":  "Engine coolant replacement",
+                                                 "interval":  {
+                                                                  "miles":  200000,
+                                                                  "months":  120,
+                                                                  "logic":  "initial replacement"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Initial replacement at 10 years or 200,000 miles, then every 5 years or 100,000 miles."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "Oil interval is severity-dependent, not one fixed number.",
+                                                  "Fuel filter and spark plug timing vary by engine type and special operating conditions.",
+                                                  "Gasoline and diesel variants should be split if the final dataset requires engine-specific records."
+                                              ]
+                     },
+                     {
+                         "rank":  9,
+                         "id":  "tesla_model_y_2022",
+                         "year":  2022,
+                         "make":  "Tesla",
+                         "model":  "Model Y",
+                         "trim":  "Universal EV schedule",
+                         "engine":  "Electric motor / high-voltage battery",
+                         "transmission":  "Single-speed EV drive unit",
+                         "driveType":  "AWD or RWD depending on configuration",
+                         "source":  "Model Y Owner\u0027s Manual (2020-2024)",
+                         "source_url":  "https://www.tesla.com/ownersmanual/2020_2024_modely/en_us/GUID-E95DAAD9-646E-4249-9930-B109ED7B1D91.html",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Brake fluid health check",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  48,
+                                                                  "logic":  "time-based"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Replace if necessary after the 4-year check."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  24,
+                                                                  "logic":  "time-based"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Tesla recommends every 2 years."
+                                             },
+                                             {
+                                                 "service":  "HEPA and carbon filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  36,
+                                                                  "logic":  "time-based"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Applies to vehicles equipped with these filters."
+                                             },
+                                             {
+                                                 "service":  "Wiper blade replacement",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  12,
+                                                                  "logic":  "time-based"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Tesla recommends yearly replacement."
+                                             },
+                                             {
+                                                 "service":  "Brake caliper cleaning and lubrication",
+                                                 "interval":  {
+                                                                  "miles":  12500,
+                                                                  "months":  12,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Tesla adds a salt-belt exception: more frequent service in areas where roads are salted during winter."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation",
+                                                 "interval":  {
+                                                                  "miles":  6250,
+                                                                  "months":  null,
+                                                                  "logic":  "or when tread depth difference is 2/32 in or greater, whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Tesla gives 6,250 miles / 10,000 km as the standard interval."
+                                             },
+                                             {
+                                                 "service":  "Daily vehicle checks",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  null,
+                                                                  "logic":  "daily"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Check charge level, tire pressure/condition, lights, wipers, alerts, brakes, and visible leaks."
+                                             },
+                                             {
+                                                 "service":  "Monthly checks",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  1,
+                                                                  "logic":  "monthly"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Check washer fluid and air conditioning operation."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "No engine oil, transmission fluid, spark plug, or conventional ICE service items apply.",
+                                                  "Battery coolant is stated as not needing replacement for the life of the vehicle under most circumstances.",
+                                                  "Tesla maintenance is condition-based and software-assisted rather than a fixed ICE-style schedule."
+                                              ]
+                     },
+                     {
+                         "id":  "mercedes_glc_2021",
+                         "year":  2021,
+                         "make":  "Mercedes-Benz",
+                         "model":  "GLC-Class",
+                         "trim":  "ASSYST PLUS service reminder; display-driven schedule",
+                         "engine":  "2.0L turbo gasoline",
+                         "transmission":  "9-speed automatic",
+                         "driveType":  "RWD or 4MATIC AWD",
+                         "source":  "2021 Mercedes-Benz GLC-Class Owner\u0027s Manual / ASSYST PLUS",
+                         "source_url":  "https://static.oneweb.mercedes-benz.com/css-oom-assets/en-do/pdf/mercedes-glc-suv-2021-january-x253-mbux-owners-manual-1.pdf",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "ASSYST PLUS service reminder",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  null,
+                                                                  "logic":  "variable display-driven schedule"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Use the service display; do not invent fixed mileage or month intervals."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "Restored from local research notes only.",
+                                                  "ASSYST PLUS is variable and display-driven; do not invent fixed intervals."
+                                              ],
+                         "confidence":  "medium"
+                     }
+                 ]
+}

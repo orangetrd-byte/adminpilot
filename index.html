@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#111827" />
+    <title>AdminPilot</title>
+    <link rel="manifest" href="./manifest.json" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow">AdminPilot</div>
+          <h1>Private asset tracking for the real world.</h1>
+          <p>
+            VIN lookup, recall alerts, home tasks, and documents in one local
+            dashboard. Your data stays on device.
+          </p>
+          <div class="actions">
+            <button id="add-sample" type="button">Add sample data</button>
+            <button id="clear-data" type="button" class="secondary">
+              Clear data
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-stats" aria-label="Summary stats">
+          <article class="stat-card" data-tone="error">
+            <span class="stat-label">Overdue</span>
+            <strong id="overdue-count">0</strong>
+          </article>
+          <article class="stat-card" data-tone="warning">
+            <span class="stat-label">Due soon</span>
+            <strong id="due-soon-count">0</strong>
+          </article>
+          <article class="stat-card" data-tone="warning">
+            <span class="stat-label">High consequence</span>
+            <strong id="high-consequence-count">0</strong>
+          </article>
+          <article class="stat-card" data-tone="success">
+            <span class="stat-label">On track</span>
+            <strong id="on-track-count">0</strong>
+          </article>
+        </div>
+      </header>
+
+      <section class="grid">
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Add Asset</h2>
+            <span class="pill">LocalStorage</span>
+          </div>
+          <form id="asset-form" class="form">
+            <label>
+              <span>Name</span>
+              <input id="asset-name" name="name" placeholder="2019 Ford F-150" required />
+            </label>
+            <label>
+              <span>Type</span>
+              <select id="asset-type" name="type">
+                <option>Vehicle</option>
+                <option>Home</option>
+                <option>Document</option>
+                <option>Admin</option>
+              </select>
+            </label>
+            <label>
+              <span>Status</span>
+              <select id="asset-status" name="status">
+                <option value="on-track">On track</option>
+                <option value="due-soon">Due soon</option>
+                <option value="overdue">Overdue</option>
+              </select>
+            </label>
+            <label class="full inline-check">
+              <input id="asset-high-consequence" name="highConsequence" type="checkbox" />
+              <span>High consequence if ignored</span>
+            </label>
+            <label>
+              <span>VIN</span>
+              <input
+                id="asset-vin"
+                name="vin"
+                placeholder="1FTFW1E5XJFA00000"
+                maxlength="17"
+                autocomplete="off"
+              />
+            </label>
+            <label>
+              <span>Current mileage</span>
+              <input
+                id="asset-mileage"
+                name="mileage"
+                type="number"
+                min="0"
+                step="1"
+                inputmode="numeric"
+                placeholder="68320"
+              />
+            </label>
+            <label>
+              <span>Mileage recorded date</span>
+              <input id="asset-mileage-date" name="mileageDate" type="date" />
+            </label>
+            <label>
+              <span>Due / status</span>
+              <input id="asset-due" name="due" placeholder="Oil change due in 320 miles" required />
+            </label>
+            <label>
+              <span>Reminder date</span>
+              <input id="asset-reminder" name="reminder" type="date" />
+            </label>
+            <label>
+              <span>Repeat every (days)</span>
+              <input id="asset-repeat" name="repeat" type="number" min="0" step="1" placeholder="0" />
+            </label>
+            <label class="full">
+              <span>Notes</span>
+              <textarea
+                id="asset-note"
+                name="note"
+                rows="4"
+                placeholder="What happens if this gets ignored?"
+              ></textarea>
+            </label>
+            <label class="full">
+              <span>Consequence</span>
+              <textarea
+                id="asset-consequence"
+                name="consequence"
+                rows="3"
+                placeholder="What happens if this gets ignored?"
+              ></textarea>
+            </label>
+            <label class="full">
+              <span>Attachment</span>
+              <input id="asset-file" name="file" type="file" />
+            </label>
+            <div class="form-actions full">
+              <button type="submit">Save asset</button>
+              <button id="fill-vin" type="button" class="secondary">
+                Lookup VIN
+              </button>
+            </div>
+          </form>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>VIN Lookup</h2>
+            <span id="vin-status" class="pill">Idle</span>
+          </div>
+          <div class="lookup">
+            <label>
+              <span>Vehicle identification number</span>
+              <input
+                id="vin-input"
+                name="vin-input"
+                placeholder="1FTFW1E5XJFA00000"
+                maxlength="17"
+                autocomplete="off"
+              />
+            </label>
+            <div class="lookup-actions">
+              <button id="decode-vin" type="button">Decode VIN</button>
+              <button id="load-recalls" type="button" class="secondary">
+                Check recalls now
+              </button>
+            </div>
+          </div>
+          <div id="vehicle-card" class="info-card empty">
+            <strong>No VIN decoded yet.</strong>
+            <small>Decode a 17-character VIN to auto-fill vehicle details.</small>
+          </div>
+          <div id="recall-card" class="info-card empty">
+            <strong>No recall data loaded yet.</strong>
+            <small>Recall status appears after a successful VIN decode.</small>
+          </div>
+          <div id="maintenance-card" class="info-card empty">
+            <strong>No maintenance schedule loaded yet.</strong>
+            <small>Candidate schedules appear after a successful VIN decode.</small>
+          </div>
+        </section>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Maintenance timeline</h2>
+          <span class="pill">Status groups</span>
+        </div>
+        <div class="timeline" id="timeline"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Reminder center</h2>
+          <div class="backup-row">
+            <button id="notify-enable" type="button">Enable reminders</button>
+            <span id="notify-status" class="pill">Browser only</span>
+          </div>
+        </div>
+        <div id="reminder-list" class="reminder-list"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Assets</h2>
+          <span id="last-save" class="pill">Saved locally</span>
+        </div>
+        <div id="asset-list" class="asset-list"></div>
+      </section>
+
+      <dialog id="asset-dialog" class="asset-dialog">
+        <form id="asset-dialog-form" method="dialog" class="dialog-form">
+          <div class="panel-head">
+            <h2 id="asset-dialog-title">Edit Asset</h2>
+            <button id="asset-dialog-close" type="button" class="secondary">Close</button>
+          </div>
+          <input type="hidden" id="asset-id" />
+          <div class="form">
+            <label>
+              <span>Name</span>
+              <input id="edit-asset-name" required />
+            </label>
+            <label>
+              <span>Type</span>
+              <select id="edit-asset-type">
+                <option>Vehicle</option>
+                <option>Home</option>
+                <option>Document</option>
+                <option>Admin</option>
+              </select>
+            </label>
+            <label>
+              <span>Status</span>
+              <select id="edit-asset-status">
+                <option value="on-track">On track</option>
+                <option value="due-soon">Due soon</option>
+                <option value="overdue">Overdue</option>
+              </select>
+            </label>
+            <label class="full inline-check">
+              <input id="edit-asset-high-consequence" type="checkbox" />
+              <span>High consequence if ignored</span>
+            </label>
+            <label>
+              <span>VIN</span>
+              <input id="edit-asset-vin" maxlength="17" />
+            </label>
+            <label>
+              <span>Current mileage</span>
+              <input
+                id="edit-asset-mileage"
+                type="number"
+                min="0"
+                step="1"
+                inputmode="numeric"
+              />
+            </label>
+            <label>
+              <span>Mileage recorded date</span>
+              <input id="edit-asset-mileage-date" type="date" />
+            </label>
+            <label>
+              <span>Due / status</span>
+              <input id="edit-asset-due" required />
+            </label>
+            <label>
+              <span>Reminder date</span>
+              <input id="edit-asset-reminder" type="date" />
+            </label>
+            <label>
+              <span>Repeat every (days)</span>
+              <input id="edit-asset-repeat" type="number" min="0" step="1" />
+            </label>
+            <label class="full">
+              <span>Notes</span>
+              <textarea id="edit-asset-note" rows="4"></textarea>
+            </label>
+            <label class="full">
+              <span>Consequence</span>
+              <textarea id="edit-asset-consequence" rows="3"></textarea>
+            </label>
+          </div>
+          <div class="form-actions">
+            <button id="asset-dialog-save" type="submit">Save changes</button>
+            <button id="asset-dialog-delete" type="button" class="secondary">Delete</button>
+          </div>
+        </form>
+      </dialog>
+
+      <section class="panel">
+        <div class="panel-head">
+          <h2>Backup</h2>
+          <span class="pill">JSON</span>
+        </div>
+        <div class="backup-row">
+          <button id="export-data" type="button">Export JSON</button>
+          <label class="file-upload">
+            <input id="import-file" type="file" accept="application/json" />
+            <span>Import JSON</span>
+          </label>
+        </div>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

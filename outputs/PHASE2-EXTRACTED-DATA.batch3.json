@@ -1,0 +1,211 @@
+﻿{
+    "phase":  2,
+    "batch":  3,
+    "status":  "reconstructed",
+    "scope":  "Toyota Camry, 4Runner",
+    "validation_notes":  [
+                             "Restored from local batch survivors and Phase 3 production records.",
+                             "Family-level reconstruction was used where the original Phase 2 record did not survive locally.",
+                             "Do not treat split variants as new batch scope; they are source material for the original family record."
+                         ],
+    "vehicles":  [
+                     {
+                         "rank":  8,
+                         "id":  "toyota_camry_2019",
+                         "year":  2019,
+                         "make":  "Toyota",
+                         "model":  "Camry",
+                         "trim":  "Universal schedule; gasoline and hybrid applicability varies",
+                         "engine":  "2.5L four-cylinder, 3.5L V6, or hybrid",
+                         "transmission":  "8-speed automatic or hybrid eCVT",
+                         "driveType":  "FWD",
+                         "source":  "Toyota 2019 Camry Warranty and Maintenance Guide",
+                         "source_url":  "https://assets.sia.toyota.com/publications/en/omms-s/T-MMS-19Camry/pdf/T-MMS-19Camry.pdf",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Routine maintenance inspection and tire rotation",
+                                                 "interval":  {
+                                                                  "miles":  5000,
+                                                                  "months":  6,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Includes fluid levels, wipers, brakes, tires, and general condition checks."
+                                             },
+                                             {
+                                                 "service":  "Engine oil and oil filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  10000,
+                                                                  "months":  12,
+                                                                  "logic":  "whichever comes first under normal use with specified synthetic oil"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Reduce to 5,000 miles or 6 months under special operating conditions or after temporary use of substitute oil."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "The 2019 Camry guide also lists cabin-filter replacement at 10,000 miles/12 months in its early schedule; Claude should verify whether this reflects a model-specific annual interval."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  36,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Inspect more frequently under dusty conditions."
+                                             },
+                                             {
+                                                 "service":  "Engine coolant replacement",
+                                                 "interval":  {
+                                                                  "miles":  100000,
+                                                                  "months":  120,
+                                                                  "logic":  "initial replacement; every 50,000 miles or 60 months afterward"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Hybrid inverter coolant requires variant-specific validation."
+                                             },
+                                             {
+                                                 "service":  "Spark plug replacement",
+                                                 "interval":  {
+                                                                  "miles":  120000,
+                                                                  "months":  144,
+                                                                  "logic":  "whichever comes first"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Required under the emissions-control warranty schedule."
+                                             },
+                                             {
+                                                 "service":  "Automatic transmission fluid replacement",
+                                                 "interval":  {
+                                                                  "miles":  120000,
+                                                                  "months":  144,
+                                                                  "logic":  "special operating conditions only"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Listed under towing/heavy loading and extensive-idling/low-speed service. Normal-use schedule calls for leakage inspection."
+                                             },
+                                             {
+                                                 "service":  "Vacuum pump for brake booster replacement",
+                                                 "interval":  {
+                                                                  "miles":  120000,
+                                                                  "months":  144,
+                                                                  "logic":  "whichever comes first on applicable gasoline engine"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Engine applicability must be confirmed before displaying this service."
+                                             }
+                                         ],
+                         "validation_flags":  [
+                                                  "Split gasoline, V6, and hybrid records before production.",
+                                                  "Confirm the cabin-air-filter interval because the guide shows an early 10,000-mile replacement as well as later 30,000-mile replacements.",
+                                                  "Do not present transmission-fluid replacement as a universal normal-use requirement."
+                                              ]
+                     },
+                     {
+                         "rank":  5,
+                         "id":  "toyota_4runner_2020",
+                         "year":  2020,
+                         "make":  "Toyota",
+                         "model":  "4Runner",
+                         "trim":  "2WD",
+                         "engine":  "4.0L V6 (reference)",
+                         "transmission":  "Automatic",
+                         "driveType":  "2WD",
+                         "source":  "2020 Toyota 4Runner Owner\u0027s Manual (same as unified record)",
+                         "source_url":  "https://www.toyota.com/owners/warranty-owners-manuals/vehicle/4runner/2020/",
+                         "maintenance":  [
+                                             {
+                                                 "service":  "Engine oil and filter change",
+                                                 "interval":  {
+                                                                  "miles":  7500,
+                                                                  "months":  null,
+                                                                  "logic":  "normal-use oil-life monitor guidance"
+                                                              },
+                                                 "severity":  "critical",
+                                                 "notes":  "Do not exceed 10,000 miles or 12 months."
+                                             },
+                                             {
+                                                 "service":  "Tire rotation, wear inspection, and tread depth measurement",
+                                                 "interval":  {
+                                                                  "miles":  7500,
+                                                                  "months":  null,
+                                                                  "logic":  "perform at each oil change interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Rotate tires at each oil change interval indicated by the multi-information display."
+                                             },
+                                             {
+                                                 "service":  "Brake system inspection",
+                                                 "interval":  {
+                                                                  "miles":  7500,
+                                                                  "months":  null,
+                                                                  "logic":  "perform at each oil change interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Inspect pads, shoes, rotors, drums, linings, hoses, parking brake, and fluid level."
+                                             },
+                                             {
+                                                 "service":  "Engine air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Replace more frequently in dusty conditions."
+                                             },
+                                             {
+                                                 "service":  "Cabin air filter replacement",
+                                                 "interval":  {
+                                                                  "miles":  30000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "medium",
+                                                 "notes":  "Inspect or replace per severe-use conditions as outlined in the maintenance specifications."
+                                             },
+                                             {
+                                                 "service":  "Spark plug replacement",
+                                                 "interval":  {
+                                                                  "miles":  120000,
+                                                                  "months":  null,
+                                                                  "logic":  "fixed interval"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Gather from the 2WD section of the manual before shipping. Confirm against exact manual table."
+                                             },
+                                             {
+                                                 "service":  "Brake fluid change",
+                                                 "interval":  {
+                                                                  "miles":  null,
+                                                                  "months":  24,
+                                                                  "logic":  "time-based severe-use conditional"
+                                                              },
+                                                 "severity":  "high",
+                                                 "notes":  "Conditional severe-use item; normal intervals are mileage based."
+                                             }
+                                         ],
+                         "applicability":  {
+                                               "drive_type":  "2WD_ONLY",
+                                               "transmission":  "automatic",
+                                               "engine":  "reference 4.0L V6"
+                                           },
+                         "validation_flags":  [
+                                                  "Split from unified toyota_4runner_2020 record.",
+                                                  "Driveline services that are 4WD-only are excluded from this record.",
+                                                  "Exact intervals require re-extraction from the 2WD table in the same official manual.",
+                                                  "Restored from local batch/production data."
+                                              ],
+                         "production_ready":  false,
+                         "source_confidence":  "confirmed_same_manual_re_extraction"
+                     }
+                 ]
+}
