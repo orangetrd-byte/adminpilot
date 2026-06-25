@@ -9,14 +9,20 @@ manifest and validation report were generated.
 
 ## Accepted as candidates
 
-Six records were retained because they contain usable maintenance content and
+Twelve records are retained because they contain usable maintenance content and
 identify an official manufacturer source:
 
+- 2019 Toyota Camry
 - 2020 Buick Enclave
+- 2020 Ford F-150
 - 2020 Ford Edge
+- 2020 Toyota Corolla
+- 2021 Honda Accord
+- 2021 Honda CRV
 - 2021 Jeep Wrangler
 - 2021 Ram 1500 Classic
 - 2021 Ram 1500 DT
+- 2021 Toyota RAV4 Hybrid
 - 2022 Chevrolet Equinox
 
 Every retained record is deliberately marked:
@@ -35,11 +41,10 @@ footnotes, variant applicability, and normal-versus-severe usage.
 - `2020_gmc_terrain.json` contained a placeholder maintenance item saying the
   schedule had not been parsed.
 - `ford_f150_2020_maintenance.json` duplicated the F-150 in a different dataset
-  structure.
-- `toyota_rav4_2021_maintenance.json` duplicated a vehicle already present in the
-  repository's canonical Phase 2 dataset.
-- `2019_toyota_camry.json` and `2020_ford_f150.json` also overlapped canonical
-  records without providing a safe production replacement.
+  structure; the batch now keeps a normalized `2020_ford_f150.json` candidate.
+- `toyota_rav4_2021_maintenance.json` duplicated an older RAV4-shaped artifact;
+  the batch now keeps a hybrid-specific `2021_toyota_rav4_hybrid.json`
+  candidate.
 
 The Ram 1500 DT record is retained only as a replacement candidate because the
 canonical Ram record is explicitly listed as low confidence.

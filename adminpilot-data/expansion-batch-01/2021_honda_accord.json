@@ -1,0 +1,96 @@
+{
+  "id": "2021-honda-accord-lx-maintenance-minder-candidate",
+  "year": 2021,
+  "make": "Honda",
+  "model": "Accord",
+  "trim": "LX and gasoline CVT trims",
+  "engine": "Gasoline engine",
+  "transmission": "CVT",
+  "driveType": "FWD",
+  "source": "Honda Owner's Manual - 2021 Accord",
+  "source_url": "https://techinfo.honda.com/rjanisis/pubs/OM/AH/ATVA2121OM/enu/ATVA2121OM.PDF",
+  "maintenance": [
+    {
+      "service": "Replace engine oil",
+      "interval": {
+        "miles": null,
+        "months": 12,
+        "logic": "Maintenance Minder main item A; if no Maintenance Minder message appears within 12 months after reset, change engine oil yearly"
+      },
+      "severity": "critical",
+      "notes": "Honda uses condition-based Maintenance Minder, not a fixed mileage schedule."
+    },
+    {
+      "service": "Replace engine oil and oil filter; inspect brakes, steering, suspension, fluid levels, exhaust, and fuel lines",
+      "interval": {
+        "miles": null,
+        "months": 12,
+        "logic": "Maintenance Minder main item B"
+      },
+      "severity": "high",
+      "notes": "Performed when Maintenance Minder calls for B service."
+    },
+    {
+      "service": "Rotate tires",
+      "interval": {
+        "miles": null,
+        "months": null,
+        "logic": "Maintenance Minder sub item 1"
+      },
+      "severity": "high",
+      "notes": "Display-driven interval."
+    },
+    {
+      "service": "Replace air cleaner element and dust/pollen filter; inspect drive belt",
+      "interval": {
+        "miles": null,
+        "months": null,
+        "logic": "Maintenance Minder sub item 2"
+      },
+      "severity": "medium",
+      "notes": "Dusty conditions call for air cleaner replacement every 15,000 miles; high-soot urban areas call for dust/pollen filter replacement every 15,000 miles."
+    },
+    {
+      "service": "Replace transmission fluid",
+      "interval": {
+        "miles": null,
+        "months": null,
+        "logic": "Maintenance Minder sub item 3 for continuously variable transmission models"
+      },
+      "severity": "high",
+      "notes": "Mountainous low-speed driving can require fluid changes every 25,000 miles."
+    },
+    {
+      "service": "Replace spark plugs and inspect valve clearance",
+      "interval": {
+        "miles": null,
+        "months": null,
+        "logic": "Maintenance Minder sub item 4"
+      },
+      "severity": "high",
+      "notes": "Adjust valves during A, B, 1, 2, or 3 service if noisy."
+    },
+    {
+      "service": "Replace engine coolant and brake fluid",
+      "interval": {
+        "miles": null,
+        "months": 36,
+        "logic": "Maintenance Minder sub items 5 and 7; if item 7 does not appear within 36 months after reset, replace brake fluid every 3 years"
+      },
+      "severity": "high",
+      "notes": "Do not infer fixed mileage intervals from the Maintenance Minder table."
+    }
+  ],
+  "applicability": [
+    "2021 Honda Accord gasoline CVT models",
+    "VIN test case is Accord LX with CVT/FWD"
+  ],
+  "validation_flags": [
+    "Honda schedule is Maintenance Minder based; fixed mileage intervals must not be invented.",
+    "Hybrid Accord manual is a different official PDF and is not used for this LX gasoline candidate.",
+    "Rendered-page verification still required before production integration."
+  ],
+  "production_ready": false,
+  "source_confidence": "official_source_text_extracted_pending_visual_review",
+  "review_status": "candidate"
+}

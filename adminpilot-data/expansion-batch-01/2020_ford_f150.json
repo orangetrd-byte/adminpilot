@@ -1,0 +1,96 @@
+{
+  "id": "2020-ford-f150-gasoline-candidate",
+  "year": 2020,
+  "make": "Ford",
+  "model": "F-150",
+  "trim": "Gasoline trims",
+  "engine": "Gasoline engines; diesel supplement not covered by this candidate",
+  "transmission": "Automatic",
+  "driveType": "2WD and 4WD",
+  "source": "Ford Owner's Manual - 2020 F-150",
+  "source_url": "https://www.fordservicecontent.com/Ford_Content/Catalog/owner_information/2020-Ford-F-150-Owners-Manual-version3_om_EN-US_04_2020.pdf",
+  "maintenance": [
+    {
+      "service": "Change engine oil and filter",
+      "interval": {
+        "miles": null,
+        "months": 12,
+        "logic": "Intelligent Oil-Life Monitor; do not exceed 10,000 miles or 12 months"
+      },
+      "severity": "critical",
+      "notes": "Normal, severe, and extreme use ranges are oil-life-monitor driven."
+    },
+    {
+      "service": "Rotate tires and perform multi-point inspection",
+      "interval": {
+        "miles": null,
+        "months": null,
+        "logic": "At every oil-change interval"
+      },
+      "severity": "high",
+      "notes": "Includes tire wear, fluid, brake, cooling, exhaust, suspension, steering, driveline, and related inspections as applicable."
+    },
+    {
+      "service": "Replace cabin air filter",
+      "interval": {
+        "miles": 20000,
+        "months": null,
+        "logic": "Fixed mileage interval"
+      },
+      "severity": "medium",
+      "notes": "Perform within the manual's scheduled maintenance window."
+    },
+    {
+      "service": "Replace engine air filter",
+      "interval": {
+        "miles": 30000,
+        "months": null,
+        "logic": "Fixed mileage interval"
+      },
+      "severity": "medium",
+      "notes": "Severe dusty operation may require earlier service."
+    },
+    {
+      "service": "Replace spark plugs",
+      "interval": {
+        "miles": 100000,
+        "months": null,
+        "logic": "Fixed normal-use interval"
+      },
+      "severity": "high",
+      "notes": "Engine-specific applicability remains pending rendered-page verification."
+    },
+    {
+      "service": "Change brake fluid",
+      "interval": {
+        "miles": null,
+        "months": 36,
+        "logic": "Every 3 years"
+      },
+      "severity": "high",
+      "notes": "Time-based interval."
+    },
+    {
+      "service": "Change automatic transmission fluid",
+      "interval": {
+        "miles": 150000,
+        "months": null,
+        "logic": "Fixed normal-use interval"
+      },
+      "severity": "high",
+      "notes": "Severe service may require earlier replacement."
+    }
+  ],
+  "applicability": [
+    "2020 Ford F-150 gasoline models",
+    "VIN test case is 4WD pickup; diesel-specific schedule is excluded"
+  ],
+  "validation_flags": [
+    "Candidate normalized from official Ford owner manual schedule.",
+    "Engine-specific footnotes must be visually checked before production.",
+    "Rendered-page verification still required before production integration."
+  ],
+  "production_ready": false,
+  "source_confidence": "official_source_text_extracted_pending_visual_review",
+  "review_status": "candidate"
+}
