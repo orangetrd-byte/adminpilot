@@ -1,4 +1,4 @@
-const CACHE = "adminpilot-v2-mileage-recalls";
+const CACHE = "adminpilot-v3-candidate-maintenance";
 const ASSETS = ["./", "./index.html", "./styles.css", "./app.js", "./manifest.json"];
 
 self.addEventListener("install", (event) => {

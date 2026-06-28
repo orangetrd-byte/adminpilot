@@ -373,6 +373,17 @@ textarea:focus {
   line-height: 1.5;
 }
 
+.maintenance-list {
+  margin-top: 14px;
+}
+
+.candidate-warning {
+  display: block;
+  margin-top: 10px;
+  color: var(--warning);
+  line-height: 1.5;
+}
+
 .asset-meta {
   display: flex;
   flex-wrap: wrap;

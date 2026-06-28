@@ -1,0 +1,106 @@
+{
+  "id": "2020-ford-edge-gasoline",
+  "year": 2020,
+  "make": "Ford",
+  "model": "Edge",
+  "trim": "All gasoline trims",
+  "engine": "Gasoline engines; engine-specific applicability requires review",
+  "transmission": "Automatic",
+  "driveType": "FWD and AWD",
+  "source": "2020 Ford Edge Owner's Manual",
+  "source_url": "https://www.fordservicecontent.com/Ford_Content/Catalog/owner_information/2020-Ford-Edge-Owners-Manual-version-3_om_EN-US_09_2020.pdf",
+  "maintenance": [
+    {
+      "service": "Engine oil and filter replacement",
+      "interval": {
+        "miles": null,
+        "months": 12,
+        "logic": "Intelligent Oil-Life Monitor; normal-use examples are 7,500-10,000 miles, with shorter ranges for severe use; do not exceed 10,000 miles or 12 months"
+      },
+      "severity": "critical",
+      "notes": "Reset the Intelligent Oil-Life Monitor after service."
+    },
+    {
+      "service": "Tire rotation and multi-point inspection",
+      "interval": {
+        "miles": null,
+        "months": null,
+        "logic": "perform at each oil-change interval"
+      },
+      "severity": "high",
+      "notes": "Includes brake, coolant, exhaust, suspension, steering, tire, and AWD driveline inspections as applicable."
+    },
+    {
+      "service": "Cabin air filter replacement",
+      "interval": {
+        "miles": 20000,
+        "months": null,
+        "logic": "fixed mileage interval"
+      },
+      "severity": "medium",
+      "notes": "Perform within 3,000 miles of the last oil and filter change."
+    },
+    {
+      "service": "Engine air filter replacement",
+      "interval": {
+        "miles": 30000,
+        "months": null,
+        "logic": "fixed mileage interval"
+      },
+      "severity": "medium",
+      "notes": "Perform within 3,000 miles of the last oil and filter change."
+    },
+    {
+      "service": "Spark plug replacement",
+      "interval": {
+        "miles": 100000,
+        "months": null,
+        "logic": "fixed mileage interval under normal use"
+      },
+      "severity": "high",
+      "notes": "Special operating conditions may require earlier replacement."
+    },
+    {
+      "service": "Automatic transmission fluid replacement",
+      "interval": {
+        "miles": 150000,
+        "months": null,
+        "logic": "fixed normal-use interval"
+      },
+      "severity": "high",
+      "notes": "Severe operating conditions may require earlier service."
+    },
+    {
+      "service": "Brake fluid replacement",
+      "interval": {
+        "miles": null,
+        "months": 36,
+        "logic": "time-based interval"
+      },
+      "severity": "high",
+      "notes": "Do not exceed three years."
+    },
+    {
+      "service": "Engine coolant replacement",
+      "interval": {
+        "miles": 200000,
+        "months": 120,
+        "logic": "initial replacement; then every 100,000 miles or 60 months"
+      },
+      "severity": "high",
+      "notes": "Whichever limit is reached first."
+    }
+  ],
+  "applicability": [
+    "2020 Ford Edge gasoline models",
+    "AWD-specific inspection items apply only to AWD vehicles"
+  ],
+  "validation_flags": [
+    "Candidate record normalized from Hermes's alternate Ford schedule structure.",
+    "Intervals were text-extracted from the official manual but have not received final rendered-page verification.",
+    "Engine-specific and severe-use applicability must be confirmed before production integration."
+  ],
+  "production_ready": false,
+  "source_confidence": "official_source_text_extracted_pending_visual_review",
+  "review_status": "candidate"
+}

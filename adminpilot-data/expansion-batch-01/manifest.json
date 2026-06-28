@@ -1,0 +1,107 @@
+{
+  "batch_id": "expansion-batch-01",
+  "snapshot_date": "2026-06-21T11:30:00-04:00",
+  "description": "Reviewed candidate maintenance schedules recovered from Hermes and source-checked 10-pack additions",
+  "production_ready_overall": false,
+  "integration_status": "candidate_review_only",
+  "total_records": 16,
+  "records": [
+    {
+      "file": "2019_toyota_camry.json",
+      "status": "candidate",
+      "reason": "Rebuilt from the official 2019 Camry Toyota Warranty & Maintenance Guide; remains pending rendered-page verification."
+    },
+    {
+      "file": "2020_buick_enclave.json",
+      "status": "candidate",
+      "reason": "Structured extraction exists; production-ready claim was removed pending independent page verification."
+    },
+    {
+      "file": "2020_chevrolet_malibu.json",
+      "status": "candidate",
+      "reason": "Rebuilt from Chevrolet's official 2020 Malibu Owner's Manual; previous malformed page-preview artifact was discarded."
+    },
+    {
+      "file": "2020_ford_edge.json",
+      "status": "candidate",
+      "reason": "Normalized from Hermes's alternate schedule structure; page verification remains open."
+    },
+    {
+      "file": "2020_ford_f150.json",
+      "status": "candidate",
+      "reason": "Normalized from the official 2020 Ford F-150 Owner's Manual; diesel-specific schedule is excluded."
+    },
+    {
+      "file": "2020_gmc_terrain.json",
+      "status": "candidate",
+      "reason": "Rebuilt from GMC's official 2020 Terrain Owner's Manual; previous placeholder artifact was discarded and diesel rows are excluded."
+    },
+    {
+      "file": "2020_toyota_corolla.json",
+      "status": "candidate",
+      "reason": "Built from the official 2020 Corolla Toyota Warranty & Maintenance Guide with special-condition items preserved as conditional."
+    },
+    {
+      "file": "2021_chevrolet_silverado_1500.json",
+      "status": "candidate",
+      "reason": "Built from Chevrolet's official 2021 Silverado 1500 Owner's Manual; Oil Life System and severe-use services remain explicitly scoped."
+    },
+    {
+      "file": "2021_ford_explorer.json",
+      "status": "candidate",
+      "reason": "Built from Ford's official 2021 Explorer Gas/HEV Owner's Manual; Oil-Life Monitor and special-condition items remain explicitly conditional."
+    },
+    {
+      "file": "2021_honda_accord.json",
+      "status": "candidate",
+      "reason": "Built from the official 2021 Accord Owner's Manual; Honda Maintenance Minder items remain condition/display driven."
+    },
+    {
+      "file": "2021_honda_crv.json",
+      "status": "candidate",
+      "reason": "Built from the official 2021 CR-V Owner's Manual; model normalized as CRV for app matching."
+    },
+    {
+      "file": "2021_jeep_wrangler.json",
+      "status": "candidate",
+      "reason": "Gasoline schedule extracted; engine, transmission, and severe-duty applicability still require independent verification."
+    },
+    {
+      "file": "2021_ram_1500_classic.json",
+      "status": "candidate",
+      "reason": "Official-manual extraction exists; production-ready claim was removed pending independent verification."
+    },
+    {
+      "file": "2021_ram_1500_dt.json",
+      "status": "replacement_candidate",
+      "reason": "Potential replacement for the canonical low-confidence Ram 1500 record; powertrain-specific applicability remains unresolved."
+    },
+    {
+      "file": "2021_toyota_rav4_hybrid.json",
+      "status": "candidate",
+      "reason": "Built from the official 2021 RAV4 Hybrid Toyota Warranty & Maintenance Guide; kept separate from gasoline RAV4 records."
+    },
+    {
+      "file": "2022_chevrolet_equinox.json",
+      "status": "candidate",
+      "reason": "Structured extraction exists, but engine claims and table alignment require independent verification."
+    }
+  ],
+  "rejected_artifacts": [
+    {
+      "file": "ford_f150_2020_maintenance.json",
+      "reason": "Duplicate alternate dataset structure; a normalized F-150 candidate is now represented in this batch."
+    },
+    {
+      "file": "toyota_rav4_2021_maintenance.json",
+      "reason": "Duplicate older RAV4-shaped artifact; a hybrid-specific normalized candidate is now represented in this batch."
+    }
+  ],
+  "review_rules": [
+    "No candidate in this directory may set production_ready=true.",
+    "Condition-based maintenance remains condition-based; fixed intervals are not invented.",
+    "Severe-use services must not be presented as normal-use requirements.",
+    "Rendered-page verification is required before integration into the canonical dataset.",
+    "Variant-specific engine, transmission, and drivetrain rules must be split or explicitly scoped."
+  ]
+}

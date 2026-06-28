@@ -1,0 +1,160 @@
+{
+  "id": "2021-ford-explorer-gas-hev-candidate",
+  "year": 2021,
+  "make": "Ford",
+  "model": "Explorer",
+  "trim": "Gas and hybrid trims",
+  "engine": "Gasoline and hybrid powertrains covered by the 2021 Explorer Gas/HEV Owner's Manual",
+  "transmission": "Automatic",
+  "driveType": "RWD and 4WD/AWD as equipped",
+  "source": "Ford Owner's Manual - 2021 Explorer Gas/HEV",
+  "source_url": "https://www.fordservicecontent.com/Ford_Content/Catalog/owner_information/2021-Ford-Explorer-Gas-HEV-Owners-Manual-version-2_om_EN-US_01_2021.pdf",
+  "maintenance": [
+    {
+      "service": "Change engine oil and filter",
+      "interval": {
+        "miles": null,
+        "months": 12,
+        "logic": "Intelligent Oil-Life Monitor; normal examples are 7,500-10,000 miles, severe examples 5,000-7,500 miles, and extreme examples 3,000-5,000 miles; do not exceed the one-year maximum"
+      },
+      "severity": "critical",
+      "notes": "Hybrid vehicles may exceed 10,000 miles between oil changes, but the manual still states not to exceed the one-year maximum. Reset the monitor after service."
+    },
+    {
+      "service": "Rotate tires and perform oil-change interval inspections",
+      "interval": {
+        "miles": null,
+        "months": null,
+        "logic": "At every oil-change interval as indicated by the information display"
+      },
+      "severity": "high",
+      "notes": "Includes tire rotation, multi-point inspection, brake pads/rotors/hoses/parking brake, cooling system, exhaust, heat shields, front axle, rear axle and U-joints, half-shaft boots, steering linkage, ball joints, suspension, tie-rod ends, tires, wheels, and related components."
+    },
+    {
+      "service": "Perform owner monthly checks",
+      "interval": {
+        "miles": null,
+        "months": 1,
+        "logic": "Check every month"
+      },
+      "severity": "medium",
+      "notes": "Owner checks include engine oil level, lights, tires including spare, washer fluid, and tail pipe holes/slots."
+    },
+    {
+      "service": "Perform owner six-month checks",
+      "interval": {
+        "miles": null,
+        "months": 6,
+        "logic": "Check every six months"
+      },
+      "severity": "medium",
+      "notes": "Includes battery connections, body and door drains, cooling system level and strength, weatherstrips, hinges/latches/locks, parking brake, seatbelts and latches, safety warning lamps, and washer spray/wiper operation."
+    },
+    {
+      "service": "Change brake fluid",
+      "interval": {
+        "miles": null,
+        "months": 36,
+        "logic": "Every three years"
+      },
+      "severity": "high",
+      "notes": "Time-based service; the manual says not to exceed the designated time interval and notes special equipment at an authorized dealer."
+    },
+    {
+      "service": "Replace cabin air filter",
+      "interval": {
+        "miles": 20000,
+        "months": null,
+        "logic": "Every 20,000 miles"
+      },
+      "severity": "medium",
+      "notes": "Perform within 3,000 miles of the last engine oil and filter change. Dusty or dirty conditions require more frequent inspection and replacement."
+    },
+    {
+      "service": "Replace engine air filter",
+      "interval": {
+        "miles": 30000,
+        "months": null,
+        "logic": "Every 30,000 miles"
+      },
+      "severity": "medium",
+      "notes": "Perform within 3,000 miles of the last engine oil and filter change. Dusty or dirty conditions require more frequent inspection and replacement."
+    },
+    {
+      "service": "Replace spark plugs",
+      "interval": {
+        "miles": 100000,
+        "months": null,
+        "logic": "Every 100,000 miles under normal use"
+      },
+      "severity": "high",
+      "notes": "Special operating conditions such as towing, extended idling, or low-speed heavy commercial use list spark plug replacement at 60,000 miles."
+    },
+    {
+      "service": "Inspect accessory drive belt or belts",
+      "interval": {
+        "miles": 100000,
+        "months": null,
+        "logic": "Inspect at 100,000 miles, then every other oil change until replaced"
+      },
+      "severity": "medium",
+      "notes": "Do not treat inspection as replacement."
+    },
+    {
+      "service": "Change automatic transmission fluid",
+      "interval": {
+        "miles": 150000,
+        "months": null,
+        "logic": "Every 150,000 miles under normal use"
+      },
+      "severity": "high",
+      "notes": "Special-condition examples may align this item within 3,000 miles of an oil-change message when specified by the schedule."
+    },
+    {
+      "service": "Replace accessory drive belt or belts",
+      "interval": {
+        "miles": 150000,
+        "months": null,
+        "logic": "Every 150,000 miles if not replaced within the last 100,000 miles"
+      },
+      "severity": "medium",
+      "notes": "Separate from the 100,000-mile inspection item."
+    },
+    {
+      "service": "Change engine coolant and motor electronics coolant",
+      "interval": {
+        "miles": 200000,
+        "months": 120,
+        "logic": "Initial replacement at 10 years or 200,000 miles, then every 5 years or 100,000 miles"
+      },
+      "severity": "high",
+      "notes": "Manual explicitly includes motor electronics coolant in this item."
+    },
+    {
+      "service": "Special operating condition services",
+      "interval": {
+        "miles": null,
+        "months": null,
+        "logic": "Conditional only; apply when towing, using a car-top carrier, extended idling/low-speed heavy use, dusty or sandy operation, exclusive E85 use, hot climates, or axle/transfer-case exception conditions apply"
+      },
+      "severity": "medium",
+      "notes": "Do not present as normal-use requirements. Includes 60,000-mile spark plugs for towing or heavy low-speed/idling use, 5,000-mile or 6-month oil service in dusty/sandy operation, and axle/transfer-case service only when monitored message, submersion, leakage, or severe/extreme duty indicates service."
+    }
+  ],
+  "applicability": [
+    "2021 Ford Explorer gas and hybrid models covered by Ford's 2021 Explorer Gas/HEV Owner's Manual",
+    "VIN test target is 2021 Ford Explorer Platinum; trim-specific engine and drivetrain applicability still needs rendered-page verification",
+    "Police Interceptor or other fleet-specific supplements are not covered by this candidate unless the same owner manual applies"
+  ],
+  "validation_flags": [
+    "Candidate built from Ford's official 2021 Explorer Gas/HEV Owner's Manual, printing 2.",
+    "Text extraction checked pages 482-490 for scheduled maintenance; rendered-page verification remains required before production.",
+    "Oil change interval is monitor-driven; fixed mileage examples must not override the information display or one-year maximum.",
+    "Hybrid oil-change distance can exceed 10,000 miles, but not the one-year maximum.",
+    "Special operating condition services are conditional only and must not be shown as normal-use requirements.",
+    "Axle and transfer case fluid changes are not normal scheduled maintenance unless monitored or exception conditions apply."
+  ],
+  "production_ready": false,
+  "source_confidence": "official_source_text_extracted_pending_visual_review",
+  "review_status": "candidate"
+}

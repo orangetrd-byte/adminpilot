@@ -1,0 +1,96 @@
+{
+  "id": "2021-toyota-rav4-hybrid-candidate",
+  "year": 2021,
+  "make": "Toyota",
+  "model": "RAV4",
+  "trim": "Hybrid trims including XLE HV",
+  "engine": "2.5L hybrid powertrain",
+  "transmission": "Hybrid transaxle/eCVT",
+  "driveType": "AWD",
+  "source": "Toyota Warranty & Maintenance Guide - 2021 RAV4 Hybrid",
+  "source_url": "https://assets.sia.toyota.com/publications/en/omms-s/T-MMS-21RAV4HV/pdf/T-MMS-21RAV4HV.pdf",
+  "maintenance": [
+    {
+      "service": "Rotate tires; inspect wiper blades, fluid levels, brake linings/pads, and HV battery cooling intake filter",
+      "interval": {
+        "miles": 5000,
+        "months": 6,
+        "logic": "Every 5,000 miles or 6 months"
+      },
+      "severity": "high",
+      "notes": "Hybrid guide includes recurring HV battery cooling intake filter inspection."
+    },
+    {
+      "service": "Replace engine oil and oil filter",
+      "interval": {
+        "miles": 10000,
+        "months": 12,
+        "logic": "Every 10,000 miles or 12 months when 0W-16 oil is used"
+      },
+      "severity": "critical",
+      "notes": "Use 5,000 miles or 6 months under listed special operating conditions or if 0W-16 was not used."
+    },
+    {
+      "service": "Clean HV battery cooling intake filter",
+      "interval": {
+        "miles": 20000,
+        "months": 24,
+        "logic": "Clean every 20,000 miles; inspect every 5,000 miles and clean if necessary"
+      },
+      "severity": "high",
+      "notes": "Hybrid-specific maintenance item from the RAV4 Hybrid guide."
+    },
+    {
+      "service": "Replace cabin air filter and engine air filter",
+      "interval": {
+        "miles": 30000,
+        "months": 36,
+        "logic": "Fixed maintenance-log interval"
+      },
+      "severity": "medium",
+      "notes": "Appears at 30,000-mile maintenance intervals."
+    },
+    {
+      "service": "Replace engine coolant",
+      "interval": {
+        "miles": 100000,
+        "months": 120,
+        "logic": "Initial engine coolant replacement at 100,000 miles or 120 months; then every 50,000 miles or 60 months"
+      },
+      "severity": "high",
+      "notes": "Inverter coolant has a different initial interval of 150,000 miles or 180 months."
+    },
+    {
+      "service": "Replace spark plugs",
+      "interval": {
+        "miles": 120000,
+        "months": 144,
+        "logic": "Scheduled at 120,000 miles or 144 months"
+      },
+      "severity": "high",
+      "notes": "Required under emissions-control warranty terms."
+    },
+    {
+      "service": "Replace automatic transmission fluid and rear differential oil",
+      "interval": {
+        "miles": 60000,
+        "months": 72,
+        "logic": "Special operating conditions only"
+      },
+      "severity": "high",
+      "notes": "Applies to listed towing/car-top carrier/heavy loading conditions; do not present as normal-use service."
+    }
+  ],
+  "applicability": [
+    "2021 Toyota RAV4 Hybrid models",
+    "Built separately from gasoline RAV4 records because hybrid filter and coolant rules differ"
+  ],
+  "validation_flags": [
+    "Candidate built from official RAV4 Hybrid warranty and maintenance guide.",
+    "Hybrid-specific filter and coolant items must be preserved.",
+    "Rendered-page verification still required before production integration."
+  ],
+  "production_ready": false,
+  "source_confidence": "official_source_text_extracted_pending_visual_review",
+  "review_status": "candidate"
+}
